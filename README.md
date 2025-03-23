@@ -19,3 +19,34 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/ex_polaris>.
 
+TODO
+
+## AppBridge Integration
+
+TODO
+
+## Add Storybook and Routes
+
+TODO
+
+## Local Setup
+
+### Grab the latest Polaris CSS
+
+```bash
+mix run priv/fetch_css.exs
+```
+
+### Run tests
+
+```bash
+mix check
+```
+
+### Run Storybook
+
+```bash
+mix phx.server
+```
+
+Navigate to [http://localhost:4040/storybook](http://localhost:4040/storybook)

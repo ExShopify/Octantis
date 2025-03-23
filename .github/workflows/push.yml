@@ -1,0 +1,50 @@
+on: push
+name: Continuous Integration
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: postgres:12
+        ports: ['5432:5432']
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      s3mock:
+        image: adobe/s3mock:3.10.0
+        ports:
+          - 9090:9090
+          - 9191:9191
+
+    env:
+      MIX_ENV: test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache dialyzer plts
+        uses: actions/cache@v4.2.3
+        with:
+          path: priv/plts
+          key: ${{runner.os}}-${{hashFiles('**/.tool-versions')}}-plts
+
+      - name: Setup elixir
+        uses: erlef/setup-beam@v1
+        with:
+          version-file: ".tool-versions"
+          version-type: "strict"
+
+      - name: Deps get
+        run: mix deps.get && mix deps.unlock --check-unused
+      - name: Check Credo
+        run: mix credo
+      - name: Check Formatting
+        run: mix format --check-formatted
+      - name: Run Tests
+        run: mix do compile --warnings-as-errors, test

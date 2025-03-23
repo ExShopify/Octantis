@@ -1,0 +1,2 @@
+/* Include Polaris styles. Fetch the file with `mix run priv/fetch_css.exs` */
+@import "../vendor/polaris-13.9.0-styles.css";
