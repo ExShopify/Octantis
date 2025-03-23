@@ -1,4 +1,4 @@
-defmodule ExPolarisWeb.Components.Polaris.Tokens.Shaddow do
+defmodule OctantisWeb.Components.Polaris.Tokens.Shaddow do
   @moduledoc """
   Captures the Polaris Shaddow Tokens. Allows enforcing of component attributes
   See https://polaris.shopify.com/tokens/shaddow

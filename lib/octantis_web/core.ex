@@ -1,4 +1,4 @@
-defmodule ExPolarisWeb.Core do
+defmodule OctantisWeb.Core do
   @moduledoc """
   Core Functionality for Polaris Components.
 
@@ -21,7 +21,7 @@ defmodule ExPolarisWeb.Core do
       @breakpoints [:xs, :sm, :md, :lg, :xl]
       @module_name __MODULE__ |> Module.split() |> List.last() |> to_string
       @class_prefix "Polaris-" <> @module_name
-      @exclass "ExPolaris-" <> @module_name
+      @exclass "Octantis-" <> @module_name
       @style_prefix "--pc-" <> (@module_name |> Macro.underscore() |> String.replace("_", "-"))
 
       defp to_style(attr_name, value, format \\ &Function.identity/1)
@@ -73,7 +73,7 @@ defmodule ExPolarisWeb.Core do
     |> Enum.map(fn component when is_atom(component) ->
       module =
         Module.concat([
-          ExPolarisWeb.Components.Polaris,
+          OctantisWeb.Components.Polaris,
           component |> Atom.to_string() |> Macro.camelize()
         ])
 

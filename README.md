@@ -1,16 +1,20 @@
-# ExPolaris
+# Octantis
 
-**TODO: Add description**
+Octantis is an implementation of [Polaris Design System](https://polaris.shopify.com/) in Elixir for Phoenix LiveView.
+
+## σ Octantis
+
+[σ Octantis](https://en.wikipedia.org/wiki/Sigma_Octantis) is the current southern pole star in opposition to Polaris the current northen pole star.
 
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ex_polaris` to your list of dependencies in `mix.exs`:
+by adding `octantis` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:ex_polaris, "~> 0.1.0"}
+    {:octantis, "~> 0.1.0"}
   ]
 end
 ```

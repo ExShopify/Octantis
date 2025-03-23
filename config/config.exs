@@ -1,7 +1,7 @@
 import Config
 
 # Configures the endpoint
-config :ex_polaris, ExPolarisWeb.Endpoint,
+config :octantis, OctantisWeb.Endpoint,
   url: [host: "localhost"],
   live_view: [signing_salt: "ohBcslqz"]
 

@@ -1,10 +1,10 @@
-defmodule ExPolarisWeb.StorybookTest do
-  use ExPolarisWeb.ConnCase, async: true
+defmodule OctantisWeb.StorybookTest do
+  use OctantisWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
 
   describe "Stroybooks" do
-    ExPolarisWeb.Storybook.content_tree()
+    OctantisWeb.Storybook.content_tree()
     |> PhoenixStorybook.Entries.flat_list()
     |> Enum.map(&Map.from_struct/1)
     |> Enum.reject(fn entry -> entry[:open?] == false end)

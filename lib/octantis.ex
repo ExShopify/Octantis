@@ -1,3 +1,3 @@
-defmodule ExPolaris do
+defmodule Octantis do
   @moduledoc false
 end

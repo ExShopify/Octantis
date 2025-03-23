@@ -1,7 +1,7 @@
-defmodule Storybook.ExPolaris.Text do
+defmodule Storybook.Polaris.Text do
   use PhoenixStorybook.Story, :component
 
-  def function, do: &ExPolarisWeb.Components.Polaris.Text.text/1
+  def function, do: &OctantisWeb.Components.Polaris.Text.text/1
 
   def variations do
     [

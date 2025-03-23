@@ -1,9 +1,9 @@
-defmodule ExPolaris.MixProject do
+defmodule Octantis.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :ex_polaris,
+      app: :octantis,
       version: "0.1.0",
       elixir: "~> 1.16",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule ExPolaris.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      mod: {ExPolaris.Application, []},
+      mod: {Octantis.Application, []},
       extra_applications: [:logger]
     ]
   end

@@ -1,4 +1,4 @@
-defmodule ExPolarisWeb.Components.Polaris.Text do
+defmodule OctantisWeb.Components.Polaris.Text do
   @moduledoc """
   Text
   Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
@@ -10,7 +10,7 @@ defmodule ExPolarisWeb.Components.Polaris.Text do
     - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Text/Text.tsx
   """
 
-  use ExPolarisWeb.Core
+  use OctantisWeb.Core
 
   @doc @moduledoc
 

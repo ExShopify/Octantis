@@ -1,4 +1,4 @@
-defmodule ExPolarisWeb.Components.Polaris.Box do
+defmodule OctantisWeb.Components.Polaris.Box do
   @moduledoc """
   Box
   Box is the most primitive layout component.
@@ -10,12 +10,12 @@ defmodule ExPolarisWeb.Components.Polaris.Box do
     - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Box/Box.tsx
   """
 
-  use ExPolarisWeb.Core
+  use OctantisWeb.Core
 
-  alias ExPolarisWeb.Components.Polaris.Tokens.Border
-  alias ExPolarisWeb.Components.Polaris.Tokens.Colour
-  alias ExPolarisWeb.Components.Polaris.Tokens.Shaddow
-  alias ExPolarisWeb.Components.Polaris.Tokens.Space
+  alias OctantisWeb.Components.Polaris.Tokens.Border
+  alias OctantisWeb.Components.Polaris.Tokens.Colour
+  alias OctantisWeb.Components.Polaris.Tokens.Shaddow
+  alias OctantisWeb.Components.Polaris.Tokens.Space
 
   @doc @moduledoc
 

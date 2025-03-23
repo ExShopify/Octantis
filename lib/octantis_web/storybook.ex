@@ -1,4 +1,4 @@
-defmodule ExPolarisWeb.Storybook do
+defmodule OctantisWeb.Storybook do
   @moduledoc """
   Storybook Modle to Power PhoenixStorybook
 
@@ -7,7 +7,7 @@ defmodule ExPolarisWeb.Storybook do
   """
 
   use PhoenixStorybook,
-    otp_app: :sections_app_web,
+    otp_app: :octantis,
     content_path: Path.expand("../../storybook", __DIR__),
     # assets path are remote path, not local file-system paths
     css_path: "/assets/storybook.css",

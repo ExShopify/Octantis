@@ -1,12 +1,12 @@
-defmodule Storybook.ExPolaris.Box do
+defmodule Storybook.Polaris.Box do
   @moduledoc """
   Taken form https://github.com/Shopify/polaris/tree/main/polaris-react/src/components/Box/Box.stories.tsx
   """
   use PhoenixStorybook.Story, :component
 
-  def imports, do: [{ExPolarisWeb.Components.Polaris.Text, text: 1}]
+  def imports, do: [{OctantisWeb.Components.Polaris.Text, text: 1}]
 
-  def function, do: &ExPolarisWeb.Components.Polaris.Box.box/1
+  def function, do: &OctantisWeb.Components.Polaris.Box.box/1
 
   def variations do
     [

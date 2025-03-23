@@ -1,12 +1,12 @@
-defmodule ExPolarisWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :ex_polaris
+defmodule OctantisWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :octantis
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_ex_polaris_key",
+    key: "_octantis_key",
     signing_salt: "ijq1g2Yt",
     same_site: "Lax"
   ]
@@ -19,9 +19,9 @@ defmodule ExPolarisWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :ex_polaris,
+    from: :octantis,
     gzip: false,
-    only: ExPolarisWeb.static_paths()
+    only: OctantisWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -39,5 +39,5 @@ defmodule ExPolarisWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug ExPolarisWeb.Router
+  plug OctantisWeb.Router
 end

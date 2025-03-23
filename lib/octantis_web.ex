@@ -1,4 +1,4 @@
-defmodule ExPolarisWeb do
+defmodule OctantisWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
@@ -19,9 +19,9 @@ defmodule ExPolarisWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: ExPolarisWeb.Endpoint,
-        router: ExPolarisWeb.Router,
-        statics: ExPolarisWeb.static_paths()
+        endpoint: OctantisWeb.Endpoint,
+        router: OctantisWeb.Router,
+        statics: OctantisWeb.static_paths()
     end
   end
 
