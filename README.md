@@ -21,7 +21,7 @@ Octantis provides Polaris LiveView components that you can drop into your LiveVi
 ## Other Resource
 
 - [Elixir ShopifyAPI](https://github.com/orbit-apps/elixir-shopifyapi) is most of what you need to interact with Shopify APIs. Auth, Rest, Graphql, Webhooks and so on.
-- [Elixir Shopify App](https://github.com/orbit-apps/elixir-shopify-app) is a template for building an App with Elixir ShopifyAPI. Currently it lacks a LiveView ShopAdmin as a default, but there is some work towards enabling that.
+- [Elixir Shopify App](https://github.com/ExShopify/elixir-shopify-app) is a template for building an App with Elixir ShopifyAPI. Currently it lacks a LiveView ShopAdmin as a default, but there is some work towards enabling that.
 - [Polaris Design System](https://polaris.shopify.com/)
 - [Shopify AppBridge](https://shopify.dev/docs/api/app-bridge) provides some functionality for the ShopAdmin, noteably toasts and navigation menues.
 
