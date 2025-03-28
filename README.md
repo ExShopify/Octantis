@@ -6,13 +6,13 @@ Octantis provides Polaris LiveView components that you can drop into your LiveVi
 
 ### Example
 
-    ```heex
-    <.card >
-      <.text as="h2" variant="bodyMd">
-        Welcome to The Littlest Marble Shop
-      </.text>
-    </.card>
-    ```
+```elixir
+<.card >
+  <.text as="h2" variant="bodyMd">
+    Welcome to The Littlest Marble Shop
+  </.text>
+</.card>
+```
 
 ## σ Octantis
 
