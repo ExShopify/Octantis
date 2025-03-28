@@ -101,7 +101,7 @@ defmodule OctantisWeb.Components.Polaris.Box do
     assigns =
       assigns
       |> assign(:class, [assigns.class, class(assigns)])
-      |> assign(:style, style(assigns) |> extra_styles(assigns))
+      |> assign(:style, assigns |> style() |> extra_styles(assigns))
 
     ~H"""
     <.as element={@as} class={["Polaris-Box", @class]} style={@style} {@rest}>
