@@ -3,7 +3,7 @@ defmodule OctantisWeb.Components.Polaris.Icons do
   Selected Polaris Icons. Used with PolarisComponents.Icon
 
   ## Examples
-    ```elxiir
+    ```elixir
     <Icons.adjust />
     ```
 

@@ -46,5 +46,5 @@ defmodule OctantisWeb.Components.Polaris.Tokens.Space do
 
   def tokens, do: @tokens
 
-  def var(colour) when colour in @tokens, do: "var(--p-space-#{colour})"
+  def var(space) when space in @tokens, do: "var(--p-space-#{space})"
 end
