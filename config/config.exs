@@ -2,6 +2,10 @@ import Config
 
 # Configures the endpoint
 config :octantis, OctantisWeb.Endpoint,
+  render_errors: [
+    formats: [html: OctantisWeb.ErrorHTML, json: OctantisWeb.ErrorJSON],
+    layout: false
+  ],
   url: [host: "localhost"],
   live_view: [signing_salt: "ohBcslqz"]
 

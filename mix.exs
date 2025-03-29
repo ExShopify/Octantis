@@ -37,7 +37,7 @@ defmodule Octantis.MixProject do
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:tailwind, "~> 0.3", runtime: Mix.env() == :dev},
-      {:req, "~> 0.5.0", only: :dev},
+      {:req, "~> 0.5.0", only: [:dev, :test]},
       # # eveyrthing else
       {:esbuild, "~> 0.5", runtime: Mix.env() == :dev},
       {:phoenix, "~> 1.7.0"},
