@@ -26,14 +26,28 @@ defmodule OctantisWeb.Core do
 
       defp to_style(attr_name, value, format \\ &Function.identity/1)
 
-      defp to_style(attr_name, value, format) when is_binary(value) or is_number(value),
-        do: ["#{@style_prefix}-#{strike_through(attr_name)}:#{format.(value)}"]
+      defp to_style(attr_name, value, format) when is_nil(value), do: []
+
+      defp to_style(attr_name, {breakpoint, value}, format)
+           when is_nil(value) and breakpoint in @breakpoints,
+           do: []
+
+      defp to_style(attr_name, value, format)
+           when is_binary(value) or is_number(value) or is_atom(value),
+           do: [
+             "#{@style_prefix}-#{strike_through(attr_name)}:#{value |> to_string() |> format.()}"
+           ]
 
       defp to_style(attr_name, values, format) when is_list(values),
         do: Enum.flat_map(values, &to_style(attr_name, &1, format))
 
-      defp to_style(attr_name, {breakpoint, value}, format) when breakpoint in @breakpoints,
-        do: ["#{@style_prefix}-#{strike_through(attr_name)}-#{breakpoint}:#{format.(value)}"]
+      defp to_style(attr_name, {breakpoint, value}, format)
+           when (is_binary(value) or is_number(value) or is_atom(value)) and
+                  breakpoint in @breakpoints do
+        [
+          "#{@style_prefix}-#{strike_through(attr_name)}-#{breakpoint}:#{value |> to_string() |> format.()}"
+        ]
+      end
 
       defp to_responsive_style(attr_name, value, format \\ &Function.identity/1)
 
