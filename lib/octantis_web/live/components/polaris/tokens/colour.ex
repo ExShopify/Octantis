@@ -169,6 +169,7 @@ defmodule OctantisWeb.Components.Polaris.Tokens.Colour do
     "text-inverse-secondary",
     "text-warning",
     "text-info-on-bg-fill",
+    "text-tertiary-on-bg-fill",
     "text-critical-hover",
     "text-brand-hover",
     "text-brand",
