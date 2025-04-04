@@ -42,6 +42,8 @@ defmodule OctantisWeb.Components.Polaris.InlineGrid do
 
   attr_extra_styles(except: [:align_items])
 
+  slot :inner_block
+
   def inline_grid(assigns) do
     assigns =
       assigns
