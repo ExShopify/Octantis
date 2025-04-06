@@ -49,6 +49,13 @@ defmodule OctantisWeb.Core do
         ]
       end
 
+      defp to_style(attr_name, {breakpoint, value}, format)
+           when is_list(value) and breakpoint in @breakpoints do
+        [
+          "#{@style_prefix}-#{strike_through(attr_name)}-#{breakpoint}:#{value |> format.()}"
+        ]
+      end
+
       defp to_responsive_style(attr_name, value, format \\ &Function.identity/1)
 
       defp to_responsive_style(attr_name, value, format) when is_binary(value),

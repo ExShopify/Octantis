@@ -3,10 +3,11 @@ defmodule Storybook.Polaris.Grid do
 
   def imports do
     [
-      {OctantisWeb.Components.Polaris.Text, text: 1},
-      {OctantisWeb.Components.Polaris.Grid, grid_cell: 1},
       {OctantisWeb.Components.Polaris.Card, card: 1},
-      {OctantisWeb.Components.Head, stylesheet: 1}
+      {OctantisWeb.Components.Polaris.Divider, divider: 1},
+      {OctantisWeb.Components.Polaris.Grid, grid_cell: 1},
+      {OctantisWeb.Components.Head, stylesheet: 1},
+      {OctantisWeb.Components.Polaris.Text, text: 1}
     ]
   end
 
@@ -88,6 +89,46 @@ defmodule Storybook.Polaris.Grid do
             ],
             attributes: %{
               columns: [xs: 6, sm: 6, md: 6, lg: 6, xl: 6]
+            }
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :with_grid_areas,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [
+              ~s"""
+              <:grid_cell area="A">
+                <.card>
+                  <.text as="h2" variant="bodyMd">A</.text>
+                </.card>
+              </:grid_cell>
+              <:grid_cell area="B">
+                <.card>
+                  <.text as="h2" variant="bodyMd">B</.text>
+                </.card>
+              </:grid_cell>
+              <:grid_cell area="D">
+                <.divider />
+              </:grid_cell>
+              <:grid_cell area="C">
+                <.card>
+                  <.text as="h2" variant="bodyMd">C</.text>
+                </.card>
+              </:grid_cell>
+              """
+            ],
+            attributes: %{
+              columns: [xs: 6, sm: 6, md: 6, lg: 6, xl: 6],
+              areas: [
+                xs: [
+                  "A A B B B B",
+                  "D D D D D D",
+                  "C C C C C C"
+                ]
+              ]
             }
           }
         ]

@@ -52,12 +52,6 @@ TODO
 
 ## Local Setup
 
-### Grab the latest Polaris CSS
-
-```bash
-mix run priv/fetch_css.exs
-```
-
 ### Run tests
 
 ```bash
