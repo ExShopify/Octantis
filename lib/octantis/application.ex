@@ -5,12 +5,14 @@ defmodule Octantis.Application do
 
   use Application
 
+  @start_endpoint Application.compile_env(:octantis, [OctantisWeb.Endpoint, :start], false)
+
   @impl true
   def start(_type, _args) do
-    children = [
-      # Start the Endpoint (http/https)
-      OctantisWeb.Endpoint
-    ]
+    children =
+      [
+        # Start the Endpoint (http/https)
+      ] ++ endpoint()
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
@@ -24,5 +26,13 @@ defmodule Octantis.Application do
   def config_change(changed, _new, removed) do
     OctantisWeb.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  def endpoint do
+    if @start_endpoint do
+      [OctantisWeb.Endpoint]
+    else
+      []
+    end
   end
 end
