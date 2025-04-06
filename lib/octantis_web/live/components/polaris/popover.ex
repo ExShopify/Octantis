@@ -26,7 +26,7 @@ defmodule OctantisWeb.Components.Polaris.Popover do
 
   @doc @moduledoc
 
-  attr :id, :string, required: true, doc: "DOM id of the popover`s parent"
+  attr :id, :string, required: true, doc: "DOM id of the popover's parent"
   attr :popover_id, :string, doc: "DOM id of the popover"
 
   # attr :children?: React.ReactNode,

@@ -153,7 +153,7 @@ defmodule OctantisWeb.Core do
   Transform `phx_` prefixed assigns to both `data-phx-` and `phx-` assigns.
 
   This allows us use `bindingPrefix: "data-phx-"` in production as required by Shopify's AppBridge (See AppBridge section of the README)
-    but also use the default `bindingPrefix: "phx-" for tests and Storybook.
+    but also use the default `bindingPrefix: "phx-"` for tests and Storybook.
 
   `phx_values` is a special case that is expanded to `phx-value-key` and `data-phx-value-key`
 

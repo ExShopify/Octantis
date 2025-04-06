@@ -9,6 +9,9 @@ defmodule Octantis.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
+      package: package(),
+      source_url: "https://github.com/ExShopify/Octantis",
+      description: description(),
       preferred_cli_env: [
         check: :test
       ],
@@ -22,6 +25,21 @@ defmodule Octantis.MixProject do
       mod: {Octantis.Application, []},
       extra_applications: [:logger]
     ]
+  end
+
+  defp package() do
+    [
+      name: "octantis",
+      files: ~w(lib priv .formatter.exs mix.exs README* LICENSE* CHANGELOG*),
+      licenses: ["Apache-2.0"],
+      links: %{"GitHub" => "https://github.com/ExShopify/Octantis"}
+    ]
+  end
+
+  defp description() do
+    """
+    An Elixir implementation of Shopify's Polaris design system.
+    """
   end
 
   # Specifies which paths to compile per environment.
@@ -38,6 +56,7 @@ defmodule Octantis.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:tailwind, "~> 0.3", runtime: Mix.env() == :dev},
       {:req, "~> 0.5.0", only: [:dev, :test]},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       # # eveyrthing else
       {:esbuild, "~> 0.5", runtime: Mix.env() == :dev},
       {:phoenix, "~> 1.7.0"},
