@@ -1,10 +1,13 @@
 defmodule Storybook.Polaris.TextField do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function, do: &OctantisWeb.Components.Polaris.TextField.text_field/1
 
   def imports,
-    do: [{OctantisWeb.Components.Polaris.Select, select: 1}]
+    do: [
+      {OctantisWeb.Components.Polaris.Select, select: 1},
+      {OctantisWeb.Components.Head, stylesheet: 1}
+    ]
 
   @field Phoenix.Component.to_form(%{"value" => ""})[:value]
 

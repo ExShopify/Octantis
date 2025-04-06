@@ -1,9 +1,10 @@
 defmodule Storybook.Polaris.Modal do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def imports,
     do: [
-      {OctantisWeb.Components.Polaris.Button, button: 1}
+      {OctantisWeb.Components.Polaris.Button, button: 1},
+      {OctantisWeb.Components.Head, stylesheet: 1}
     ]
 
   def aliases, do: [OctantisWeb.Components.Polaris.Icons]
@@ -12,6 +13,7 @@ defmodule Storybook.Polaris.Modal do
 
   def template do
     """
+    <.stylesheet psb-code-hidden/>
     <div class="my-custom-wrapper" psb-code-hidden>
       <.button phx_click={Modal.show(":variation_id")} >Open modal</.button>
       <.psb-variation/>

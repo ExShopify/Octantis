@@ -1,10 +1,11 @@
 defmodule Storybook.Polaris.InlineStack do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def imports,
     do: [
       {OctantisWeb.Components.Polaris.Text, text: 1},
-      {OctantisWeb.Components.Polaris.BlockStack, block_stack: 1}
+      {OctantisWeb.Components.Polaris.BlockStack, block_stack: 1},
+      {OctantisWeb.Components.Head, stylesheet: 1}
     ]
 
   def function, do: &OctantisWeb.Components.Polaris.InlineStack.inline_stack/1

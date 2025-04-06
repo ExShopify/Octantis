@@ -1,5 +1,5 @@
 defmodule Storybook.Polaris.SkeletonThumbnail do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function,
     do: &OctantisWeb.Components.Polaris.SkeletonThumbnail.skeleton_thumbnail/1

@@ -1,5 +1,5 @@
 defmodule Storybook.Polaris.Tabs do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function, do: &OctantisWeb.Components.Polaris.Tabs.tabs/1
 
@@ -7,11 +7,13 @@ defmodule Storybook.Polaris.Tabs do
     do: [
       {OctantisWeb.Components.Polaris.Box, box: 1},
       {OctantisWeb.Components.Polaris.Card, card: 1},
-      {OctantisWeb.Components.Polaris.Image, image: 1}
+      {OctantisWeb.Components.Polaris.Image, image: 1},
+      {OctantisWeb.Components.Head, stylesheet: 1}
     ]
 
   def template do
     """
+    <.stylesheet psb-code-hidden/>
     <.card padding={[xs: "0"]}>
       <.psb-variation/>
     </.card>

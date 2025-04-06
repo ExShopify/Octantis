@@ -1,5 +1,5 @@
 defmodule Storybook.Polaris.SkeletonBodyText do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function,
     do: &OctantisWeb.Components.Polaris.SkeletonBodyText.skeleton_body_text/1

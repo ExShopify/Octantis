@@ -1,11 +1,12 @@
 defmodule Storybook.Polaris.Grid do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def imports do
     [
       {OctantisWeb.Components.Polaris.Text, text: 1},
       {OctantisWeb.Components.Polaris.Grid, grid_cell: 1},
-      {OctantisWeb.Components.Polaris.Card, card: 1}
+      {OctantisWeb.Components.Polaris.Card, card: 1},
+      {OctantisWeb.Components.Head, stylesheet: 1}
     ]
   end
 

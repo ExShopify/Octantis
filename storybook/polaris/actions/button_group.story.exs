@@ -1,7 +1,11 @@
 defmodule Storybook.Polaris.ButtonGroup do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
-  def imports, do: [{OctantisWeb.Components.Polaris.Button, button: 1}]
+  def imports,
+    do: [
+      {OctantisWeb.Components.Polaris.Button, button: 1},
+      {OctantisWeb.Components.Head, stylesheet: 1}
+    ]
 
   def function, do: &OctantisWeb.Components.Polaris.ButtonGroup.button_group/1
 

@@ -1,5 +1,5 @@
 defmodule Storybook.Polaris.Checkbox do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function, do: &OctantisWeb.Components.Polaris.Checkbox.checkbox/1
 

@@ -1,5 +1,5 @@
 defmodule Storybook.Polaris.RadioButton do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function, do: &OctantisWeb.Components.Polaris.RadioButton.radio_button/1
 

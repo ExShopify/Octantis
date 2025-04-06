@@ -2,9 +2,13 @@ defmodule Storybook.Polaris.Box do
   @moduledoc """
   Taken form https://github.com/Shopify/polaris/tree/main/polaris-react/src/components/Box/Box.stories.tsx
   """
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
-  def imports, do: [{OctantisWeb.Components.Polaris.Text, text: 1}]
+  def imports,
+    do: [
+      {OctantisWeb.Components.Polaris.Text, text: 1},
+      {OctantisWeb.Components.Head, stylesheet: 1}
+    ]
 
   def function, do: &OctantisWeb.Components.Polaris.Box.box/1
 

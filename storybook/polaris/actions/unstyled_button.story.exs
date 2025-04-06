@@ -1,5 +1,5 @@
 defmodule Storybook.Polaris.UnstyledButton do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function, do: &OctantisWeb.Components.Polaris.UnstyledButton.unstyled_button/1
 

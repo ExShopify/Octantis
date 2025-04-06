@@ -1,5 +1,5 @@
 defmodule Storybook.Polaris.Spinner do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function, do: &OctantisWeb.Components.Polaris.Spinner.spinner/1
 

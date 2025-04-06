@@ -1,5 +1,5 @@
 defmodule Storybook.Polaris.Icon do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   alias OctantisWeb.Components.Polaris.Icon
   alias OctantisWeb.Components.Polaris.Icons

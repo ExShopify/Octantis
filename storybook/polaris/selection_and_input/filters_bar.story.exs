@@ -1,8 +1,13 @@
 defmodule Storybook.Polaris.SkeletonDisplayText do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function, do: &OctantisWeb.Components.Polaris.Filters.filters_bar/1
-  def imports, do: [{OctantisWeb.Components.Polaris.ChoiceList, choice_list: 1}]
+
+  def imports,
+    do: [
+      {OctantisWeb.Components.Polaris.ChoiceList, choice_list: 1},
+      {OctantisWeb.Components.Head, stylesheet: 1}
+    ]
 
   alias OctantisWeb.Components.Polaris.Filters.Filter
 

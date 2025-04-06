@@ -1,8 +1,13 @@
 defmodule Storybook.Polaris.FilterPill do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function, do: &OctantisWeb.Components.Polaris.Filters.filter_pill/1
-  def imports, do: [{OctantisWeb.Components.Polaris.ChoiceList, choice_list: 1}]
+
+  def imports,
+    do: [
+      {OctantisWeb.Components.Polaris.ChoiceList, choice_list: 1},
+      {OctantisWeb.Components.Head, stylesheet: 1}
+    ]
 
   def variations do
     [

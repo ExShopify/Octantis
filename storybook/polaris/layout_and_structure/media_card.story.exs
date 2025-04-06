@@ -1,12 +1,13 @@
 defmodule Storybook.Polaris.MediaCard do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def imports,
     do: [
       {OctantisWeb.Components.Polaris.Text, text: 1},
       {OctantisWeb.Components.Polaris.SkeletonBodyText, skeleton_body_text: 1},
       {OctantisWeb.Components.Polaris.SkeletonDisplayText, skeleton_display_text: 1},
-      {OctantisWeb.Components.Polaris.SkeletonThumbnail, skeleton_thumbnail: 1}
+      {OctantisWeb.Components.Polaris.SkeletonThumbnail, skeleton_thumbnail: 1},
+      {OctantisWeb.Components.Head, stylesheet: 1}
     ]
 
   def function, do: &OctantisWeb.Components.Polaris.MediaCard.media_card/1

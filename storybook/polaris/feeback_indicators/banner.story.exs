@@ -1,5 +1,5 @@
 defmodule Storybook.Polaris.Banner do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   alias OctantisWeb.Components.Polaris.Icons
 

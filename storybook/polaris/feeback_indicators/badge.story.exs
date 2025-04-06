@@ -1,9 +1,14 @@
 defmodule Storybook.Polaris.Badge do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function, do: &OctantisWeb.Components.Polaris.Badge.badge/1
 
   def aliases, do: [OctantisWeb.Components.Polaris.Icons]
+
+  def imports,
+    do: [
+      {OctantisWeb.Components.Head, stylesheet: 1}
+    ]
 
   def variations do
     [

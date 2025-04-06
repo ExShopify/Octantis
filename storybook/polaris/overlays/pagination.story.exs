@@ -1,5 +1,5 @@
 defmodule Storybook.Polaris.Pagination do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function, do: &OctantisWeb.Components.Polaris.Pagination.pagination/1
 

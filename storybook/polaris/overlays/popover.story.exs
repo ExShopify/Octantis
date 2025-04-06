@@ -1,11 +1,12 @@
 defmodule Storybook.Polaris.Popover do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function, do: &OctantisWeb.Components.Polaris.Popover.popover/1
 
   def imports do
     [
-      {OctantisWeb.Components.Polaris.ComplexAction, complex_action: 1}
+      {OctantisWeb.Components.Polaris.ComplexAction, complex_action: 1},
+      {OctantisWeb.Components.Head, stylesheet: 1}
     ]
   end
 

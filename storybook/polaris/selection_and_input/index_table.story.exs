@@ -1,5 +1,5 @@
 defmodule Storybook.Polaris.IndexTable do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def imports,
     do: [
@@ -7,7 +7,8 @@ defmodule Storybook.Polaris.IndexTable do
       {OctantisWeb.Components.Polaris.Card, card: 1},
       {OctantisWeb.Components.Polaris.Image, image: 1},
       {OctantisWeb.Components.Polaris.IndexTable, index_table_row: 1},
-      {OctantisWeb.Components.Polaris.IndexTable, index_table_cell: 1}
+      {OctantisWeb.Components.Polaris.IndexTable, index_table_cell: 1},
+      {OctantisWeb.Components.Head, stylesheet: 1}
     ]
 
   def function, do: &OctantisWeb.Components.Polaris.IndexTable.index_table/1

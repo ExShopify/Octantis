@@ -1,5 +1,5 @@
 defmodule Storybook.Polaris.InlineError do
-  use PhoenixStorybook.Story, :component
+  use OctantisWeb.Storybook.Story, :component
 
   def function, do: &OctantisWeb.Components.Polaris.InlineError.inline_error/1
 
