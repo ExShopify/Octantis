@@ -118,7 +118,9 @@ defmodule OctantisWeb.Components.Polaris.Modal do
 
   attr_extra_styles()
 
-  slot :footer, doc: "Override the primary and secondary actions and include your own footer."
+  slot :header, doc: "Pass attrs to the header wrapper, or override it completely."
+  slot :content, doc: "Pass attrs to the content wrapper, or override it completely."
+  slot :footer, doc: "Pass attrs to the header wrapper, or override it completely."
 
   def modal(assigns) do
     assigns =
@@ -138,50 +140,60 @@ defmodule OctantisWeb.Components.Polaris.Modal do
           <div>
             <div role="dialog" aria-modal="true" tabindex="-1" class="Polaris-Modal-Dialog">
               <div class={["Polaris-Modal-Dialog__Modal", @class]} style={@style}>
-                <.box
-                  :if={!@title_hidden}
-                  background={@background}
-                  color={@color}
-                  border_color="border"
-                  border_style="solid"
-                  border_block_end_width="025"
-                  padding={[xs: "400"]}
-                >
-                  <.inline_stack
+                <.slot_wrapper :let={header_attrs} slot={@header}>
+                  <.box
+                    :if={!@title_hidden}
                     id={header_id(@id)}
-                    align="space-between"
-                    block_align="center"
-                    gap={[xs: "200"]}
-                    wrap={false}
+                    background={header_attrs[:background] || @background}
+                    color={header_attrs[:color] || @color}
+                    border_color={header_attrs[:border_color] || "border"}
+                    border_style={header_attrs[:border_style] || "solid"}
+                    border_block_end_width={header_attrs[:border_block_end_width] || "025"}
+                    padding={header_attrs[:padding] || [xs: "400"]}
+                    {header_attrs}
                   >
-                    <.inline_stack gap={[xs: "100"]} wrap={false}>
-                      <.icon :if={@icon}>{@icon.(%{})}</.icon>
-                      <h2 class="Polaris-Text--root Polaris-Text--headingMd Polaris-Text--break">
-                        {@title}
-                      </h2>
-                    </.inline_stack>
-                    <div>
-                      <.slot_wrapper>
-                        <:slot :for={action <- @dismiss_action}>
-                          <.complex_action phx_click={@on_close} variant={@tone} {action} />
-                        </:slot>
-                        <.button :if={@on_close} variant={@tone} phx_click={@on_close}>
-                          <:icon><Icons.x /></:icon>
-                        </.button>
+                    <.inline_stack
+                      align="space-between"
+                      block_align="center"
+                      gap={[xs: "200"]}
+                      wrap={false}
+                    >
+                      <.slot_wrapper slot={@title}>
+                        <.inline_stack gap={[xs: "100"]} wrap={false}>
+                          <.icon :if={@icon}>{@icon.(%{})}</.icon>
+                          <h2 class="Polaris-Text--root Polaris-Text--headingMd Polaris-Text--break">
+                            {@title}
+                          </h2>
+                        </.inline_stack>
                       </.slot_wrapper>
-                    </div>
-                  </.inline_stack>
-                </.box>
-
+                      <div>
+                        <.slot_wrapper>
+                          <:slot :for={action <- @dismiss_action}>
+                            <.complex_action phx_click={@on_close} variant={@tone} {action} />
+                          </:slot>
+                          <.button :if={@on_close} variant={@tone} phx_click={@on_close}>
+                            <:icon><Icons.x /></:icon>
+                          </.button>
+                        </.slot_wrapper>
+                      </div>
+                    </.inline_stack>
+                  </.box>
+                </.slot_wrapper>
                 <div
                   id={content_id(@id)}
                   class="Polaris-Modal__Body Polaris-Scrollable Polaris-Scrollable--vertical Polaris-Scrollable--horizontal Polaris-Scrollable--scrollbarWidthThin"
                   data-polaris-scrollable="true"
                 >
                   <div :if={!@loading} class="Polaris-Modal-Section">
-                    <.box padding={[xs: "400"]} as="section">
-                      {render_slot(@inner_block)}
-                    </.box>
+                    <.slot_wrapper :let={content_attr} slot={@content}>
+                      <.box
+                        as={content_attr[:as] || "section"}
+                        padding={content_attr[:padding] || [xs: "400"]}
+                        {content_attr}
+                      >
+                        {render_slot(@inner_block)}
+                      </.box>
+                    </.slot_wrapper>
                   </div>
                   <.box :if={@loading} padding={[xs: "400"]}>
                     <.inline_stack gap={[xs: "400"]} align="center" block_align="center">
@@ -189,36 +201,35 @@ defmodule OctantisWeb.Components.Polaris.Modal do
                     </.inline_stack>
                   </.box>
                 </div>
-
-                <.inline_stack id={footer_id(@id)} block_align="center" wrap={true} gap={[xs: "400"]}>
+                <.slot_wrapper :let={footer_attrs} slot={@footer}>
                   <.box
-                    border_color="border"
-                    border_style="solid"
-                    border_block_start_width="025"
-                    padding={[xs: "400"]}
-                    width="100%"
+                    id={footer_id(@id)}
+                    border_color={footer_attrs[:border_color] || "border"}
+                    border_style={footer_attrs[:border_style] || "solid"}
+                    border_block_start_width={footer_attrs[:border_block_start_width] || "025"}
+                    padding={footer_attrs[:padding] || [xs: "400"]}
+                    width={footer_attrs[:width] || "100%"}
+                    {footer_attrs}
                   >
-                    <.slot_wrapper slot={@title}>
-                      <.inline_stack
-                        align="space-between"
-                        block_align="center"
-                        wrap={true}
-                        gap={[xs: "400"]}
-                      >
-                        <.box></.box>
-                        <.inline_stack wrap={true} gap={[xs: "200"]}>
-                          <.complex_action :for={action <- @secondary_action} {action} />
-                          <.complex_action
-                            :for={action <- @action}
-                            {action}
-                            variant="primary"
-                            size="medium"
-                          />
-                        </.inline_stack>
+                    <.inline_stack
+                      align="space-between"
+                      block_align="center"
+                      wrap={true}
+                      gap={[xs: "400"]}
+                    >
+                      <.box></.box>
+                      <.inline_stack wrap={true} gap={[xs: "200"]}>
+                        <.complex_action :for={action <- @secondary_action} {action} />
+                        <.complex_action
+                          :for={action <- @action}
+                          {action}
+                          variant="primary"
+                          size="medium"
+                        />
                       </.inline_stack>
-                    </.slot_wrapper>
+                    </.inline_stack>
                   </.box>
-                </.inline_stack>
+                </.slot_wrapper>
               </div>
             </div>
           </div>
