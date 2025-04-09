@@ -33,7 +33,26 @@ defmodule Storybook.Polaris.Modal do
         variations: [
           %Variation{
             id: :default,
-            slots: [~s|Content|, ~s|<:action content="Ok"/>|],
+            slots: [
+              ~s|Content|,
+              ~s|<:action content="Ok"/>|
+            ],
+            attributes: %{title: "My Modal", open: true}
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :reduced_padding,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [
+              ~s|Content|,
+              ~s|<:action content="Ok"/>|,
+              ~s|<:header padding={[xs: "100"]}/>|,
+              ~s|<:content padding={[xs: "100"]}/>|,
+              ~s|<:footer padding={[xs: "100"]}/>|
+            ],
             attributes: %{title: "My Modal", open: true}
           }
         ]

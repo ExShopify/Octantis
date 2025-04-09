@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Add header, footer and content sections to Modal
+
 ## 0.1.1
 
 - Add variations to Modal component

@@ -307,7 +307,11 @@ defmodule OctantisWeb.Core do
   ## Examples
     heex> <.block_stack {slot_attributes(@myslot)} />
   """
-  def slot_attributes(slots) when is_list(slots), do: List.first(slots) || []
+  def slot_attributes([]), do: %{}
+
+  def slot_attributes([slot | slots]),
+    do: Map.merge(slot_attributes(slot), slot_attributes(slots))
+
   def slot_attributes(slots) when is_map(slots), do: slots
 
   defmacro assign_style(assigns) do
@@ -343,10 +347,16 @@ defmodule OctantisWeb.Core do
 
   slot :inner_block, doc: "The block to render if `slot` is not not a slot."
 
-  def slot_wrapper(%{slot: %{__slot__: _}} = assigns), do: ~H"{render_slot(@slot)}"
-  def slot_wrapper(%{slot: [%{__slot__: _} | _]} = assigns), do: ~H"{render_slot(@slot)}"
+  def slot_wrapper(%{slot: %{__slot__: _, inner_block: nil}} = assigns),
+    do: ~H"{render_slot(@inner_block, slot_attributes(@slot))}"
+
+  def slot_wrapper(%{slot: [%{__slot__: _, inner_block: nil}]} = assigns),
+    do: ~H"{render_slot(@inner_block, slot_attributes(@slot))}"
+
+  def slot_wrapper(%{slot: %{__slot__: _}} = assigns), do: ~H"{render_slot(@slot, %{})}"
+  def slot_wrapper(%{slot: [%{__slot__: _} | _]} = assigns), do: ~H"{render_slot(@slot, %{})}"
   def slot_wrapper(%{slot: func} = assigns) when is_function(func), do: ~H"{@slot.(assigns)}"
-  def slot_wrapper(assigns), do: ~H"{render_slot(@inner_block)}"
+  def slot_wrapper(assigns), do: ~H"{render_slot(@inner_block, %{})}"
 
   def translate_error({msg, _opts}), do: msg
 
