@@ -274,6 +274,7 @@ defmodule OctantisWeb.Core do
   defp build_extra_styles({:max_height, value}), do: ["max-height:#{value}"]
   defp build_extra_styles({:min_height, value}), do: ["min-height:#{value}"]
   defp build_extra_styles({:object_fit, value}), do: ["object-fit:#{value}"]
+  defp build_extra_styles({:position, value}), do: ["position:#{value}"]
   defp build_extra_styles({:flex_grow, value}), do: ["flex-grow:#{value}"]
   defp build_extra_styles({:justify_content, value}), do: ["justify-content:#{value}"]
   defp build_extra_styles({:grid_auto_rows, value}), do: ["grid-auto-rows:#{value}"]
@@ -329,19 +330,22 @@ defmodule OctantisWeb.Core do
 
   ## Examples
     heex>
-      <.render_or_slot slot={@title}>
+      <.slot_wrapper slot={@title}>
         <.text variant="headingSm" as="h2">
           <%= @title %>
         </.text>
-      </.render_or_slot>
+      </.slot_wrapper>
 
   """
-  attr :slot, :any, required: true, doc: "A slot or other attribute."
+  attr :rest, :global, include: ~w(slot)
+
+  slot :slot
 
   slot :inner_block, doc: "The block to render if `slot` is not not a slot."
 
   def slot_wrapper(%{slot: %{__slot__: _}} = assigns), do: ~H"{render_slot(@slot)}"
   def slot_wrapper(%{slot: [%{__slot__: _} | _]} = assigns), do: ~H"{render_slot(@slot)}"
+  def slot_wrapper(%{slot: func} = assigns) when is_function(func), do: ~H"{@slot.(assigns)}"
   def slot_wrapper(assigns), do: ~H"{render_slot(@inner_block)}"
 
   def translate_error({msg, _opts}), do: msg
