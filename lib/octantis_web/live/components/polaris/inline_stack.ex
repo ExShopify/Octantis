@@ -23,6 +23,8 @@ defmodule OctantisWeb.Components.Polaris.InlineStack do
 
   @doc @moduledoc
 
+  attr :id, :string, default: nil
+
   attr :as, :string,
     values: ["div", "span", "li", "ol", "ul"],
     doc: "HTML Element type",
@@ -66,7 +68,7 @@ defmodule OctantisWeb.Components.Polaris.InlineStack do
       assigns |> assign(:style, style(assigns) |> extra_styles(assigns))
 
     ~H"""
-    <.as element={@as} class={["Polaris-InlineStack"]} style={@style}>
+    <.as id={@id} element={@as} class={["Polaris-InlineStack"]} style={@style}>
       {render_slot(@inner_block)}
     </.as>
     """

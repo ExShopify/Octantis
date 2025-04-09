@@ -43,6 +43,7 @@ defmodule OctantisWeb.Components.Polaris.Modal do
     :box,
     :button,
     :complex_action,
+    :icon,
     :inline_grid,
     :inline_stack,
     :spinner
@@ -54,6 +55,11 @@ defmodule OctantisWeb.Components.Polaris.Modal do
   attr :id, :string, required: true, doc: "id of the modal"
 
   attr :title_hidden, :boolean, default: false, doc: "Hide the title in the modal."
+
+  attr :icon, :any,
+    doc: "Status icon to display in the header",
+    default: nil,
+    examples: [&Icons.alert_circle/1]
 
   attr :open, :boolean, default: false, doc: "Whether the modal is open or not"
 
@@ -79,6 +85,10 @@ defmodule OctantisWeb.Components.Polaris.Modal do
     default: false,
     doc: "Replaces modal content with a spinner while a background action is being performed."
 
+  attr :show_backdrop, :boolean,
+    default: true,
+    doc: "Should the backdrop be show with the modal?"
+
   attr :on_close, :any, doc: "Callback when the modal clsoe button is clicked."
 
   # attr :no_scroll, :boolean,
@@ -97,15 +107,25 @@ defmodule OctantisWeb.Components.Polaris.Modal do
     ComplexAction.attributes()
   end
 
-  slot :footer, doc: "Override the primary and secondary actions and include your own footer."
+  slot :dismiss_action,
+    validate_attrs: true,
+    doc: "A complext action to use insread of the standard dismiss X" do
+    ComplexAction.attributes()
+    attr :hidden, :boolean
+  end
 
   attr :phx_hook, :string, default: nil
+
+  attr_extra_styles()
+
+  slot :footer, doc: "Override the primary and secondary actions and include your own footer."
 
   def modal(assigns) do
     assigns =
       assigns
       |> assign_new(:on_close, fn -> hide(assigns.id) end)
       |> assign(:class, class(assigns))
+      |> assign(:style, extra_styles(assigns))
       |> assign_phx_bindings()
       |> assign_background()
       |> assign_color()
@@ -117,7 +137,7 @@ defmodule OctantisWeb.Components.Polaris.Modal do
         <div class="Polaris-Modal-Dialog__Container">
           <div>
             <div role="dialog" aria-modal="true" tabindex="-1" class="Polaris-Modal-Dialog">
-              <div class={["Polaris-Modal-Dialog__Modal", @class]}>
+              <div class={["Polaris-Modal-Dialog__Modal", @class]} style={@style}>
                 <.box
                   :if={!@title_hidden}
                   background={@background}
@@ -127,20 +147,34 @@ defmodule OctantisWeb.Components.Polaris.Modal do
                   border_block_end_width="025"
                   padding={[xs: "400"]}
                 >
-                  <.inline_grid columns={[xs: "1fr auto"]} gap={[xs: "400"]}>
-                    <.inline_stack block_align="center" wrap={true} gap={[xs: "400"]}>
+                  <.inline_stack
+                    id={header_id(@id)}
+                    align="space-between"
+                    block_align="center"
+                    gap={[xs: "200"]}
+                    wrap={false}
+                  >
+                    <.inline_stack gap={[xs: "100"]} wrap={false}>
+                      <.icon :if={@icon}>{@icon.(%{})}</.icon>
                       <h2 class="Polaris-Text--root Polaris-Text--headingMd Polaris-Text--break">
                         {@title}
                       </h2>
                     </.inline_stack>
-
-                    <.button :if={@on_close} variant={@tone} phx_click={@on_close}>
-                      <:icon><Icons.x /></:icon>
-                    </.button>
-                  </.inline_grid>
+                    <div>
+                      <.slot_wrapper>
+                        <:slot :for={action <- @dismiss_action}>
+                          <.complex_action phx_click={@on_close} variant={@tone} {action} />
+                        </:slot>
+                        <.button :if={@on_close} variant={@tone} phx_click={@on_close}>
+                          <:icon><Icons.x /></:icon>
+                        </.button>
+                      </.slot_wrapper>
+                    </div>
+                  </.inline_stack>
                 </.box>
 
                 <div
+                  id={content_id(@id)}
                   class="Polaris-Modal__Body Polaris-Scrollable Polaris-Scrollable--vertical Polaris-Scrollable--horizontal Polaris-Scrollable--scrollbarWidthThin"
                   data-polaris-scrollable="true"
                 >
@@ -156,7 +190,7 @@ defmodule OctantisWeb.Components.Polaris.Modal do
                   </.box>
                 </div>
 
-                <.inline_stack block_align="center" wrap={true} gap={[xs: "400"]}>
+                <.inline_stack id={footer_id(@id)} block_align="center" wrap={true} gap={[xs: "400"]}>
                   <.box
                     border_color="border"
                     border_style="solid"
@@ -191,7 +225,7 @@ defmodule OctantisWeb.Components.Polaris.Modal do
         </div>
       </div>
 
-      <.backdrop phx_click={@on_close} />
+      <.backdrop :if={@show_backdrop} phx_click={@on_close} />
     </div>
     """
   end
@@ -223,6 +257,9 @@ defmodule OctantisWeb.Components.Polaris.Modal do
     do: assign_new(assigns, :background, fn -> "bg-fill-#{value}" end)
 
   def wrapper_id(id), do: "ModalWrapper" <> id
+  def content_id(id), do: "ModalContent" <> id
+  def footer_id(id), do: "ModalFooter" <> id
+  def header_id(id), do: "ModalHeader" <> id
   def backdrop_id(id), do: "ModalBackdrop" <> id
 
   def show(js \\ %JS{}, id), do: JS.show(js, to: "#" <> wrapper_id(id))

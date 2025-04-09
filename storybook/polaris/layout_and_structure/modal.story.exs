@@ -1,6 +1,9 @@
 defmodule Storybook.Polaris.Modal do
   use OctantisWeb.Storybook.Story, :component
 
+  alias OctantisWeb.Components.Polaris.Icons
+  alias OctantisWeb.Components.Polaris.Modal
+
   def imports,
     do: [
       {OctantisWeb.Components.Polaris.Button, button: 1},
@@ -160,6 +163,93 @@ defmodule Storybook.Polaris.Modal do
             id: :default,
             slots: [lorem_ipsum(), ~s|<:action content="Ok"/>|],
             attributes: %{title: "My Modal", limit_height: true, open: true}
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :warning_with_icon,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [~s|Content|, ~s|<:action content="Ok"/>|],
+            attributes: %{
+              title: "My Modal",
+              tone: "warning",
+              open: true,
+              icon: &Icons.alert_circle/1
+            }
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :no_backdrop,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [~s|Content|, ~s|<:action content="Ok"/>|],
+            attributes: %{title: "My Modal", open: true, show_backdrop: false}
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :uncentered,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [~s|Content|, ~s|<:action content="Ok"/>|],
+            attributes: %{
+              title: "My Modal",
+              tone: "magic",
+              open: true,
+              margin: "var(--p-space-400)",
+              position: "fixed"
+            }
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :minimize_button,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [
+              ~s|Content|,
+              ~s|<:action content="Ok"/>|,
+              ~s|<:dismiss_action icon={&Icons.minimize/1} />|
+            ],
+            attributes: %{title: "My Modal", tone: "magic", open: true}
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :customized_collapsable,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [
+              ~s|Content|,
+              ~s|<:action content="Ok"/>|,
+              ~s|<:dismiss_action icon={&Icons.maximize/1} display="none"/>|,
+              ~s|<:dismiss_action icon={&Icons.minimize/1} />|
+            ],
+            attributes: %{
+              title: "My Modal",
+              tone: "warning",
+              open: true,
+              margin: "var(--p-space-400)",
+              position: "fixed",
+              icon: &Icons.alert_circle/1,
+              show_backdrop: false,
+              on_close:
+                JS.toggle(to: "#" <> Modal.content_id("modal-customized-collapsable-default"))
+                |> JS.toggle(to: "#" <> Modal.footer_id("modal-customized-collapsable-default"))
+                |> JS.toggle(
+                  to:
+                    "#" <>
+                      Modal.header_id("modal-customized-collapsable-default") <>
+                      " .Polaris-Button"
+                )
+            }
           }
         ]
       }
