@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.1.3
+
 - Add more Hooks
 - Add AppBridge.Toast component
 
