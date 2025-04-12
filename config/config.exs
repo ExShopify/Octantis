@@ -9,7 +9,7 @@ config :octantis, OctantisWeb.Endpoint,
   url: [host: "localhost"],
   live_view: [signing_salt: "ohBcslqz"]
 
-# Configure esbuild (the version is required)
+# Configure esbuild for storybook
 config :esbuild,
   version: "0.25.0",
   default: [
@@ -18,6 +18,30 @@ config :esbuild,
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
+
+# Configure esbuild to export the Octantis JS module
+if Mix.env() == :dev do
+  esbuild = fn args ->
+    [
+      args: ~w(./js/octantis --bundle) ++ args,
+      cd: Path.expand("../assets", __DIR__),
+      env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+    ]
+  end
+
+  config :esbuild,
+    version: "0.25.0",
+    module: esbuild.(~w(--format=esm --sourcemap --outfile=../priv/static/octantis.mjs)),
+    main: esbuild.(~w(--format=cjs --sourcemap --outfile=../priv/static/octantis.cjs.js)),
+    cdn:
+      esbuild.(
+        ~w(--target=es2016 --format=iife --global-name=Octantis --outfile=../priv/static/octantis.js)
+      ),
+    cdn_min:
+      esbuild.(
+        ~w(--target=es2016 --format=iife --global-name=Octantis --minify --outfile=../priv/static/octantis.min.js)
+      )
+end
 
 # Configure tailwind (the version is required)
 config :tailwind,

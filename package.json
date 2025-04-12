@@ -1,0 +1,26 @@
+{
+  "name": "octantis",
+  "version": "0.1.1",
+  "description": "Javascript hooks for Octantis",
+  "license": "MIT",
+  "module": "./priv/static/octantis.mjs",
+  "main": "./priv/static/octantis.cjs.js",
+  "unpkg": "./priv/static/octantis.min.js",
+  "jsdelivr": "./priv/static/octantis.min.js",
+  "exports": {
+    "import": "./priv/static/octantis.mjs",
+    "require": "./priv/static/octantis.cjs.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ExShopify/Octantis"
+  },
+  "author": "Graham Baradoy <graham@baradoy.ca>",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "package.json",
+    "priv/static/*",
+    "assets/js/octantis/*"
+  ]
+}

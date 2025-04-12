@@ -21,8 +21,10 @@ defmodule OctantisWeb.Components.Polaris.Page do
 
   @doc @moduledoc
 
-  attr :title, :string, doc: "Page title, in large type"
-  attr :subtitle, :string, doc: "Page subtitle, in regular type"
+  attr :id, :string, default: "Page"
+
+  attr :title, :string, default: nil, doc: "Page title, in large type"
+  attr :subtitle, :string, default: nil, doc: "Page subtitle, in regular type"
   attr :full_width, :boolean, doc: "Remove the normal max-width on the page", default: false
 
   attr :narrow_width, :boolean,
@@ -32,6 +34,8 @@ defmodule OctantisWeb.Components.Polaris.Page do
   # HeaderProps
 
   slot :title_metadata, doc: "Important status information shown immediately after the title."
+
+  attr :phx_hook, :string, default: nil
 
   slot :back_action,
     validate_attrs: true,
@@ -57,11 +61,16 @@ defmodule OctantisWeb.Components.Polaris.Page do
     assigns =
       assigns
       |> assign(:class, class(assigns))
-      |> assign_new(:title, fn -> nil end)
-      |> assign_new(:subtitle, fn -> nil end)
+      |> assign_phx_bindings()
 
     ~H"""
-    <div class={["Octantis-Page", "Polaris-Page", @class]}>
+    <div
+      id={@id}
+      class={["Octantis-Page", "Polaris-Page", @class]}
+      {@bindings}
+      data-show={show(@id)}
+      data-hide={hide(@id)}
+    >
       <.header
         title={@title}
         subtitle={@subtitle}
@@ -207,4 +216,7 @@ defmodule OctantisWeb.Components.Polaris.Page do
     </div>
     """
   end
+
+  def show(js \\ %JS{}, id), do: JS.show(js, to: "#" <> id)
+  def hide(js \\ %JS{}, id), do: JS.hide(js, to: "#" <> id)
 end

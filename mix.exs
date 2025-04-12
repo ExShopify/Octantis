@@ -33,7 +33,8 @@ defmodule Octantis.MixProject do
   defp package() do
     [
       name: "octantis",
-      files: ~w(lib priv .formatter.exs mix.exs README* LICENSE* CHANGELOG*),
+      files:
+        ~w(assets/js lib priv .formatter.exs mix.exs README* LICENSE* CHANGELOG* package.json),
       licenses: ["Apache-2.0"],
       links: %{"GitHub" => "https://github.com/ExShopify/Octantis"}
     ]
@@ -71,6 +72,7 @@ defmodule Octantis.MixProject do
 
   defp aliases do
     [
+      "assets.build": ["esbuild module", "esbuild cdn", "esbuild cdn_min", "esbuild main"],
       check: [
         "deps.unlock --check-unused",
         "compile --warnings-as-errors",

@@ -1,6 +1,7 @@
 ## Unreleased
 
 - Add header, footer and content sections to Modal
+- Add Hooks JS
 
 ## 0.1.1
 

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../assets/js/octantis/index.js"],
+  "sourcesContent": ["/*\n * @module octantis\n */\n\n\nconst ShopifyHideOnNavigate = {\n  mounted(){\n    el = this.el\n    console.log(\"mounted\")\n    window.onmessage = (event) => {\n      console.log(\"onmessage\")\n      if (event.origin == \"https://admin.shopify.com\" &&\n          event.data?.payload?.group == \"Navigation\" &&\n          event.data?.payload?.type == \"APP::NAVIGATION::REDIRECT::APP\"\n      ) {\n        console.log(\"hide\")\n      }\n    }\n  }\n}\n\nexport { ShopifyHideOnNavigate }\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAKA,IAAM,wBAAwB;AAAA,EAC5B,UAAS;AACP,SAAK,KAAK;AACV,YAAQ,IAAI,SAAS;AACrB,WAAO,YAAY,CAAC,UAAU;AAC5B,cAAQ,IAAI,WAAW;AACvB,UAAI,MAAM,UAAU,+BAChB,MAAM,MAAM,SAAS,SAAS,gBAC9B,MAAM,MAAM,SAAS,QAAQ,kCAC/B;AACA,gBAAQ,IAAI,MAAM;AAAA,MACpB;AAAA,IACF;AAAA,EACF;AACF;",
+  "names": []
+}
