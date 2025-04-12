@@ -1,5 +1,8 @@
 ## Unreleased
 
+- Add more Hooks
+- Add AppBridge.Toast component
+
 ## 0.1.2
 
 - Add header, footer and content sections to Modal

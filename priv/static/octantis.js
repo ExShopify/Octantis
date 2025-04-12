@@ -20,19 +20,43 @@ var Octantis = (() => {
   // js/octantis/index.js
   var octantis_exports = {};
   __export(octantis_exports, {
-    ShopifyHideOnNavigate: () => ShopifyHideOnNavigate
+    ShopifyHideOnNavigate: () => ShopifyHideOnNavigate,
+    ShopifyModal: () => ShopifyModal,
+    ShopifyToastHook: () => ShopifyToastHook
   });
   var ShopifyHideOnNavigate = {
     mounted() {
-      el = this.el;
-      console.log("mounted");
       window.onmessage = (event) => {
         var _a, _b, _c, _d;
-        console.log("onmessage");
         if (event.origin == "https://admin.shopify.com" && ((_b = (_a = event.data) == null ? void 0 : _a.payload) == null ? void 0 : _b.group) == "Navigation" && ((_d = (_c = event.data) == null ? void 0 : _c.payload) == null ? void 0 : _d.type) == "APP::NAVIGATION::REDIRECT::APP") {
-          console.log("hide");
+          this.liveSocket.execJS(this.el, this.el.getAttribute("data-hide"));
         }
       };
+    }
+  };
+  var ShopifyModal = {
+    mounted() {
+      id = this.el.id;
+      this.handleEvent(`polaris:modal_show_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-show")));
+      this.handleEvent(`polaris:modal_hide_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-hide")));
+    }
+  };
+  var ShopifyToastHook = {
+    mounted() {
+      shopify.toast.show(this.el.dataset.message, {
+        onDismiss: () => {
+          this.pushEvent("lv:clear-flash", { value: { key: this.el.dataset.kind } });
+        },
+        isError: this.el.dataset.kind == "error"
+      });
+    },
+    updated() {
+      shopify.toast.show(this.el.dataset.message, {
+        onDismiss: () => {
+          this.pushEvent("lv:clear-flash", { value: { key: this.el.dataset.kind } });
+        },
+        isError: this.el.dataset.kind == "error"
+      });
     }
   };
   return __toCommonJS(octantis_exports);

@@ -3,7 +3,6 @@
  * @module octantis
  */
 
-
 const ShopifyHideOnNavigate = {
   mounted(){
     window.onmessage = (event) => {
@@ -25,4 +24,28 @@ const ShopifyModal = {
   }
 }
 
-export { ShopifyHideOnNavigate, ShopifyModal }
+/*
+Handles the integration between flash to a Shopify AppBridge Toast
+
+See ShopAdminComponents.toast
+*/
+const ShopifyToastHook = {
+  mounted() {
+    shopify.toast.show(this.el.dataset.message, {
+      onDismiss: () => {
+        this.pushEvent("lv:clear-flash", {value: {key: this.el.dataset.kind}})
+      },
+      isError: this.el.dataset.kind == 'error'
+    });
+  },
+  updated() {
+    shopify.toast.show(this.el.dataset.message, {
+      onDismiss: () => {
+        this.pushEvent("lv:clear-flash", {value: {key: this.el.dataset.kind}})
+      },
+      isError: this.el.dataset.kind == 'error'
+    });
+  }
+}
+
+export { ShopifyHideOnNavigate, ShopifyModal, ShopifyToastHook }

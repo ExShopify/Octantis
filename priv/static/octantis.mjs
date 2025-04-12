@@ -1,17 +1,41 @@
 // js/octantis/index.js
 var ShopifyHideOnNavigate = {
   mounted() {
-    el = this.el;
-    console.log("mounted");
     window.onmessage = (event) => {
-      console.log("onmessage");
       if (event.origin == "https://admin.shopify.com" && event.data?.payload?.group == "Navigation" && event.data?.payload?.type == "APP::NAVIGATION::REDIRECT::APP") {
-        console.log("hide");
+        this.liveSocket.execJS(this.el, this.el.getAttribute("data-hide"));
       }
     };
   }
 };
+var ShopifyModal = {
+  mounted() {
+    id = this.el.id;
+    this.handleEvent(`polaris:modal_show_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-show")));
+    this.handleEvent(`polaris:modal_hide_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-hide")));
+  }
+};
+var ShopifyToastHook = {
+  mounted() {
+    shopify.toast.show(this.el.dataset.message, {
+      onDismiss: () => {
+        this.pushEvent("lv:clear-flash", { value: { key: this.el.dataset.kind } });
+      },
+      isError: this.el.dataset.kind == "error"
+    });
+  },
+  updated() {
+    shopify.toast.show(this.el.dataset.message, {
+      onDismiss: () => {
+        this.pushEvent("lv:clear-flash", { value: { key: this.el.dataset.kind } });
+      },
+      isError: this.el.dataset.kind == "error"
+    });
+  }
+};
 export {
-  ShopifyHideOnNavigate
+  ShopifyHideOnNavigate,
+  ShopifyModal,
+  ShopifyToastHook
 };
 //# sourceMappingURL=octantis.mjs.map
