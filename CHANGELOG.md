@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Remove ShopifyHideOnNavigate Hook
+
 ## 0.1.3
 
 - Add more Hooks

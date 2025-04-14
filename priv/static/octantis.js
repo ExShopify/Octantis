@@ -20,20 +20,9 @@ var Octantis = (() => {
   // js/octantis/index.js
   var octantis_exports = {};
   __export(octantis_exports, {
-    ShopifyHideOnNavigate: () => ShopifyHideOnNavigate,
     ShopifyModal: () => ShopifyModal,
     ShopifyToastHook: () => ShopifyToastHook
   });
-  var ShopifyHideOnNavigate = {
-    mounted() {
-      window.onmessage = (event) => {
-        var _a, _b, _c, _d;
-        if (event.origin == "https://admin.shopify.com" && ((_b = (_a = event.data) == null ? void 0 : _a.payload) == null ? void 0 : _b.group) == "Navigation" && ((_d = (_c = event.data) == null ? void 0 : _c.payload) == null ? void 0 : _d.type) == "APP::NAVIGATION::REDIRECT::APP") {
-          this.liveSocket.execJS(this.el, this.el.getAttribute("data-hide"));
-        }
-      };
-    }
-  };
   var ShopifyModal = {
     mounted() {
       id = this.el.id;

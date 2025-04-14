@@ -1,13 +1,4 @@
 // js/octantis/index.js
-var ShopifyHideOnNavigate = {
-  mounted() {
-    window.onmessage = (event) => {
-      if (event.origin == "https://admin.shopify.com" && event.data?.payload?.group == "Navigation" && event.data?.payload?.type == "APP::NAVIGATION::REDIRECT::APP") {
-        this.liveSocket.execJS(this.el, this.el.getAttribute("data-hide"));
-      }
-    };
-  }
-};
 var ShopifyModal = {
   mounted() {
     id = this.el.id;
@@ -34,7 +25,6 @@ var ShopifyToastHook = {
   }
 };
 export {
-  ShopifyHideOnNavigate,
   ShopifyModal,
   ShopifyToastHook
 };
