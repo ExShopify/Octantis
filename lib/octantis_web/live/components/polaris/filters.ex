@@ -138,38 +138,42 @@ defmodule OctantisWeb.Components.Polaris.Filters do
         :on_add_filter_click,
         :close_on_child_overlay_click
       ])
+      |> assign(:phx_debounce, "200")
+      |> assign(:phx_submit, assigns.on_query_change)
+      |> assign(:phx_change, assigns.on_query_change)
+      |> assign_phx_bindings([:phx_submit, :phx_change, :phx_debounce, :phx_throttle])
 
     ~H"""
     <div class={@class} id={@id}>
-      <.query_field
-        :if={@query_form}
-        id={@id}
-        phx_submit={@on_query_change}
-        phx_change={@on_query_change}
-        phx_focus={@on_query_focus}
-        phx_blur={@on_query_blur}
-        on_clear={@on_query_clear}
-        query_form={@query_form}
-        placeholder={@query_placeholder}
-        focused={@focused}
-        disabled={@disabled || @disable_query_field}
-        borderless_query_field={@borderless_query_field}
-        loading={@loading}
-      />
-      <.filters_bar
-        :if={!@hide_filters}
-        id={@id}
-        filters={@filters}
-        on_clear_all={@on_clear_all}
-        on_toggle_filter={@on_toggle_filter}
-        disabled={@disabled}
-        hide_query_field={!!@query_form}
-        disable_filters={@disable_filters}
-        on_add_filter_click={@on_add_filter_click}
-        close_on_child_overlay_click={@close_on_child_overlay_click}
-      >
-        {render_slot(@inner_block)}
-      </.filters_bar>
+      <.form for={@query_form} {@bindings}>
+        <.query_field
+          :if={@query_form}
+          id={@id}
+          phx_focus={@on_query_focus}
+          phx_blur={@on_query_blur}
+          on_clear={@on_query_clear}
+          query_form={@query_form}
+          placeholder={@query_placeholder}
+          focused={@focused}
+          disabled={@disabled || @disable_query_field}
+          borderless_query_field={@borderless_query_field}
+          loading={@loading}
+        />
+        <.filters_bar
+          :if={!@hide_filters}
+          id={@id}
+          filters={@filters}
+          on_clear_all={@on_clear_all}
+          on_toggle_filter={@on_toggle_filter}
+          disabled={@disabled}
+          hide_query_field={!!@query_form}
+          disable_filters={@disable_filters}
+          on_add_filter_click={@on_add_filter_click}
+          close_on_child_overlay_click={@close_on_child_overlay_click}
+        >
+          {render_slot(@inner_block)}
+        </.filters_bar>
+      </.form>
     </div>
     """
   end
@@ -294,7 +298,7 @@ defmodule OctantisWeb.Components.Polaris.Filters do
               class="Polaris-Filters__ClearAll Polaris-Filters__MultiplePinnedFilterClearAll"
             >
               <.button size="micro" phx_click={@on_clear_all} variant="monochromePlain">
-                clear filters
+                Clear all
               </.button>
             </div>
           </div>
@@ -336,36 +340,34 @@ defmodule OctantisWeb.Components.Polaris.Filters do
       |> assign_phx_bindings([:phx_submit, :phx_change, :phx_debounce, :phx_throttle])
 
     ~H"""
-    <.form for={@query_form} {@bindings}>
-      <div class="Polaris-Filters__Container">
-        <.box padding={[xs: "200"]}>
-          <.inline_stack align="start" block_align="center" gap={[xs: "400", md: "300"]}>
-            <div class="Polaris-Filters__SearchField">
-              <.text_field
-                id={@id}
-                phx_focus={@phx_focus}
-                phx_blur={@phx_blur || @phx_submit}
-                phx_debounce={@phx_debounce}
-                on_clear_button_click={@on_clear}
-                field={@query_form[:value]}
-                placeholder={@placeholder}
-                focused={@focused}
-                disabled={@disabled}
-                auto_complete="off"
-                variant={if @borderless_query_field, do: "borderless", else: "inherit"}
-                size="slim"
-                prefix={search_icon()}
-                label={@placeholder}
-                label_hidden={true}
-                clear_button={true}
-                loading={@loading}
-              />
-            </div>
-            <%!-- {children} --%>
-          </.inline_stack>
-        </.box>
-      </div>
-    </.form>
+    <div class="Polaris-Filters__Container">
+      <.box padding={[xs: "200"]}>
+        <.inline_stack align="start" block_align="center" gap={[xs: "400", md: "300"]}>
+          <div class="Polaris-Filters__SearchField">
+            <.text_field
+              id={@id}
+              phx_focus={@phx_focus}
+              phx_blur={@phx_blur || @phx_submit}
+              phx_debounce={@phx_debounce}
+              on_clear_button_click={@on_clear}
+              field={@query_form[:value]}
+              placeholder={@placeholder}
+              focused={@focused}
+              disabled={@disabled}
+              auto_complete="off"
+              variant={if @borderless_query_field, do: "borderless", else: "inherit"}
+              size="slim"
+              prefix={search_icon()}
+              label={@placeholder}
+              label_hidden={true}
+              clear_button={true}
+              loading={@loading}
+            />
+          </div>
+          <%!-- {children} --%>
+        </.inline_stack>
+      </.box>
+    </div>
     """
   end
 

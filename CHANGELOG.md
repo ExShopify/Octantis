@@ -1,5 +1,7 @@
 ## Unreleased
 
+ - Move form in Filter component
+
 ## 0.1.5
 
  - Fix ShopifyAppBridgeModal
