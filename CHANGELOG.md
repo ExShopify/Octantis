@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.1.6
+
  - Move form in Filter component
 
 ## 0.1.5
