@@ -97,7 +97,7 @@ defmodule OctantisWeb.Components.Polaris.AppBridgeModal do
 
     ~H"""
     <ui-modal
-      id={@id}
+      id={modal_id(@id)}
       variant={@variant}
       src={@src}
       {@bindings}
@@ -144,10 +144,10 @@ defmodule OctantisWeb.Components.Polaris.AppBridgeModal do
   end
 
   def show(js \\ %JS{}, id),
-    do: JS.dispatch(js, "polaris:app_bridge_modal_show_" <> id, to: "##{id}")
+    do: JS.dispatch(js, "polaris:app_bridge_modal_show_" <> modal_id(id), to: "##{modal_id(id)}")
 
   def hide(js \\ %JS{}, id),
-    do: JS.dispatch(js, "polaris:app_bridge_modal_show_" <> id, to: "##{id}")
+    do: JS.dispatch(js, "polaris:app_bridge_modal_hide_" <> modal_id(id), to: "##{modal_id(id)}")
 
   def modal_id(id) when is_binary(id), do: "Modal" <> id
 
@@ -157,8 +157,10 @@ defmodule OctantisWeb.Components.Polaris.AppBridgeModal do
   def button_id(id, index, variant), do: Enum.join([id, index, to_string(variant), "button"], "-")
 
   def push_open(socket, id),
-    do: Phoenix.LiveView.push_event(socket, "octantis:app_bridge_modal_show_" <> id, %{})
+    do:
+      Phoenix.LiveView.push_event(socket, "octantis:app_bridge_modal_show_" <> modal_id(id), %{})
 
   def push_close(socket, id),
-    do: Phoenix.LiveView.push_event(socket, "octantis:app_bridge_modal_hide_" <> id, %{})
+    do:
+      Phoenix.LiveView.push_event(socket, "octantis:app_bridge_modal_hide_" <> modal_id(id), %{})
 end

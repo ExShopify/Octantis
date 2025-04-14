@@ -35,7 +35,7 @@ var ShopifyAppBridgeModal = {
   mounted() {
     id = this.el.id;
     window.addEventListener(`polaris:app_bridge_modal_show_${id}`, (e) => this.el.show());
-    window.addEventListener(`polaris:app_bridge_modal_show_${id}`, (e) => this.el.hide());
+    window.addEventListener(`polaris:app_bridge_modal_hide_${id}`, (e) => this.el.hide());
     this.handleEvent(`octantis:app_bridge_modal_show_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-show")));
     this.handleEvent(`octantis:app_bridge_modal_hide_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-hide")));
   }

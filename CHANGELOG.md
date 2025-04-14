@@ -1,5 +1,7 @@
 ## Unreleased
 
+ - Fix ShopifyAppBridgeModal
+
 ## 0.1.4
 
 - Add ShopifyAppBridgeModal Hook
