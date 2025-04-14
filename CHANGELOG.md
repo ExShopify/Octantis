@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Add ShopifyAppBridgeModal Hook
+- Add src attr to AppBridgeModal
 - Remove ShopifyHideOnNavigate Hook
 
 ## 0.1.3

@@ -277,8 +277,8 @@ defmodule OctantisWeb.Components.Polaris.Modal do
   def hide(js \\ %JS{}, id), do: JS.hide(js, to: "#" <> wrapper_id(id))
 
   def push_open(socket, id),
-    do: Phoenix.LiveView.push_event(socket, "polaris:modal_show_" <> wrapper_id(id), %{})
+    do: Phoenix.LiveView.push_event(socket, "octantis:modal_show_" <> wrapper_id(id), %{})
 
   def push_close(socket, id),
-    do: Phoenix.LiveView.push_event(socket, "polaris:modal_hide_" <> wrapper_id(id), %{})
+    do: Phoenix.LiveView.push_event(socket, "octantis:modal_hide_" <> wrapper_id(id), %{})
 end

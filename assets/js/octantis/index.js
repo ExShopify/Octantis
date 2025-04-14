@@ -6,8 +6,18 @@
 const ShopifyModal = {
   mounted(){
     id = this.el.id
-    this.handleEvent(`polaris:modal_show_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-show")))
-    this.handleEvent(`polaris:modal_hide_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-hide")))
+    this.handleEvent(`octantis:modal_show_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-show")))
+    this.handleEvent(`octantis:modal_hide_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-hide")))
+  }
+}
+
+const ShopifyAppBridgeModal = {
+  mounted(){
+    id = this.el.id
+    window.addEventListener(`polaris:app_bridge_modal_show_${id}`, e => this.el.show());
+    window.addEventListener(`polaris:app_bridge_modal_show_${id}`, e => this.el.hide());
+    this.handleEvent(`octantis:app_bridge_modal_show_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-show")))
+    this.handleEvent(`octantis:app_bridge_modal_hide_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-hide")))
   }
 }
 
@@ -35,4 +45,4 @@ const ShopifyToastHook = {
   }
 }
 
-export { ShopifyModal, ShopifyToastHook }
+export { ShopifyAppBridgeModal, ShopifyModal, ShopifyToastHook }

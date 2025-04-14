@@ -11,29 +11,16 @@ defmodule OctantisWeb.Components.Polaris.AppBridgeModal do
   The following is required in your .js file:
 
   ```javascript
-  // Show and hide modal functions with AppBridge
-  window.addEventListener("polaris:modal_show", e => e.target.show());
-  window.addEventListener("polaris:modal_hide", e => e.target.hide());
+  import { ShopifyAppBridgeModal } from "octantis
+  Hooks = { ShopifyAppBridgeModal }
   ```
 
   ## Push Events
 
   You can open and close the modal on the client from the server with
 
-  ```javascript
-  Hooks.ShopifyModal = {
-    mounted(){
-      id = this.el.id
-      this.handleEvent(`polaris:modal_show_${id}`, (event) => this.el.show())
-      this.handleEvent(`polaris:modal_hide_${id}`, (event) => this.el.hide())
-    }
-  }
-  ```
-
-  and
-
   ```elixir
-  {:noreply, push_event(socket, "polaris:modal_show_\#{my_id}", %{})}
+  {:noreply, socket |> AppBridgeModal.push_open("my_modal_id")}
   ```
 
   ## Warning
@@ -78,11 +65,18 @@ defmodule OctantisWeb.Components.Polaris.AppBridgeModal do
     values: ["small", "base", "large", "max"],
     doc: "The size of the modal."
 
+  attr :src, :string,
+    default: nil,
+    doc:
+      "The URL of the content to display within a Modal. If provided, the Modal will display the content from the provided URL and any children other than the ui-title-bar and ui-save-bar elements will be ignored."
+
   slot :title_bar, validate_attrs: true do
     attr :title, :string
   end
 
   attr :title, :string, default: nil, doc: "Title of the Modal"
+
+  attr :phx_hook, :string, default: "ShopifyAppBridgeModal"
 
   slot :static_iframe
 
@@ -102,7 +96,15 @@ defmodule OctantisWeb.Components.Polaris.AppBridgeModal do
     assigns = assigns |> assign_phx_bindings()
 
     ~H"""
-    <ui-modal id={@id} variant={@variant} {@bindings} hidden>
+    <ui-modal
+      id={@id}
+      variant={@variant}
+      src={@src}
+      {@bindings}
+      data-show={show(@id)}
+      data-hide={hide(@id)}
+      hidden
+    >
       <div>
         {render_slot(@static_iframe)}
       </div>
@@ -141,9 +143,11 @@ defmodule OctantisWeb.Components.Polaris.AppBridgeModal do
     """
   end
 
-  def show(js \\ %JS{}, id), do: JS.dispatch(js, "polaris:modal_show", to: "##{id}")
+  def show(js \\ %JS{}, id),
+    do: JS.dispatch(js, "polaris:app_bridge_modal_show_" <> id, to: "##{id}")
 
-  def hide(js \\ %JS{}, id), do: JS.dispatch(js, "polaris:modal_hide", to: "##{id}")
+  def hide(js \\ %JS{}, id),
+    do: JS.dispatch(js, "polaris:app_bridge_modal_show_" <> id, to: "##{id}")
 
   def modal_id(id) when is_binary(id), do: "Modal" <> id
 
@@ -151,4 +155,10 @@ defmodule OctantisWeb.Components.Polaris.AppBridgeModal do
     do: "document.getElementById('#{button_id(id, index, variant)}').click()"
 
   def button_id(id, index, variant), do: Enum.join([id, index, to_string(variant), "button"], "-")
+
+  def push_open(socket, id),
+    do: Phoenix.LiveView.push_event(socket, "octantis:app_bridge_modal_show_" <> id, %{})
+
+  def push_close(socket, id),
+    do: Phoenix.LiveView.push_event(socket, "octantis:app_bridge_modal_hide_" <> id, %{})
 end
