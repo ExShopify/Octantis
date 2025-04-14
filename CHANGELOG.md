@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.1.5
+
  - Fix ShopifyAppBridgeModal
 
 ## 0.1.4
