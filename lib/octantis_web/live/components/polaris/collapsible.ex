@@ -9,6 +9,10 @@ defmodule OctantisWeb.Components.Polaris.Collapsible do
     </.collapsible>
     ```
 
+    ```elixir
+    {:noreply, Collapsible.push_close(socket, "MyId")}
+    ```
+
   See
    - https://polaris.shopify.com/components/utilities/collapsible
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Collapsible/Collapsible.tsx
@@ -46,16 +50,26 @@ defmodule OctantisWeb.Components.Polaris.Collapsible do
   # attr :onAnimationEnd?(): void, doc: "Callback when the animation completes."
   # children?: ReactNode;
 
+  attr :phx_hook, :string, default: "OctantisInteractable"
+
   slot :inner_block
 
   def collapsible(assigns) do
     assigns =
       assigns
       |> assign(:class, class(assigns))
-      |> assign(:style, style(assigns))
+      |> assign_phx_bindings()
 
     ~H"""
-    <div id={@id} style={@style} class={["Polaris-Collapsible", @class]} aria-hidden={!@open}>
+    <div
+      id={collapsible_id(@id)}
+      style="max-height:none;overflow:visible;"
+      class={["Polaris-Collapsible", @class]}
+      {@bindings}
+      aria-hidden={!@open}
+      data-oct-open={open(@id)}
+      data-oct-close={close(@id)}
+    >
       {render_slot(@inner_block)}
     </div>
     """
@@ -69,14 +83,26 @@ defmodule OctantisWeb.Components.Polaris.Collapsible do
   defp build_class({:open, false}), do: ["Polaris-Collapsible--isFullyClosed"]
   defp build_class({_key, _value}), do: []
 
-  defp style(attrs) when is_map(attrs),
-    do: attrs |> Enum.flat_map(&build_style/1) |> Enum.join(" ")
+  def collapsible_id(id), do: "Collapsible" <> id
 
-  defp build_style({:open, false}),
-    do: ["max-height: 0px;", "overflow: hidden;", "aria-hidden=\"true\";"]
+  def open(js \\ %JS{}, id),
+    do: JS.remove_class(js, "Polaris-Collapsible--isFullyClosed", to: "#" <> collapsible_id(id))
 
-  defp build_style({:open, true}),
-    do: ["max-height: none;", "overflow: visible;", "aria-hidden=\"false\";"]
+  def close(js \\ %JS{}, id),
+    do: JS.add_class(js, "Polaris-Collapsible--isFullyClosed", to: "#" <> collapsible_id(id))
 
-  defp build_style({_key, _value}), do: []
+  def toggle(js \\ %JS{}, id),
+    do: JS.toggle_class(js, "Polaris-Collapsible--isFullyClosed", to: "#" <> collapsible_id(id))
+
+  def push_open(socket, id) do
+    Phoenix.LiveView.push_event(socket, "octantis:interactable_" <> collapsible_id(id), %{
+      key: "data-oct-open"
+    })
+  end
+
+  def push_close(socket, id) do
+    Phoenix.LiveView.push_event(socket, "octantis:interactable_" <> collapsible_id(id), %{
+      key: "data-oct-close"
+    })
+  end
 end
