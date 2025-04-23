@@ -33,6 +33,8 @@ defmodule OctantisWeb.Components.Polaris.Card do
 
   attr_extra_styles()
 
+  attr :rest, :global
+
   slot :inner_block, required: true
 
   def card(assigns) do
@@ -51,6 +53,7 @@ defmodule OctantisWeb.Components.Polaris.Card do
         min_height="100%"
         class={@class}
         style={@style}
+        {@rest}
       >
         {render_slot(@inner_block)}
       </.box>
