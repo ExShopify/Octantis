@@ -21,6 +21,14 @@ const ShopifyAppBridgeModal = {
   }
 }
 
+const OctantisInteractable = {
+  mounted(){
+    this.handleEvent(`octantis:interactable_${this.el.id}`,
+      (event) => this.liveSocket.execJS(this.el, this.el.getAttribute(event.key))
+    )
+  }
+}
+
 /*
 Handles the integration between flash to a Shopify AppBridge Toast
 
@@ -45,4 +53,4 @@ const ShopifyToastHook = {
   }
 }
 
-export { ShopifyAppBridgeModal, ShopifyModal, ShopifyToastHook }
+export { OctantisInteractable, ShopifyAppBridgeModal, ShopifyModal, ShopifyToastHook }

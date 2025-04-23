@@ -3,11 +3,24 @@ defmodule Storybook.Polaris.Collapsible do
 
   def imports,
     do: [
+      {OctantisWeb.Components.Polaris.Button, button: 1},
+      {OctantisWeb.Components.Polaris.Card, card: 1},
       {OctantisWeb.Components.Polaris.Text, text: 1},
       {OctantisWeb.Components.Head, stylesheet: 1}
     ]
 
   def function, do: &OctantisWeb.Components.Polaris.Collapsible.collapsible/1
+
+  def template do
+    """
+    <.stylesheet psb-code-hidden/>
+    <div class="my-custom-wrapper" psb-code-hidden>
+      <.button phx_click={Collapsible.open(":variation_id")} >Open</.button>
+      <.button phx_click={Collapsible.close(":variation_id")} >Close</.button>
+      <.psb-variation/>
+    </div>
+    """
+  end
 
   def variations do
     [
@@ -16,7 +29,9 @@ defmodule Storybook.Polaris.Collapsible do
         variations: [
           %Variation{
             id: :default,
-            slots: [~s|<.text as="h2" variant="bodyMd">Content inside a collapse</.text>|],
+            slots: [
+              ~s|<.card><.text as="h2" variant="bodyMd">Content inside a collapse</.text></.card>|
+            ],
             attributes: %{open: true}
           }
         ]
@@ -26,7 +41,9 @@ defmodule Storybook.Polaris.Collapsible do
         variations: [
           %Variation{
             id: :default,
-            slots: [~s|<.text as="h2" variant="bodyMd">Content inside a collapse</.text>|],
+            slots: [
+              ~s|<.card><.text as="h2" variant="bodyMd">Content inside a collapse</.text></.card>|
+            ],
             attributes: %{open: false}
           }
         ]

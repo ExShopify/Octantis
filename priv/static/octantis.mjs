@@ -15,6 +15,14 @@ var ShopifyAppBridgeModal = {
     this.handleEvent(`octantis:app_bridge_modal_hide_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-hide")));
   }
 };
+var OctantisInteractable = {
+  mounted() {
+    this.handleEvent(
+      `octantis:interactable_${this.el.id}`,
+      (event) => this.liveSocket.execJS(this.el, this.el.getAttribute(event.key))
+    );
+  }
+};
 var ShopifyToastHook = {
   mounted() {
     shopify.toast.show(this.el.dataset.message, {
@@ -34,6 +42,7 @@ var ShopifyToastHook = {
   }
 };
 export {
+  OctantisInteractable,
   ShopifyAppBridgeModal,
   ShopifyModal,
   ShopifyToastHook

@@ -1,5 +1,7 @@
 ## Unreleased
 
+ - Add OctantisInteractable handled with Components.Octantis
+
 ## 0.1.6
 
  - Move form in Filter component

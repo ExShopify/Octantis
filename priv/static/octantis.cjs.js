@@ -19,6 +19,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // js/octantis/index.js
 var octantis_exports = {};
 __export(octantis_exports, {
+  OctantisInteractable: () => OctantisInteractable,
   ShopifyAppBridgeModal: () => ShopifyAppBridgeModal,
   ShopifyModal: () => ShopifyModal,
   ShopifyToastHook: () => ShopifyToastHook
@@ -38,6 +39,14 @@ var ShopifyAppBridgeModal = {
     window.addEventListener(`polaris:app_bridge_modal_hide_${id}`, (e) => this.el.hide());
     this.handleEvent(`octantis:app_bridge_modal_show_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-show")));
     this.handleEvent(`octantis:app_bridge_modal_hide_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-hide")));
+  }
+};
+var OctantisInteractable = {
+  mounted() {
+    this.handleEvent(
+      `octantis:interactable_${this.el.id}`,
+      (event) => this.liveSocket.execJS(this.el, this.el.getAttribute(event.key))
+    );
   }
 };
 var ShopifyToastHook = {

@@ -20,6 +20,7 @@ var Octantis = (() => {
   // js/octantis/index.js
   var octantis_exports = {};
   __export(octantis_exports, {
+    OctantisInteractable: () => OctantisInteractable,
     ShopifyAppBridgeModal: () => ShopifyAppBridgeModal,
     ShopifyModal: () => ShopifyModal,
     ShopifyToastHook: () => ShopifyToastHook
@@ -38,6 +39,14 @@ var Octantis = (() => {
       window.addEventListener(`polaris:app_bridge_modal_hide_${id}`, (e) => this.el.hide());
       this.handleEvent(`octantis:app_bridge_modal_show_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-show")));
       this.handleEvent(`octantis:app_bridge_modal_hide_${id}`, (event) => this.liveSocket.execJS(this.el, this.el.getAttribute("data-hide")));
+    }
+  };
+  var OctantisInteractable = {
+    mounted() {
+      this.handleEvent(
+        `octantis:interactable_${this.el.id}`,
+        (event) => this.liveSocket.execJS(this.el, this.el.getAttribute(event.key))
+      );
     }
   };
   var ShopifyToastHook = {
