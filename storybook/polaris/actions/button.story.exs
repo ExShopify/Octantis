@@ -18,8 +18,18 @@ defmodule Storybook.Polaris.Button do
         variations: [
           %Variation{
             id: :default,
-            slots: [~s|Add product|],
+            slots: [~s|default|],
             attributes: %{}
+          },
+          %Variation{
+            id: :critical,
+            slots: [~s|default critical|],
+            attributes: %{tone: "critical"}
+          },
+          %Variation{
+            id: :success,
+            slots: [~s|default success|],
+            attributes: %{tone: "success"}
           }
         ]
       },
@@ -34,12 +44,62 @@ defmodule Storybook.Polaris.Button do
         ]
       },
       %VariationGroup{
+        id: :primary,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [~s|primary|],
+            attributes: %{variant: "primary"}
+          },
+          %Variation{
+            id: :critical,
+            slots: [~s|primary critical|],
+            attributes: %{variant: "primary", tone: "critical"}
+          },
+          %Variation{
+            id: :success,
+            slots: [~s|primary success|],
+            attributes: %{variant: "primary", tone: "success"}
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :secondary,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [~s|secondary|],
+            attributes: %{variant: "secondary"}
+          },
+          %Variation{
+            id: :critical,
+            slots: [~s|secondary critical|],
+            attributes: %{variant: "secondary", tone: "critical"}
+          },
+          %Variation{
+            id: :success,
+            slots: [~s|secondary success|],
+            attributes: %{variant: "secondary", tone: "success"}
+          }
+        ]
+      },
+      %VariationGroup{
         id: :tertiary,
         variations: [
           %Variation{
             id: :default,
-            slots: [~s|View shipping settings|],
+            slots: [~s|tertiary|],
             attributes: %{variant: "tertiary"}
+          },
+          %Variation{
+            id: :critical,
+            slots: [~s|tertiary critical|],
+            attributes: %{variant: "tertiary", tone: "critical"}
+          },
+          %Variation{
+            id: :success,
+            slots: [~s|tertiary success|],
+            attributes: %{variant: "tertiary", tone: "success"}
           }
         ]
       },
@@ -54,22 +114,22 @@ defmodule Storybook.Polaris.Button do
         ]
       },
       %VariationGroup{
-        id: :primary,
+        id: :monochrome_plain,
         variations: [
           %Variation{
             id: :default,
-            slots: [~s|Save theme|],
-            attributes: %{variant: "primary"}
-          }
-        ]
-      },
-      %VariationGroup{
-        id: :primary_critical,
-        variations: [
+            slots: [~s|monochromePlain|],
+            attributes: %{variant: "monochromePlain"}
+          },
           %Variation{
-            id: :default,
-            slots: [~s|View shipping settings|],
-            attributes: %{variant: "primary", tone: "critical"}
+            id: :critical,
+            slots: [~s|monochromePlain critical|],
+            attributes: %{variant: "monochromePlain", tone: "critical"}
+          },
+          %Variation{
+            id: :success,
+            slots: [~s|monochromePlain success|],
+            attributes: %{variant: "monochromePlain", tone: "success"}
           }
         ]
       },
