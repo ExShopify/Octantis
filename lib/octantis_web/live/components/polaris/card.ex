@@ -20,6 +20,8 @@ defmodule OctantisWeb.Components.Polaris.Card do
 
   attr :background, :string, values: Colour.tokens(), default: "bg-surface"
 
+  attr :border_radius, :list, doc: "Border Radius passed to the ShadowBevel"
+
   attr :padding, :list,
     default: [xs: "400"],
     doc: "A tuple with the size and Space token",
@@ -64,6 +66,9 @@ defmodule OctantisWeb.Components.Polaris.Card do
   @doc """
   Builds the border radius to pass to ShadowBevel.
   """
+  def border_radius(%{border_radius: border_radius}),
+    do: border_radius
+
   def border_radius(%{rounded_above: responsive}),
     do: [{:xs, "0"}, {String.to_atom(responsive), "300"}]
 

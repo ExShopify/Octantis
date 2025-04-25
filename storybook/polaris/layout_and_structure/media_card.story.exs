@@ -135,6 +135,35 @@ defmodule Storybook.Polaris.MediaCard do
             attributes: %{portrait: true}
           }
         ]
+      },
+      %VariationGroup{
+        id: :no_round_corners,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [
+              ~s|<:card border_radius={[xs: "0"]} />|,
+              ~s|<:media_container style="border-top-left-radius:unset;border-top-right-radius:unset"/>|,
+              ~s|<:description>description</:description>|,
+              ~s"""
+              <img
+                alt=""
+                width="100%"
+                height="100%"
+                style="object-fit:cover;object-position:center"
+                src="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
+              />
+              """,
+              ~s|<:primary_action content="Add transfer" />|,
+              ~s|<:secondary_action content="Learn more" icon={&Icons.arrow_right/1} />|
+            ],
+            attributes: %{
+              portrait: true,
+              size: "small",
+              title: "title"
+            }
+          }
+        ]
       }
     ]
   end

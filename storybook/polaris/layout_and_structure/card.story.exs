@@ -3,6 +3,10 @@ defmodule Storybook.Polaris.Card do
 
   def imports,
     do: [
+      {OctantisWeb.Components.Polaris.BlockStack, block_stack: 1},
+      {OctantisWeb.Components.Polaris.Box, box: 1},
+      {OctantisWeb.Components.Polaris.Divider, divider: 1},
+      {OctantisWeb.Components.Polaris.Button, button: 1},
       {OctantisWeb.Components.Polaris.Text, text: 1},
       {OctantisWeb.Components.Head, stylesheet: 1}
     ]
@@ -73,6 +77,48 @@ defmodule Storybook.Polaris.Card do
             attributes: %{
               rounded_above: "md",
               background: "bg-surface-secondary"
+            }
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :no_rounded_corners,
+        variations: [
+          %Variation{
+            id: :rounded_corners,
+            slots: [~s|<.text as="h2" variant="bodyMd">Content inside a card</.text>|],
+            attributes: %{
+              border_radius: [xs: "0"],
+              background: "bg-surface-secondary"
+            }
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :complex,
+        variations: [
+          %Variation{
+            id: :rounded_corners,
+            slots: [
+              ~s"""
+                <.block_stack>
+                  <.box background="bg-surface-secondary" padding={[xs: "300"]}>
+                    <.text as="h6" variant="headingMd">Header</.text>
+                  </.box>
+                  <.divider />
+                  <.box padding={[xs: "200"]}>
+                    <.text as="p" variant="bodyMd">Content inside a card's body</.text>
+                  </.box>
+                  <.divider />
+                  <.box padding={[xs: "200"]}>
+                    <.button content="call to action" full_width/>
+                  </.box>
+                </.block_stack>
+              """
+            ],
+            attributes: %{
+              padding: [xs: "0"],
+              min_width: "100%"
             }
           }
         ]

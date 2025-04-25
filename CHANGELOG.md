@@ -1,5 +1,6 @@
 ## Unreleased
 
+- Add passthrough of attributes through MediaCard
 - Add additional button stories
 
 ## 0.1.7

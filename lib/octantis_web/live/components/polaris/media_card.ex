@@ -74,6 +74,9 @@ defmodule OctantisWeb.Components.Polaris.MediaCard do
 
   slot :description, doc: "Body content"
 
+  slot :card, doc: "Attributes to be sent to the Card component"
+  slot :media_container, doc: "Attributes to be sent to the MediaContainter"
+
   # attr :popoverActions, : ActionListItemDescriptor[], doc: "Action list items to render in ellipsis popover"
 
   def media_card(assigns) do
@@ -88,9 +91,12 @@ defmodule OctantisWeb.Components.Polaris.MediaCard do
       |> assign_new(:description, fn -> nil end)
 
     ~H"""
-    <.card padding={[xs: "0"]} class={[@class, "Octantis-MediaCard"]}>
+    <.card padding={[xs: "0"]} class={[@class, "Octantis-MediaCard"]} {slot_attributes(@card)}>
       <div class={["Polaris-MediaCard", @class]} style={@style}>
-        <div class={["Polaris-MediaCard__MediaContainer", @media_container_class]}>
+        <div
+          class={["Polaris-MediaCard__MediaContainer", @media_container_class]}
+          {slot_attributes(@media_container)}
+        >
           {render_slot(@inner_block)}
         </div>
         <div class={["Polaris-MediaCard__InfoContainer", @info_container_class]}>
