@@ -48,3 +48,7 @@ jobs:
         run: mix format --check-formatted
       - name: Run Tests
         run: mix do compile --warnings-as-errors, test
+      - name: Build Assets
+        run: mix assets.build
+      - name: Check for changed files
+        run: bin/check_git_status.sh
