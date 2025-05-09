@@ -1,5 +1,10 @@
 ## Unreleased
 
+## 0.1.11
+
+- Add mix assets.build to CI
+- Fixed non-building octantis/index.js
+
 ## 0.1.10
 
 - Fix: Remove extra dbg
