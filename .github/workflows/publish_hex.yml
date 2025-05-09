@@ -1,0 +1,25 @@
+name: Publish New Hex Ver
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      MIX_ENV: prod
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup elixir
+        uses: erlef/setup-beam@v1
+        with:
+          version-file: ".tool-versions"
+          version-type: "strict"
+
+      - name: Deps get
+        run: mix deps.get
+      - name: Publish
+        run: mix hex.publish --yes
+        env:
+          HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
