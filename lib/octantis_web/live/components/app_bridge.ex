@@ -9,4 +9,5 @@ defmodule OctantisWeb.Components.AppBridge do
   """
 
   defdelegate toast(assigns), to: OctantisWeb.Components.AppBridge.Toast
+  defdelegate ui_nav_menu(assigns), to: OctantisWeb.Components.AppBridge.UiNavMenu
 end

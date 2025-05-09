@@ -12,8 +12,8 @@ defmodule OctantisWeb.Components.Head do
           <meta name="csrf-token" content={get_csrf_token()} />
           <meta name="shopify-api-key" content={OctantisWeb.Config.api_key()} />
 
-          <OctantisWeb.Components.Head.stylesheet \>
-          <OctantisWeb.Components.Head.javascript \>
+          <OctantisWeb.Components.Head.stylesheet />
+          <OctantisWeb.Components.Head.javascript />
 
           <script defer data-phx-track-static type="text/javascript" src={~p"/assets/shop_admin.js"}>
         <head/>

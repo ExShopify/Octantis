@@ -5,7 +5,7 @@ defmodule OctantisWeb.Components.AppBridge.Toast do
   Uses ShopifyToastHook to integrate with AppBridge
     https://shopify.dev/docs/api/app-bridge-library/reference/toast#example-toast-with-dismiss-callback
 
-  Be sure to load in AppBridge js in your template (you can use `<OctantisWeb.Components.Head.javascript \>` to do so).
+  Be sure to load in AppBridge js in your template (you can use `<OctantisWeb.Components.Head.javascript />` to do so).
 
   ## Examples
 

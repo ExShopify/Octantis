@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Add Components.AppBridge.UiNavMenu
+
 ## 0.1.8
 
 - Add passthrough of attributes through MediaCard
