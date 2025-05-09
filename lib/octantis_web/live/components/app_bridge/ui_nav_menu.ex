@@ -63,7 +63,7 @@ defmodule OctantisWeb.Components.AppBridge.UiNavMenu do
         rel="home"
       />
       <.ui_nav_menu_link
-        :for={{%{name: name, url: url}, index} <- Enum.with_index(@link) |> dbg}
+        :for={{%{name: name, url: url}, index} <- Enum.with_index(@link)}
         id={@id <> to_string(index)}
         name={name}
         url={url}

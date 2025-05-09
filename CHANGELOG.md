@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 0.1.10
+
+- Fix: Remove extra dbg
+
 ## 0.1.9
 
 - Add Components.AppBridge.UiNavMenu
