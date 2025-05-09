@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.1.9
+
 - Add Components.AppBridge.UiNavMenu
 
 ## 0.1.8
