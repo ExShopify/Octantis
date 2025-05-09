@@ -41,7 +41,16 @@ var ShopifyToastHook = {
     });
   }
 };
+var AppBridgeNavManu = {
+  mounted() {
+    this.el.addEventListener("click", (event) => {
+      event.preventDefault();
+      this.liveSocket.execJS(this.el, this.el.getAttribute("data-nav-event"));
+    });
+  }
+};
 export {
+  AppBridgeNavManu,
   OctantisInteractable,
   ShopifyAppBridgeModal,
   ShopifyModal,

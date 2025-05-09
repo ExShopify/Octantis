@@ -20,6 +20,7 @@ var Octantis = (() => {
   // js/octantis/index.js
   var octantis_exports = {};
   __export(octantis_exports, {
+    AppBridgeNavManu: () => AppBridgeNavManu,
     OctantisInteractable: () => OctantisInteractable,
     ShopifyAppBridgeModal: () => ShopifyAppBridgeModal,
     ShopifyModal: () => ShopifyModal,
@@ -64,6 +65,14 @@ var Octantis = (() => {
           this.pushEvent("lv:clear-flash", { value: { key: this.el.dataset.kind } });
         },
         isError: this.el.dataset.kind == "error"
+      });
+    }
+  };
+  var AppBridgeNavManu = {
+    mounted() {
+      this.el.addEventListener("click", (event) => {
+        event.preventDefault();
+        this.liveSocket.execJS(this.el, this.el.getAttribute("data-nav-event"));
       });
     }
   };

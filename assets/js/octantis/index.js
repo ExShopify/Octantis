@@ -53,7 +53,7 @@ const ShopifyToastHook = {
   }
 }
 
-export const AppBridgeNavManu = {
+const AppBridgeNavManu = {
   mounted(){
     this.el.addEventListener('click', (event) => {
       event.preventDefault();
