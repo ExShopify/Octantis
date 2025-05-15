@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.1.12
+
 - Add :query_bar and :filter_bar slots to Filter component
 
 ## 0.1.11
