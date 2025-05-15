@@ -70,7 +70,6 @@ defmodule OctantisWeb.Components.Polaris.Filters do
   @doc @moduledoc
   attr :id, :string, required: true
 
-  # attr :query_value, :string, default: nil, doc: "Currently entered text in the query field"
   attr :query_form, Phoenix.HTML.Form,
     default: nil,
     doc: "The form that controls the query field",
@@ -84,9 +83,6 @@ defmodule OctantisWeb.Components.Polaris.Filters do
     default: [],
     doc:
       "Available filters added to the filter bar. Shortcut filters are pinned to the front of the bar."
-
-  #   attr :applied_filters, :AppliedFilterInterface[],
-  # doc: "Applied filters which are rendered as filter pills. The remove callback is called with the respective key."
 
   attr :on_query_change, :any, default: nil, doc: "Callback when the query field is changed."
 
@@ -121,13 +117,9 @@ defmodule OctantisWeb.Components.Polaris.Filters do
     default: false,
     doc: "Whether an asyncronous task is currently being run."
 
-  slot :inner_block
-  #   attr :mounted_state, :TransitionStatus;
+  slot :query_bar
 
-  #   attr :on_add_filter_click, :() => void, doc: "Callback when the add filter button is clicked."
-
-  #   attr :close_on_child_overlay_click, :boolean,
-  #  doc: "Whether the filter should close when clicking inside another Popover."
+  slot :filter_bar
 
   def filters(assigns) do
     assigns =
@@ -158,7 +150,9 @@ defmodule OctantisWeb.Components.Polaris.Filters do
           disabled={@disabled || @disable_query_field}
           borderless_query_field={@borderless_query_field}
           loading={@loading}
-        />
+        >
+          {render_slot(@query_bar)}
+        </.query_field>
         <.filters_bar
           :if={!@hide_filters}
           id={@id}
@@ -171,7 +165,7 @@ defmodule OctantisWeb.Components.Polaris.Filters do
           on_add_filter_click={@on_add_filter_click}
           close_on_child_overlay_click={@close_on_child_overlay_click}
         >
-          {render_slot(@inner_block)}
+          {render_slot(@filter_bar)}
         </.filters_bar>
       </.form>
     </div>
@@ -333,6 +327,8 @@ defmodule OctantisWeb.Components.Polaris.Filters do
   attr :borderless_query_field, :boolean, default: false
   attr :loading, :boolean, default: false, doc: "Show a loading spinner to the right of the input"
 
+  slot :inner_block
+
   def query_field(assigns) do
     assigns =
       assigns
@@ -364,7 +360,7 @@ defmodule OctantisWeb.Components.Polaris.Filters do
               loading={@loading}
             />
           </div>
-          <%!-- {children} --%>
+          {render_slot(@inner_block)}
         </.inline_stack>
       </.box>
     </div>

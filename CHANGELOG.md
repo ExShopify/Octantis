@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Add :query_bar and :filter_bar slots to Filter component
+
 ## 0.1.11
 
 - Add mix assets.build to CI
