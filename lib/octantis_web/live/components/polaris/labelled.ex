@@ -77,9 +77,15 @@ defmodule OctantisWeb.Components.Polaris.Labelled do
   def class(attrs) when is_map(attrs),
     do: attrs |> Enum.flat_map(&build_class/1) |> Enum.join(" ")
 
-  defp build_class({:disabled, true}), do: ["Polaris-Labelled--disabled"]
-  defp build_class({:label_hidden, true}), do: ["Polaris-Labelled--hidden"]
-  defp build_class({:read_only, true}), do: ["Polaris-Labelled--readOnly"]
+  defp build_class({:disabled, value}) when value not in [nil, false],
+    do: ["Polaris-Labelled--disabled"]
+
+  defp build_class({:label_hidden, value}) when value not in [nil, false],
+    do: ["Polaris-Labelled--hidden"]
+
+  defp build_class({:read_only, value}) when value not in [nil, false],
+    do: ["Polaris-Labelled--readOnly"]
+
   defp build_class({_key, _value}), do: []
 
   def build_style(attrs) when is_map(attrs),

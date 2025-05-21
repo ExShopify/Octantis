@@ -1,6 +1,7 @@
 ## Unreleased
 
 - Add show and hide functions for Banner component
+- Add opacity to extra_styles
 
 ## 0.1.12
 

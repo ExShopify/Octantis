@@ -91,7 +91,7 @@ defmodule OctantisWeb.Components.Polaris.Box do
 
   attr :class, :any, default: "", doc: "A class name to be added to the component class name"
 
-  attr_extra_styles(except: [:min_height])
+  attr_extra_styles(except: [:min_height, :opacity])
 
   attr :rest, :global
 

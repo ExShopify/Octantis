@@ -241,18 +241,19 @@ defmodule OctantisWeb.Core do
   defp data_phx_binding_key_string(key), do: "data-" <> phx_binding_key_string(key)
 
   @extra_styles [
+    :align_items,
+    :align_self,
     :display,
+    :flex_grow,
+    :grid_auto_rows,
+    :grid_template_columns,
+    :grid_template_rows,
+    :justify_content,
     :margin,
     :max_height,
     :min_height,
     :object_fit,
-    :flex_grow,
-    :justify_content,
-    :grid_auto_rows,
-    :grid_template_columns,
-    :grid_template_rows,
-    :align_items,
-    :align_self
+    :opacity
   ]
 
   @doc """
@@ -268,20 +269,21 @@ defmodule OctantisWeb.Core do
     existing_styles <> ";" <> extra_styles
   end
 
-  defp build_extra_styles({:style, value}), do: [value]
+  defp build_extra_styles({:align_items, value}), do: ["align-items:#{value}"]
+  defp build_extra_styles({:align_self, value}), do: ["align-self:#{value}"]
   defp build_extra_styles({:display, value}), do: ["display:#{value}"]
+  defp build_extra_styles({:flex_grow, value}), do: ["flex-grow:#{value}"]
+  defp build_extra_styles({:grid_auto_rows, value}), do: ["grid-auto-rows:#{value}"]
+  defp build_extra_styles({:grid_template_columns, value}), do: ["grid-template-columns:#{value}"]
+  defp build_extra_styles({:grid_template_rows, value}), do: ["grid-template-rows:#{value}"]
+  defp build_extra_styles({:justify_content, value}), do: ["justify-content:#{value}"]
   defp build_extra_styles({:margin, value}), do: ["margin:#{value}"]
   defp build_extra_styles({:max_height, value}), do: ["max-height:#{value}"]
   defp build_extra_styles({:min_height, value}), do: ["min-height:#{value}"]
   defp build_extra_styles({:object_fit, value}), do: ["object-fit:#{value}"]
+  defp build_extra_styles({:opacity, value}), do: ["opacity:#{value}"]
   defp build_extra_styles({:position, value}), do: ["position:#{value}"]
-  defp build_extra_styles({:flex_grow, value}), do: ["flex-grow:#{value}"]
-  defp build_extra_styles({:justify_content, value}), do: ["justify-content:#{value}"]
-  defp build_extra_styles({:grid_auto_rows, value}), do: ["grid-auto-rows:#{value}"]
-  defp build_extra_styles({:grid_template_columns, value}), do: ["grid-template-columns:#{value}"]
-  defp build_extra_styles({:grid_template_rows, value}), do: ["grid-template-rows:#{value}"]
-  defp build_extra_styles({:align_items, value}), do: ["align-items:#{value}"]
-  defp build_extra_styles({:align_self, value}), do: ["align-self:#{value}"]
+  defp build_extra_styles({:style, value}), do: [value]
   defp build_extra_styles({_key, _value}), do: []
 
   def assign_extra_styles(assigns),

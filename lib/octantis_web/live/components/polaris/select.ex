@@ -91,7 +91,7 @@ defmodule OctantisWeb.Components.Polaris.Select do
           name={@field.name}
           value={@field.value}
           class={["Polaris-Select__Input"]}
-          disabled={@disabled}
+          disabled={!!@disabled}
           aria-invalid={!!@error}
           aria-describedby={@described_by}
           aria-required={@required_indicator}
@@ -99,7 +99,7 @@ defmodule OctantisWeb.Components.Polaris.Select do
         >
           {Phoenix.HTML.Form.options_for_select(@options, @field.value)}
         </select>
-        <div class="Polaris-Select__Content" aria-hidden aria-disabled={@disabled}>
+        <div class="Polaris-Select__Content" aria-hidden aria-disabled={!!@disabled}>
           <.box :if={@label_inline} padding_inline_end={[xs: "100"]}>
             <.text as="span" variant="bodyMd" truncate>
               {@label}

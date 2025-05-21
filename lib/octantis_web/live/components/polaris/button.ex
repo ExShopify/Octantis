@@ -131,9 +131,15 @@ defmodule OctantisWeb.Components.Polaris.Button do
   defp button_class({:text_align, align}),
     do: ["Polaris-Button--textAlign#{Macro.camelize(align)}"]
 
-  defp button_class({:full_width, true}), do: ["Polaris-Button--fullWidth"]
-  defp button_class({:pressed, true}), do: ["Polaris-Button--pressed"]
-  defp button_class({:disabled, true}), do: ["Polaris-Button--disabled"]
+  defp button_class({:full_width, value}) when value not in [nil, false],
+    do: ["Polaris-Button--fullWidth"]
+
+  defp button_class({:pressed, value}) when value not in [nil, false],
+    do: ["Polaris-Button--pressed"]
+
+  defp button_class({:disabled, value}) when value not in [nil, false],
+    do: ["Polaris-Button--disabled"]
+
   defp button_class({:icon_status, :icon_only}), do: ["Polaris-Button--iconOnly"]
   defp button_class({:icon_status, :icon_with_text}), do: ["Polaris-Button--iconWithText"]
 
