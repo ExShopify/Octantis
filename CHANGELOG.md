@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Add show and hide functions for Banner component
+
 ## 0.1.12
 
 - Add :query_bar and :filter_bar slots to Filter component

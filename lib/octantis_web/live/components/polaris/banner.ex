@@ -48,7 +48,10 @@ defmodule OctantisWeb.Components.Polaris.Banner do
     values: ["success", "info", "warning", "critical"],
     doc: "Sets the status of the banner."
 
-  attr :on_dismiss, :any, default: nil, doc: "Callback when banner is dismissed"
+  attr :on_dismiss, :any,
+    default: nil,
+    doc: "Callback when banner is dismissed",
+    examples: ["Banner.hide(@id)"]
 
   attr :stop_announcements, :boolean,
     default: false,
@@ -57,6 +60,8 @@ defmodule OctantisWeb.Components.Polaris.Banner do
   attr :within_container, :boolean,
     default: false,
     doc: "Change the render style to be within a content container, whatever that might mean."
+
+  attr_extra_styles()
 
   attr :rest, :global, doc: "the arbitrary HTML attributes to add to the banner container"
 
@@ -85,14 +90,18 @@ defmodule OctantisWeb.Components.Polaris.Banner do
       |> assign_background()
       |> assign(:class, class(assigns))
       |> assign(:icon_class, icon_class(assigns))
+      |> assign(:style, extra_styles(assigns))
 
     ~H"""
     <div
-      id={@id}
+      id={banner_id(@id)}
       class={["Polaris-Banner", @class]}
       tabIndex={0}
       role={@role}
       aria-live={if @stop_announcements, do: "off", else: "polite"}
+      style={@style}
+      data-show={show(@id)}
+      data-hide={hide(@id)}
       {@rest}
     >
       <.box :if={@banner_type == :default} width="100%">
@@ -116,7 +125,7 @@ defmodule OctantisWeb.Components.Polaris.Banner do
                 </.text>
               </.inline_stack>
               <.button :if={@on_dismiss} variant="tertiary" phx_click={@on_dismiss}>
-                <:icon><Icons.x_small /></:icon>
+                <:icon><span class="Polaris-Banner--textInfoOnBgFill"><Icons.x_small /></span></:icon>
               </.button>
             </.inline_stack>
           </.box>
@@ -159,7 +168,7 @@ defmodule OctantisWeb.Components.Polaris.Banner do
 
           <div class="Polaris-Banner__DismissIcon">
             <.button :if={@on_dismiss} variant="tertiary" phx_click={@on_dismiss}>
-              <:icon><Icons.x_small /></:icon>
+              <:icon><span class="Polaris-Banner__icon--secondary"><Icons.x_small /></span></:icon>
             </.button>
           </div>
         </.inline_stack>
@@ -194,7 +203,7 @@ defmodule OctantisWeb.Components.Polaris.Banner do
             </.box>
           </.inline_stack>
           <.button :if={@on_dismiss} variant="tertiary" phx_click={@on_dismiss}>
-            <:icon><Icons.x_small /></:icon>
+            <:icon><span class="Polaris-Banner__icon--secondary"><Icons.x_small /></span></:icon>
           </.button>
         </.inline_stack>
       </.box>
@@ -288,4 +297,15 @@ defmodule OctantisWeb.Components.Polaris.Banner do
     </.block_stack>
     """
   end
+
+  def banner_id(id), do: "Banner" <> id
+
+  def show(js \\ %JS{}, id), do: JS.show(js, to: "#" <> banner_id(id))
+  def hide(js \\ %JS{}, id), do: JS.hide(js, to: "#" <> banner_id(id))
+
+  def push_open(socket, id),
+    do: Phoenix.LiveView.push_event(socket, "octantis:modal_show_" <> banner_id(id), %{})
+
+  def push_close(socket, id),
+    do: Phoenix.LiveView.push_event(socket, "octantis:modal_hide_" <> banner_id(id), %{})
 end

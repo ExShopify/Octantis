@@ -1,6 +1,7 @@
 defmodule Storybook.Polaris.Banner do
   use OctantisWeb.Storybook.Story, :component
 
+  alias OctantisWeb.Components.Polaris.Banner
   alias OctantisWeb.Components.Polaris.Icons
 
   def function, do: &OctantisWeb.Components.Polaris.Banner.banner/1
@@ -38,12 +39,35 @@ defmodule Storybook.Polaris.Banner do
         ]
       },
       %VariationGroup{
+        id: :dismissable,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [~s|Content|],
+            attributes: %{title: "Title", on_dismiss: Banner.hide("banner-dismissable-default")}
+          }
+        ]
+      },
+      %VariationGroup{
         id: :without_title,
         variations: [
           %Variation{
             id: :default,
             slots: [~s|Section installed to Dawn (Live)|],
             attributes: %{tone: "success"}
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :without_title_dismissable,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [~s|Section installed to Dawn (Live)|],
+            attributes: %{
+              tone: "success",
+              on_dismiss: Banner.hide("banner-without-title-dismissable-default")
+            }
           }
         ]
       },
@@ -64,6 +88,20 @@ defmodule Storybook.Polaris.Banner do
             id: :default,
             slots: [~s|Section installed to Dawn (Live)|],
             attributes: %{within_container: true, tone: "warning"}
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :within_container_dismissable,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [~s|Section installed to Dawn (Live)|],
+            attributes: %{
+              within_container: true,
+              tone: "warning",
+              on_dismiss: Banner.hide("banner-within-container-dismissable-default")
+            }
           }
         ]
       },
