@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Add menu_horizontal and menu_vertical Icons
+
 ## 0.1.13
 
 - Add show and hide functions for Banner component
