@@ -37,6 +37,7 @@ defmodule OctantisWeb.Components.Polaris.Card do
 
   attr :rest, :global
 
+  slot :shadow_bevel, doc: "Attributes to be sent to the ShadowBevel component"
   slot :inner_block, required: true
 
   def card(assigns) do
@@ -46,7 +47,13 @@ defmodule OctantisWeb.Components.Polaris.Card do
       |> assign(:style, extra_styles(assigns))
 
     ~H"""
-    <.shadow_bevel box_shadow={[xs: "100"]} border_radius={@border_radius} z_index="32" class={@class}>
+    <.shadow_bevel
+      box_shadow={[xs: "100"]}
+      border_radius={@border_radius}
+      z_index="32"
+      class={@class}
+      {slot_attributes(@shadow_bevel)}
+    >
       <.box
         background={@background}
         padding={@padding}

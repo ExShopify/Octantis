@@ -1,5 +1,6 @@
 ## Unreleased
 
+- Add example for popover inside of a card
 - Add menu_horizontal and menu_vertical Icons
 
 ## 0.1.13

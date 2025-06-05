@@ -37,6 +37,8 @@ defmodule OctantisWeb.Components.Polaris.IndexTable do
 
   attr :on_selection_change, :any, default: nil, doc: "Callback for when the checkbox is toggled"
 
+  attr_extra_styles()
+
   slot :col, required: true do
     attr :header, :any,
       examples: ["Order", "Date", "Customer", {"Total", [alignment: "end"]}],
@@ -60,10 +62,11 @@ defmodule OctantisWeb.Components.Polaris.IndexTable do
       assigns
       |> assign(:selected_count, selected_count)
       |> assign(:count, length(assigns.col))
+      |> assign(:style, extra_styles(assigns))
       |> assign_table_class()
 
     ~H"""
-    <div class={["Polaris-IndexTable", @class]}>
+    <div class={["Polaris-IndexTable", @class]} style={@style}>
       <form>
         <div class="Polaris-IndexTable__IndexTableWrapper">
           <div class="Polaris-IndexTable__LoadingPanel"></div>

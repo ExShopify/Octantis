@@ -5,7 +5,7 @@ defmodule OctantisWeb.Components.Polaris.InlineGrid do
 
   ## Examples
   ```elixir
-    <.inline_grid gap={[xs: 1, md: "2fr 1fr"]}>
+    <.inline_grid columns={[xs: "1fr", md: "1fr 1fr"]}>
       <div>Contents</div>
       <div>Contents</div>
     </.inline_grid>
