@@ -151,8 +151,8 @@ defmodule OctantisWeb.Components.Polaris.Page do
             :if={@pagination || @primary_action != [] || @secondary_action != {}}
             class="Polaris-Page-Header__RightAlign"
           >
-            <div :if={@secondary_action != []} class="Polaris-Page-Header__Actions">
-              <div class="Polaris-ActionMenu">
+            <div class="Polaris-Page-Header__Actions">
+              <div :if={@secondary_action != []} class="Polaris-ActionMenu">
                 <div class="Polaris-ActionMenu-Actions__ActionsLayoutOuter">
                   <div class="Polaris-ActionMenu-Actions__ActionsLayout">
                     <div :for={action <- @secondary_action}>
