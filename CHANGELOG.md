@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.1.15
+
 - Allow `key` to work for IndexTable items
 
 ## 0.1.14
