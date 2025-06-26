@@ -11,7 +11,7 @@ defmodule OctantisWeb.Components.Polaris.AppBridgeModal do
   The following is required in your .js file:
 
   ```javascript
-  import { ShopifyAppBridgeModal } from "octantis
+  import { ShopifyAppBridgeModal } from "octantis";
   Hooks = { ShopifyAppBridgeModal }
   ```
 
