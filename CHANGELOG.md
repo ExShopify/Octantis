@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Allow `key` to work for IndexTable items
+
 ## 0.1.14
 
 - Add example for popover inside of a card

@@ -381,6 +381,7 @@ defmodule OctantisWeb.Components.Polaris.IndexTable do
 
   # Pull the id out of the row
   defp row_id(%{id: id}), do: id
+  defp row_id(%{key: key}), do: key
   defp row_id({_data, index}) when is_integer(index), do: to_string(index)
 
   defp checkbox_id(parent_id, row_id), do: parent_id <> "Checkbox" <> row_id
