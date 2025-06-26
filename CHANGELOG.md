@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 0.1.16
+
+- Fix displaying action button without secondary action in Page component
+
 ## 0.1.15
 
 - Allow `key` to work for IndexTable items
