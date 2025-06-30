@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 0.1.17
+
+- Handle default integer primary keys in the Index Table
+
 ## 0.1.16
 
 - Fix displaying action button without secondary action in Page component
