@@ -380,6 +380,7 @@ defmodule OctantisWeb.Components.Polaris.IndexTable do
   end
 
   # Pull the id out of the row
+  defp row_id(%{id: id}) when is_integer(id), do: to_string(id)
   defp row_id(%{id: id}), do: id
   defp row_id(%{key: key}), do: key
   defp row_id({_data, index}) when is_integer(index), do: to_string(index)
