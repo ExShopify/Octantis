@@ -89,6 +89,16 @@ defmodule Storybook.Polaris.TextField do
             attributes: %{label: "Search", field: @field}
           }
         ]
+      },
+      %VariationGroup{
+        id: :with_help_text,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [],
+            attributes: %{label: "Search", field: @field, help_text: "Help Text"}
+          }
+        ]
       }
     ]
   end
