@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Pass extra attrs to IndexTable :col slot
+
 ## 0.1.17
 
 - Handle default integer primary keys in the Index Table

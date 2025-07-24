@@ -131,6 +131,7 @@ defmodule OctantisWeb.Components.Polaris.IndexTable do
                   <.index_table_cell
                     :for={col <- @col}
                     class={col[:class]}
+                    style={extra_styles(col)}
                     phx_click={
                       JS.dispatch("click", to: "#" <> checkbox_id(@id, row_id(row)), bubbles: false)
                     }
@@ -271,13 +272,15 @@ defmodule OctantisWeb.Components.Polaris.IndexTable do
   attr :phx_click, :any, doc: "onClick: Callback when row is clicked"
   attr :class, :any, doc: "Class to be passed on to the cell."
 
+  attr :rest, :global
+
   slot :inner_block
 
   def index_table_cell(assigns) do
     assigns = assigns |> assign_phx_bindings()
 
     ~H"""
-    <td class={["Polaris-IndexTable__TableCell", @class]} {@bindings}>
+    <td class={["Polaris-IndexTable__TableCell", @class]} {@bindings} {@rest}>
       {render_slot(@inner_block)}
     </td>
     """
