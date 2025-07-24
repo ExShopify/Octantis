@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.1.18
+
 - Pass extra attrs to IndexTable :col slot
 
 ## 0.1.17
