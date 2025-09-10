@@ -150,7 +150,7 @@ defmodule OctantisWeb.Components.Polaris.Popover do
                           <.complex_action
                             variant="tertiary"
                             {action}
-                            phx_click={(action[:phx_click] || %JS{}) |> hide_popover(@popover_id)}
+                            phx_click={phx_action_hide(action[:phx_click], @popover_id)}
                           />
                         </.inline_stack>
                       </.box>
@@ -204,4 +204,11 @@ defmodule OctantisWeb.Components.Polaris.Popover do
   end
 
   def popover_id(id), do: "Popover" <> to_string(id)
+
+  def phx_action_hide(action, popover_id) when is_binary(action),
+    do: phx_action_hide(JS.push(action), popover_id)
+
+  def phx_action_hide(nil, popover_id), do: phx_action_hide(%JS{}, popover_id)
+
+  def phx_action_hide(%JS{} = action, popover_id), do: action |> hide_popover(popover_id)
 end
