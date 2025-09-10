@@ -264,7 +264,12 @@ defmodule OctantisWeb.Core do
     heex> <.block_stack flex_grow="1"/>
     <div style="flex-grow:1;"/>
   """
-  def extra_styles(existing_styles \\ "", attrs) when is_map(attrs) do
+  def extra_styles(existing_styles \\ "", attrs)
+
+  def extra_styles(existing_styles, attrs) when is_list(attrs),
+    do: Enum.map_join(attrs, ";", &extra_styles(existing_styles, &1))
+
+  def extra_styles(existing_styles, attrs) when is_map(attrs) do
     extra_styles = attrs |> Enum.flat_map(&build_extra_styles/1) |> Enum.join(";")
     existing_styles <> ";" <> extra_styles
   end

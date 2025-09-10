@@ -1,5 +1,10 @@
 ## Unreleased
 
+## 0.1.19
+
+- Add overlay positioning for Popover
+- Add handle pushing event to server in Popover actions
+
 ## 0.1.18
 
 - Pass extra attrs to IndexTable :col slot
