@@ -1,6 +1,6 @@
 {
   "name": "octantis",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "Javascript hooks for Octantis",
   "license": "MIT",
   "module": "./priv/static/octantis.mjs",

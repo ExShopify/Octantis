@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 0.1.19
+
+- Add overlay positioning for Popover
+
 ## 0.1.18
 
 - Pass extra attrs to IndexTable :col slot

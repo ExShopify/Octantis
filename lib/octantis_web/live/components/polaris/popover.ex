@@ -1,6 +1,10 @@
 defmodule OctantisWeb.Components.Polaris.Popover do
   @moduledoc """
   Popovers are small overlays that open on demand. They let merchants access additional content and actions without cluttering the page.
+
+  Unfortuneatly, `preferred_position` and `preferred_alignment` are not available. Instead you must use `<:overlay ... />`.
+  Often this will need a wrapper with `position:relative`. In case of cards, you will need `<.card shadow_bevel={%{position: "static"}}>` to avoid clipping.
+
   ## Examples
     ```elixir
     <.popover id="someid">
@@ -32,13 +36,13 @@ defmodule OctantisWeb.Components.Polaris.Popover do
   # attr :children?: React.ReactNode,
   # doc: "The content to display inside the popover"
 
-  attr :preferred_position, :string,
-    values: ["above", "below", "mostSpace", "cover"],
-    doc: "The preferred direction to open the popover"
+  # attr :preferred_position, :string,
+  #   values: ["above", "below", "mostSpace", "cover"],
+  #   doc: "The preferred direction to open the popover"
 
-  attr :preferred_alignment, :string,
-    values: ["left", "center", "right"],
-    doc: "The preferred alignment of the popover relative to its activator"
+  # attr :preferred_alignment, :string,
+  #   values: ["left", "center", "right"],
+  #   doc: "The preferred alignment of the popover relative to its activator"
 
   attr :active, :boolean, doc: "Show or hide the Popover", default: true
 
@@ -96,6 +100,13 @@ defmodule OctantisWeb.Components.Polaris.Popover do
 
   slot :section
 
+  slot :overlay, doc: "Attributes to be sent to the Overlay div" do
+    attr :left, :string
+    attr :right, :string
+    attr :top, :string
+    attr :bottom, :string
+  end
+
   slot :inner_block
 
   def popover(assigns) do
@@ -103,6 +114,9 @@ defmodule OctantisWeb.Components.Polaris.Popover do
       assigns
       |> assign_new(:popover_id, fn %{id: id} -> popover_id(id) end)
       |> assign(:class, class(assigns))
+      |> assign(:overlay_style, [
+        "display:none;" | assigns.overlay |> overlay_style() |> extra_styles(assigns.overlay)
+      ])
 
     ~H"""
     <div>
@@ -117,7 +131,7 @@ defmodule OctantisWeb.Components.Polaris.Popover do
     >
       <div
         class="Polaris-PositionedOverlay Polaris-Popover__PopoverOverlay"
-        style="display:none;"
+        style={@overlay_style}
         {phx_bindings(%{phx_click_away: hide_popover(@popover_id)})}
       >
         <div class={["Polaris-Popover", @class]} data-polaris-overlay="true">
@@ -159,6 +173,19 @@ defmodule OctantisWeb.Components.Polaris.Popover do
 
   defp build_class({:full_width, true}), do: ["Polaris-Popover--fullWidth"]
   defp build_class({_key, _value}), do: []
+
+  def overlay_style(attrs) when is_list(attrs),
+    do: Enum.map_join(attrs, ";", &overlay_style/1)
+
+  def overlay_style(attrs) when is_map(attrs),
+    do: attrs |> Enum.flat_map(&build_overlay_style(&1, attrs)) |> Enum.join(";")
+
+  defp build_overlay_style({:left, left}, _attrs), do: ["left:#{left}"]
+  defp build_overlay_style({:right, right}, _attrs), do: ["right:#{right}"]
+  defp build_overlay_style({:top, top}, _attrs), do: ["top:#{top}"]
+  defp build_overlay_style({:bottom, bottom}, _attrs), do: ["bottom:#{bottom}"]
+  defp build_overlay_style({:style, style}, _attrs), do: [style]
+  defp build_overlay_style({_key, _value}, _attrs), do: []
 
   def show_popover(js \\ %JS{}, id) do
     js

@@ -74,6 +74,39 @@ defmodule Storybook.Polaris.Popover do
         """
       },
       %VariationGroup{
+        id: :inside_card_left,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [
+              ~s"""
+              <:activator :let={activator}>
+                <.complex_action
+                  content="More Actions"
+                  variant="primary"
+                  tone="critical"
+                  full_width={true}
+                  icon={&Icons.caret_down/1}
+                  phx_click={activator.phx_click}
+                />
+              </:activator>
+              """,
+              ~s|<:action content="Import"/>|,
+              ~s|<:action content="Export"/>|,
+              ~s|<:overlay right="calc(100% - var(--p-space-600))"/>|
+            ],
+            attributes: %{}
+          }
+        ],
+        template: ~s"""
+        <div style="position:relative">
+          <.card shadow_bevel={%{position: "static"}}>
+            <.psb-variation-group/>
+          </.card>
+        </div>
+        """
+      },
+      %VariationGroup{
         id: :inside_index_table,
         variations: [
           %Variation{
@@ -106,7 +139,49 @@ defmodule Storybook.Polaris.Popover do
               <:col :let={row} header="Value">
                 {row.value}
               </:col>
-              <:col  header="Actions">
+              <:col header="Actions" display="flex" justify_content="flex-end">
+                <.psb-variation-group/>
+              </:col>
+            </.index_table>
+          </.card>
+        </div>
+        """
+      },
+      %VariationGroup{
+        id: :inside_index_table_left,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [
+              ~s"""
+              <:activator :let={activator}>
+                <.complex_action
+                  phx_click={activator.phx_click}
+                  variant="plain"
+                  icon={&Icons.menu_horizontal/1}
+                />
+              </:activator>
+              """,
+              ~s|<:action content="Import"/>|,
+              ~s|<:action content="Export"/>|,
+              ~s|<:overlay right="calc(var(--p-space-800))" />|
+            ],
+            attributes: %{}
+          }
+        ],
+        template: ~s"""
+        <div style="position:relative">
+          <.card shadow_bevel={%{position: "static"}} padding={[xs: "0"]}>
+            <.index_table
+              id="tableid"
+              selectable={Phoenix.LiveView.AsyncResult.loading()}
+              rows={[%{id: "1", value: "Some val"}]}
+              position="static"
+            >
+              <:col :let={row} header="Value">
+                {row.value}
+              </:col>
+              <:col header="Actions" display="flex" justify_content="flex-end">
                 <.psb-variation-group/>
               </:col>
             </.index_table>

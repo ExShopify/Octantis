@@ -418,7 +418,6 @@ defmodule OctantisWeb.Components.Polaris.Filters do
         active={@initial_active}
         id={@id <> to_string(@filter_key)}
         on_close={@handle_popover_close}
-        preferred_alignment="left"
         z_index_override={@disclosure_z_index_override}
         prevent_close_on_child_overlay_click={!@close_on_child_overlay_click}
       >
