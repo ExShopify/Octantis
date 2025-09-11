@@ -1,5 +1,8 @@
 ## Unreleased
 
+- Add Polaris WebComponents to imported Javascript
+- Add SDivider Web Component
+
 ## 0.1.19
 
 - Add overlay positioning for Popover

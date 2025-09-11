@@ -131,7 +131,7 @@ defmodule Storybook.Polaris.Popover do
         <div style="position:relative">
           <.card shadow_bevel={%{position: "static"}} padding={[xs: "0"]}>
             <.index_table
-              id="tableid"
+              id="tableid1"
               selectable={Phoenix.LiveView.AsyncResult.loading()}
               rows={[%{id: "1", value: "Some val"}]}
               position="static"
@@ -173,7 +173,7 @@ defmodule Storybook.Polaris.Popover do
         <div style="position:relative">
           <.card shadow_bevel={%{position: "static"}} padding={[xs: "0"]}>
             <.index_table
-              id="tableid"
+              id="tableid2"
               selectable={Phoenix.LiveView.AsyncResult.loading()}
               rows={[%{id: "1", value: "Some val"}]}
               position="static"

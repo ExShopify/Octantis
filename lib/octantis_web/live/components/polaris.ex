@@ -53,4 +53,10 @@ defmodule OctantisWeb.Components.Polaris do
   defdelegate text_field(assigns), to: OctantisWeb.Components.Polaris.TextField
   defdelegate thumbnail(assigns), to: OctantisWeb.Components.Polaris.Thumbnail
   defdelegate unstyled_button(assigns), to: OctantisWeb.Components.Polaris.UnstyledButton
+
+  # WebComponents
+
+  defdelegate s_divider(assigns), to: OctantisWeb.Components.PolarisWC.SDivider
+  defdelegate s_icon(assigns), to: OctantisWeb.Components.PolarisWC.SIcon
+  defdelegate s_popover(assigns), to: OctantisWeb.Components.PolarisWC.SPopover
 end
