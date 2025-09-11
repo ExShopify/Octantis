@@ -9,6 +9,7 @@
 - Add Checkbox to component list
 - Fix links in documentation
 - Add Polaris WebComponents to imported Javascript
+- Add SDivider Web Component
 
 ## 0.1.19
 
