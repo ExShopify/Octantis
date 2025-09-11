@@ -8,10 +8,12 @@ defmodule OctantisWeb.Components.PolarisWC.SDivider do
 
   use OctantisWeb.Core
 
+  alias OctantisWeb.Components.PolarisWC.Types
+
   @doc @moduledoc
 
   attr :color, :string,
-    values: ["base", "strong"],
+    values: Types.colours(),
     doc: ~S"""
     Modify the color to be more or less intense.
     """
