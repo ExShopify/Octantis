@@ -57,4 +57,6 @@ defmodule OctantisWeb.Components.Polaris do
   # WebComponents
 
   defdelegate s_divider(assigns), to: OctantisWeb.Components.PolarisWC.SDivider
+  defdelegate s_icon(assigns), to: OctantisWeb.Components.PolarisWC.SIcon
+  defdelegate s_popover(assigns), to: OctantisWeb.Components.PolarisWC.SPopover
 end
