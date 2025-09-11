@@ -1,6 +1,9 @@
 defmodule OctantisWeb.Components.PolarisWC.SDivider do
   @moduledoc """
   Create clear visual separation between elements in your user interface.
+
+  See:
+  - https://shopify.dev/docs/api/app-home/polaris-web-components/structure/divider
   """
 
   use OctantisWeb.Core
@@ -23,11 +26,9 @@ defmodule OctantisWeb.Components.PolarisWC.SDivider do
     A 'block' divider separates items within the current line of content. In a left-to-right or right-to-left writing mode, this would typically be a vertical line.
     """
 
-  @attributes [:color, :direction]
+  @attributes [{:color, :string}, {:direction, :string}] |> Map.new()
   def s_divider(assigns) do
-    attrs = Map.take(assigns, @attributes)
-
-    assigns = assigns |> assign(:attrs, attrs)
+    assigns = assigns |> assign_attrs(@attributes)
 
     ~H"""
     <s-divider {@attrs}></s-divider>

@@ -398,4 +398,22 @@ defmodule OctantisWeb.Core do
   end
 
   def class_for_attribute(_prefix, _attribute, nil), do: []
+
+  def assign_attrs(assigns, key \\ :attrs, attributes) do
+    keys = Map.keys(attributes)
+
+    attrs =
+      assigns
+      |> Map.take(keys)
+      |> Map.new(fn {key, value} ->
+        {key, format_attr(value, {key, attributes[key]})}
+      end)
+
+    assigns |> assign(key, attrs)
+  end
+
+  def format_attr(value, {_key, :string}), do: value
+  def format_attr(value, {_key, :size_units}), do: value
+  def format_attr(value, {_key, :size_units_or_auto}), do: value
+  def format_attr(value, {_key, :size_units_or_none}), do: value
 end
