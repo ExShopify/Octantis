@@ -8,6 +8,7 @@
 
 - Add Checkbox to component list
 - Fix links in documentation
+- Add Polaris WebComponents to imported Javascript
 
 ## 0.1.19
 
