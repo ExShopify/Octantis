@@ -13,7 +13,7 @@ defmodule OctantisWeb.Components.Polaris.Text do
     - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Text/Text.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   @doc @moduledoc
 

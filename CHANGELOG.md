@@ -10,6 +10,7 @@
 - Fix links in documentation
 - Add Polaris WebComponents to imported Javascript
 - Add SDivider Web Component
+- Add s_attr macro for web_components
 
 ## 0.1.19
 

@@ -12,7 +12,7 @@ defmodule OctantisWeb.Components.Polaris.Tag do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Tag/Tag.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   import OctantisWeb.Components.Polaris.Text, only: [text: 1]
 

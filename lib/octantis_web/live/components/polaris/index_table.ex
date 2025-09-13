@@ -12,7 +12,7 @@ defmodule OctantisWeb.Components.Polaris.IndexTable do
   - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/IndexTable/IndexTable.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   require OctantisWeb.Components.Polaris.ComplexAction
 

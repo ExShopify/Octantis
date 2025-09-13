@@ -5,7 +5,37 @@ defmodule OctantisWeb.Core do
   """
   use Phoenix.Component
 
-  defmacro __using__(_opts) do
+  alias OctantisWeb.Components.PolarisWC.Types
+
+  defmacro __using__(which \\ :component) do
+    apply(__MODULE__, which, [])
+  end
+
+  def web_component do
+    quote do
+      use Phoenix.Component
+
+      # HTML escaping functionality
+      import Phoenix.HTML
+
+      # Shortcut for generating JS commands
+      alias Phoenix.LiveView.JS
+
+      require unquote(__MODULE__)
+      import unquote(__MODULE__)
+
+      Module.register_attribute(__MODULE__, :s_attrs, accumulate: true)
+
+      defmacro assign_s_attrs(assigns, key \\ :s_attrs) do
+        quote do
+          assign_attrs_from_map(unquote(assigns), unquote(key), @s_attrs |> Map.new())
+        end
+      end
+    end
+  end
+
+  def component do
+    # credo:disable-for-this-file Credo.Check.Refactor.CyclomaticComplexity
     quote do
       use Phoenix.Component
 
@@ -399,7 +429,7 @@ defmodule OctantisWeb.Core do
 
   def class_for_attribute(_prefix, _attribute, nil), do: []
 
-  def assign_attrs(assigns, key \\ :attrs, attributes) do
+  def assign_attrs_from_map(assigns, key, attributes) do
     keys = Map.keys(attributes)
 
     attrs =
@@ -416,4 +446,19 @@ defmodule OctantisWeb.Core do
   def format_attr(value, {_key, :size_units}), do: value
   def format_attr(value, {_key, :size_units_or_auto}), do: value
   def format_attr(value, {_key, :size_units_or_none}), do: value
+  def format_attr(value, {_key, _keyword}), do: value
+
+  defmacro s_attr(name, s_type, opts \\ []) do
+    s_type = Macro.expand_literals(s_type, %{__CALLER__ | function: {:attr, 3}})
+    opts = Macro.expand_literals(opts, %{__CALLER__ | function: {:attr, 3}})
+
+    type = Types.get_base_type(s_type)
+    opts = Types.put_options(type, opts)
+
+    quote bind_quoted: [name: name, type: type, opts: opts, s_type: s_type] do
+      @s_attrs {name, s_type}
+
+      attr(name, type, opts)
+    end
+  end
 end

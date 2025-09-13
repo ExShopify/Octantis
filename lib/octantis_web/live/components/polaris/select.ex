@@ -16,7 +16,7 @@ defmodule OctantisWeb.Components.Polaris.Select do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Select/Select.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   import_polaris_components([:box, :icon, :labelled, :text])
 

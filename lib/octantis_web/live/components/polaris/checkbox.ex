@@ -12,7 +12,7 @@ defmodule OctantisWeb.Components.Polaris.Checkbox do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Checkbox/Checkbox.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   import_polaris_components(:choice)
 
