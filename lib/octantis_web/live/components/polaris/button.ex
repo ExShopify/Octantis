@@ -13,7 +13,7 @@ defmodule OctantisWeb.Components.Polaris.Button do
    - https://polaris.shopify.com/components/actions/button
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Button/Button.tsx
   """
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   import_polaris_components([:icon, :text, :unstyled_button])
 

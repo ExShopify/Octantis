@@ -6,42 +6,26 @@ defmodule OctantisWeb.Components.PolarisWC.SBadge do
   - https://shopify.dev/docs/api/app-home/polaris-web-components/titles-and-text/badge
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :web_component
 
-  alias OctantisWeb.Components.PolarisWC.Types
+  s_attr :color, :color, doc: "Modify the color to be more or less intense."
 
-  attr :color, :string,
-    values: Types.colours(),
-    doc: "Modify the color to be more or less intense."
+  s_attr :icon, :icon, doc: "The type of icon to be displayed in the badge."
 
-  attr :icon, :string,
-    values: Types.icons(),
-    doc: "The type of icon to be displayed in the badge."
+  s_attr :size, :string, values: ["base", "large", "large-100"], doc: "Adjusts the size."
 
-  attr :size, :string, values: ["base", "large", "large-100"], doc: "Adjusts the size."
-
-  attr :tone, :string,
-    values: Types.tones(),
+  s_attr :tone, :tone,
     doc: "Sets the tone of the Badge, based on the intention of the information being conveyed."
 
   slot :inner_block
 
   @doc @moduledoc
 
-  @attributes [
-                {:id, :string},
-                {:color, :string},
-                {:icon, :string},
-                {:size, :string},
-                {:tone, :string}
-              ]
-              |> Map.new()
-
   def s_badge(assigns) do
-    assigns = assigns |> assign_attrs(@attributes)
+    assigns = assigns |> assign_s_attrs()
 
     ~H"""
-    <s-badge {@attrs}>{render_slot(@inner_block)}</s-badge>
+    <s-badge {@s_attrs}>{render_slot(@inner_block)}</s-badge>
     """
   end
 end

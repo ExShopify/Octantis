@@ -15,7 +15,7 @@ defmodule OctantisWeb.Components.Polaris.BlockStack do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/BlockStack/BlockStack.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   alias OctantisWeb.Components.Polaris.Tokens.Space
 

@@ -27,7 +27,7 @@ defmodule OctantisWeb.Components.Polaris.ChoiceList do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/ChoiceList/ChoiceList.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   import_polaris_components([
     :bleed,

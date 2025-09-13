@@ -6,7 +6,7 @@ defmodule OctantisWeb.Components.Polaris.ShadowBevel do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/ShadowBevel/ShadowBevel.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   alias OctantisWeb.Components.Polaris.Tokens.Border
   alias OctantisWeb.Components.Polaris.Tokens.Shaddow

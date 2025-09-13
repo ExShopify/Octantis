@@ -12,7 +12,7 @@ defmodule OctantisWeb.Components.Polaris.Pagination do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Pagination/Pagination.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   import_polaris_components([:button_group, :box, :button, :text, :complex_action])
 

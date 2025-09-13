@@ -14,7 +14,7 @@ defmodule OctantisWeb.Components.Polaris.Banner do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Banner/Banner.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   require OctantisWeb.Components.Polaris.ComplexAction
 

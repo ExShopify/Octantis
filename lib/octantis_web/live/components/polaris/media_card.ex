@@ -21,7 +21,7 @@ defmodule OctantisWeb.Components.Polaris.MediaCard do
    - https://polaris.shopify.com/components/layout-and-structure/media-card
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   require OctantisWeb.Components.Polaris.ComplexAction
 

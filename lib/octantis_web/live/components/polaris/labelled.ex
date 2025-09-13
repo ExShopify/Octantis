@@ -11,7 +11,7 @@ defmodule OctantisWeb.Components.Polaris.Labelled do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Labelled/Labelled.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   import_polaris_components([:inline_error, :text])
 

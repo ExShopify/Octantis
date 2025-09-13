@@ -48,7 +48,7 @@ defmodule OctantisWeb.Components.Polaris.Filters do
     end
   end
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   require OctantisWeb.Components.Polaris.ComplexAction
 

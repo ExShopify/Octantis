@@ -34,7 +34,7 @@ defmodule OctantisWeb.Components.Polaris.Modal do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Modal/Modal.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   require OctantisWeb.Components.Polaris.ComplexAction
 

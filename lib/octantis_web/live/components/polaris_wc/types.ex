@@ -3,7 +3,43 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
   Enumerations of types commonly found in Polaris
   """
 
+  def put_options(type, opts)
+
+  def put_options(:color, opts), do: Keyword.put(opts, :values, colours())
+  def put_options(:icon, opts), do: Keyword.put(opts, :values, icons())
+  def put_options(:tone, opts), do: Keyword.put(opts, :values, tones())
+  def put_options(:direction, opts), do: Keyword.put(opts, :values, direction())
+
+  def put_options(_no_values, opts), do: opts
+
+  def get_base_type(_), do: :string
+
+  def accessibility_role do
+    [
+      "main",
+      "header",
+      "footer",
+      "section",
+      "aside",
+      "navigation",
+      "ordered-list",
+      "list-item",
+      "list-item-separator",
+      "unordered-list",
+      "separator",
+      "status",
+      "alert",
+      "generic",
+      "presentation",
+      "none"
+    ]
+  end
+
+  def accessibility_visibility, do: ["visible", "hidden", "exclusive"]
+
   def colours, do: ["base", "strong"]
+
+  def direction, do: ["inline", "block"]
 
   def tones, do: ["info", "success", "warning", "critical", "auto", "neutral", "caution"]
 
