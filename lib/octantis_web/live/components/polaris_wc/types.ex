@@ -9,9 +9,11 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
   def put_options(:icon, opts), do: Keyword.put(opts, :values, icons())
   def put_options(:tone, opts), do: Keyword.put(opts, :values, tones())
   def put_options(:direction, opts), do: Keyword.put(opts, :values, direction())
+  def put_options({:responsive, _}, opts), do: opts
 
   def put_options(_no_values, opts), do: opts
 
+  def get_base_type({:responsive, _}), do: :any
   def get_base_type(_), do: :string
 
   def accessibility_role do

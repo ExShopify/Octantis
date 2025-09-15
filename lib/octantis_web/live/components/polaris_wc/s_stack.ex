@@ -42,7 +42,17 @@ defmodule OctantisWeb.Components.PolarisWC.SStack do
   s_attr :border_style, :string
   s_attr :border_width, :string
   s_attr :column_gap, :string
-  s_attr :direction, :string
+
+  s_attr :direction, {:responsive, :direction},
+    doc: ~S"""
+    Sets how the Stack's children are placed within the Stack.
+
+    direction either accepts:
+
+        a single value either inline or block
+        OR a responsive value string with the supported SpacingKeyword as a query value.
+    """
+
   s_attr :display, :string
   s_attr :gap, :string
   s_attr :inline_size, :string
