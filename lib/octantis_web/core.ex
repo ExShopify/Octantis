@@ -436,17 +436,28 @@ defmodule OctantisWeb.Core do
       assigns
       |> Map.take(keys)
       |> Map.new(fn {key, value} ->
-        {key, format_attr(value, {key, attributes[key]})}
+        {key, format_attr(value, key, attributes[key])}
       end)
 
     assigns |> assign(key, attrs)
   end
 
-  def format_attr(value, {_key, :string}), do: value
-  def format_attr(value, {_key, :size_units}), do: value
-  def format_attr(value, {_key, :size_units_or_auto}), do: value
-  def format_attr(value, {_key, :size_units_or_none}), do: value
-  def format_attr(value, {_key, _keyword}), do: value
+  def format_attr(value, _key, _type) when is_binary(value), do: value
+  def format_attr(value, _key, :string), do: value
+  def format_attr(value, _key, :size_units), do: value
+  def format_attr(value, _key, :size_units_or_auto), do: value
+  def format_attr(value, _key, :size_units_or_none), do: value
+
+  def format_attr({:responsive, value}, key, {:responsive, type}),
+    do: "@container #{format_attr(value, key, type)}"
+
+  def format_attr({:responsive, value}, key, {:responsive, name, type}),
+    do: "@container #{name} #{format_attr(value, key, type)}"
+
+  def format_attr({operator, compare, expr1, expr2}, _key, _keyword),
+    do: "(inline-size #{operator} #{compare}) #{expr1}, #{expr2}"
+
+  def format_attr(value, _key, _keyword), do: value
 
   defmacro s_attr(name, s_type, opts \\ []) do
     s_type = Macro.expand_literals(s_type, %{__CALLER__ | function: {:attr, 3}})
