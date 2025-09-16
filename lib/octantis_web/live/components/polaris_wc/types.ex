@@ -16,6 +16,55 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
   def get_base_type({:responsive, _}), do: :any
   def get_base_type(_), do: :string
 
+  @doc """
+  A sigil for defining responsive values
+
+  ## Examples
+    iex> ~o["inline" <= "200px" < "block"]r
+    {:responsive, {:<=, "200px", "inline", "block"}}
+
+    iex> ~o["inline" < {200, :px} < "block"]r
+    {:responsive, {:<, {200, :px}, "inline", "block"}}
+
+    iex> ~o["inline" < "200px" < "block" <= "400px" < "outline"]r
+    {:responsive, {:<, "200px", "inline", {:<=, "400px", "block", "outline"}}}
+
+    iex> ~o["inline" < {200, :px} < "block" < {400, :px} < "outline"]r
+    {:responsive, {:<, {200, :px}, "inline", {:<, {400, :px}, "block", "outline"}}}
+
+    iex> ~o["inline" < {200, :px} < "block" < {400, :px} < "outline" < {600, :px} < "extremity"]r
+    {:responsive, {:<, {200, :px}, "inline", {:<, {400, :px}, "block", {:<, {600, :px}, "outline", "extremity"}}}}
+  """
+  defmacro sigil_o({:<<>>, _meta, [binary]}, ~c"r") do
+    quoted = Code.string_to_quoted!(binary)
+
+    responsive = build_responsive(quoted)
+
+    Macro.escape({:responsive, responsive})
+  end
+
+  defp build_responsive(expression) do
+    {_ast, {operators, leafs}} =
+      Macro.prewalk(expression, {[], []}, fn
+        {operator, meta, children}, {operators, leafs} when operator in [:<, :<=] ->
+          {{operator, meta, children}, {[operator | operators], leafs}}
+
+        leaf, {operators, leafs} ->
+          {nil, {operators, [leaf | leafs]}}
+      end)
+
+    build_responsive_from_list(Enum.reverse(leafs), operators)
+  end
+
+  defp build_responsive_from_list([value, break | tail], [op, _op2 | operators]),
+    do: {op, break, value, build_responsive_from_list(tail, operators)}
+
+  defp build_responsive_from_list([tail], []), do: tail
+
+  defp build_responsive_from_list(_, _) do
+    raise ArgumentError, message: "invalid argument. ~o[]r expects the format `value < breakpoint < value`"
+  end
+
   def accessibility_role do
     [
       "main",

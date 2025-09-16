@@ -4,14 +4,32 @@ Octantis is an implementation of [Polaris Design System](https://shopify.dev/doc
 
 Octantis provides Polaris LiveView components that you can drop into your LiveView Shop admin.
 
-### Example
+## Implementations
+
+Ovtantis components are wrappers around two different implementations.
+
+### React
+
+The `OctantisWeb.Components.Polaris` components largely match the html produced by [Polaris React](https://polaris-react.shopify.com/). This implementation is meant to read like the react implementations as much as possible.
 
 ```elixir
-<.card >
+<.card>
   <.text as="h2" variant="bodyMd">
     Welcome to The Littlest Marble Shop
   </.text>
 </.card>
+```
+
+### Web Components
+
+The `OctantisWeb.Components.PolarisWC` components are a light wrapper around the new [Polaris Web Components](https://shopify.dev/docs/api/app-home/using-polaris-components). Some niceties have been added around responsive attributes with the `~s` sigil and type checking.
+
+```elixir
+<.s_card>
+  <.s_text type="strong">
+    Welcome to The Littlest Marble Shop
+  </.s_text>
+</.s_card>
 ```
 
 ## σ Octantis

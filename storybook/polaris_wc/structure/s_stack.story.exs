@@ -1,4 +1,4 @@
-defmodule Storybook.PolarisWC.SStack do
+defmodule Storybook.PolarisWC.SStackStory do
   use OctantisWeb.Storybook.Story, :web_component
 
   def function, do: &OctantisWeb.Components.PolarisWC.SStack.s_stack/1
@@ -9,8 +9,8 @@ defmodule Storybook.PolarisWC.SStack do
     <.javascript psb-code-hidden/>
 
     <s-query-container>
-      <s-box inlineSize="400px">
-      <.psb-variation-group/>
+      <s-box inlineSize="400px" blockSize="400px">
+        <.psb-variation-group/>
       </s-box>
     </s-query-container>
     """
@@ -20,7 +20,8 @@ defmodule Storybook.PolarisWC.SStack do
     do: [
       {OctantisWeb.Components.Head, stylesheet: 1},
       {OctantisWeb.Components.Head, javascript: 1},
-      {OctantisWeb.Components.PolarisWC.SIcon, s_icon: 1}
+      {OctantisWeb.Components.PolarisWC.SIcon, s_icon: 1},
+      {OctantisWeb.Storybook.Sigil, sigil_o: 2}
     ]
 
   def variations do
@@ -124,6 +125,33 @@ defmodule Storybook.PolarisWC.SStack do
               """
             ],
             attributes: %{direction: {:responsive, {:>=, "400px", "block", "inline"}}}
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :responsive_sigil,
+        variations: [
+          %Variation{
+            id: :block,
+            slots: [
+              ~S"""
+              <s-badge icon="apps" tone="success">Item 1</s-badge>
+              <s-badge icon="archive" tone="warning">Item 2</s-badge>
+              <s-badge icon="automation" tone="critical">Item 3</s-badge>
+              """
+            ],
+            attributes: %{direction: {:eval, ~s|~o{"block" < "400px" < "inline"}r|}}
+          },
+          %Variation{
+            id: :inline,
+            slots: [
+              ~S"""
+              <s-badge icon="apps" tone="success">Item 1</s-badge>
+              <s-badge icon="archive" tone="warning">Item 2</s-badge>
+              <s-badge icon="automation" tone="critical">Item 3</s-badge>
+              """
+            ],
+            attributes: %{direction: {:eval, ~s|~o{"inline" <= "400px" <= "block" }r|}}
           }
         ]
       }

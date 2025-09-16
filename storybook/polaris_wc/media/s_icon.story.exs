@@ -1,4 +1,4 @@
-defmodule Storybook.PolarisWC.SIcon do
+defmodule Storybook.PolarisWC.SIconStory do
   use OctantisWeb.Storybook.Story, :web_component
 
   def function, do: &OctantisWeb.Components.PolarisWC.SIcon.s_icon/1
