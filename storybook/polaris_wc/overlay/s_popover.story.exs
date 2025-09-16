@@ -1,4 +1,4 @@
-defmodule Storybook.PolarisWC.SPopover do
+defmodule Storybook.PolarisWC.SPopoverStory do
   use OctantisWeb.Storybook.Story, :web_component
 
   def function, do: &OctantisWeb.Components.PolarisWC.SPopover.s_popover/1

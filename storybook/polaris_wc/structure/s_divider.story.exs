@@ -1,4 +1,4 @@
-defmodule Storybook.PolarisWC.SDivider do
+defmodule Storybook.PolarisWC.SDividerStory do
   use OctantisWeb.Storybook.Story, :web_component
 
   def function, do: &OctantisWeb.Components.PolarisWC.SDivider.s_divider/1

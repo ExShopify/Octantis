@@ -3,6 +3,7 @@
 - Add Polaris WebComponents to imported Javascript
 - Add SDivider Web Component
 - Add s_attr macro for web_components
+- Add sigil_o[]r to handle responsive values
 
 ## 0.1.19
 
