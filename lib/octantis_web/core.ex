@@ -436,8 +436,8 @@ defmodule OctantisWeb.Core do
       assigns
       |> Map.take(keys)
       |> Map.new(fn {key, value} ->
-        {camel_name, s_type} = attributes[key]
-        {camel_name, format_attr(value, key, s_type)}
+        {attribute_name, s_type} = attributes[key]
+        {attribute_name, format_attr(value, key, s_type)}
       end)
 
     assigns |> assign(key, attrs)
@@ -466,12 +466,16 @@ defmodule OctantisWeb.Core do
 
     type = Types.get_base_type(s_type)
     opts = Types.put_options(type, opts)
+    attribute_name = Types.attribute_name(name)
 
-    quote bind_quoted: [name: name, type: type, opts: opts, s_type: s_type] do
-      [first | rest] = name |> Atom.to_string() |> Macro.camelize() |> String.graphemes()
-      camel_name = String.downcase(first) <> Enum.join(rest)
-
-      @s_attrs {name, {camel_name, s_type}}
+    quote bind_quoted: [
+            name: name,
+            type: type,
+            opts: opts,
+            s_type: s_type,
+            attribute_name: attribute_name
+          ] do
+      @s_attrs {name, {attribute_name, s_type}}
 
       attr(name, type, opts)
     end

@@ -3,6 +3,8 @@ defmodule Storybook.PolarisWC.SButtonStory do
 
   def function, do: &OctantisWeb.Components.Polaris.s_button/1
 
+  def aliases, do: [Phoenix.LiveView.JS]
+
   def variations do
     [
       %VariationGroup{
@@ -207,6 +209,29 @@ defmodule Storybook.PolarisWC.SButtonStory do
               """
             ],
             attributes: %{icon: "camera"}
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :bindings,
+        variations: [
+          %Variation{
+            id: :fire_event,
+            slots: [
+              ~S"""
+              fire event
+              """
+            ],
+            attributes: %{click: "fire_event"}
+          },
+          %Variation{
+            id: :javascript_hide,
+            slots: [
+              ~S"""
+              trigger js
+              """
+            ],
+            attributes: %{click: {:eval, ~s|JS.add_class("someclass", to: "#some_id")|}}
           }
         ]
       }

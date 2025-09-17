@@ -21,6 +21,40 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
   def get_base_type(_), do: :string
 
   @doc """
+  Get the name of the attribute to be given to the WebComponent.
+
+  We override some of these to match LiveView names. For example
+  :click -> "data-phx-click"
+
+  ## Examples
+    iex> attribute_name(:color)
+    "color"
+
+    iex> attribute_name(:accessibility_label)
+    "accessibilityLabel"
+
+    iex> attribute_name(:accessibility_label)
+    "accessibilityLabel"
+
+    iex> attribute_name(:click)
+    "data-phx-click"
+
+    iex> attribute_name(:blur)
+    "data-phx-blur"
+
+    iex> attribute_name(:focus)
+    "data-phx-focus"
+  """
+  def attribute_name(:click), do: "data-phx-click"
+  def attribute_name(:blur), do: "data-phx-blur"
+  def attribute_name(:focus), do: "data-phx-focus"
+
+  def attribute_name(name) do
+    [first | rest] = name |> Atom.to_string() |> Macro.camelize() |> String.graphemes()
+    String.downcase(first) <> Enum.join(rest)
+  end
+
+  @doc """
   A sigil for defining responsive values
 
   ## Examples
