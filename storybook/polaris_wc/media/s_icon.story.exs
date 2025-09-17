@@ -1,7 +1,7 @@
 defmodule Storybook.PolarisWC.SIconStory do
   use OctantisWeb.Storybook.Story, :web_component
 
-  def function, do: &OctantisWeb.Components.PolarisWC.SIcon.s_icon/1
+  def function, do: &OctantisWeb.Components.Polaris.s_icon/1
 
   def variations do
     [

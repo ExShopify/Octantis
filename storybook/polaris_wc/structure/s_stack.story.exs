@@ -1,7 +1,7 @@
 defmodule Storybook.PolarisWC.SStackStory do
   use OctantisWeb.Storybook.Story, :web_component
 
-  def function, do: &OctantisWeb.Components.PolarisWC.SStack.s_stack/1
+  def function, do: &OctantisWeb.Components.Polaris.s_stack/1
 
   def template do
     """
