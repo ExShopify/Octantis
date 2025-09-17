@@ -1,7 +1,7 @@
 defmodule Storybook.PolarisWC.SPopoverStory do
   use OctantisWeb.Storybook.Story, :web_component
 
-  def function, do: &OctantisWeb.Components.Polaris.s_popover/1
+  def function, do: &OctantisWeb.Components.Polaris.s_menu/1
 
   def template do
     """
@@ -20,7 +20,6 @@ defmodule Storybook.PolarisWC.SPopoverStory do
       {OctantisWeb.Components.Head, stylesheet: 1},
       {OctantisWeb.Components.Head, javascript: 1},
       {OctantisWeb.Components.Polaris, s_button: 1},
-      {OctantisWeb.Components.Polaris, s_stack: 1},
       {OctantisWeb.Storybook.Sigil, sigil_o: 2}
     ]
 
@@ -33,10 +32,8 @@ defmodule Storybook.PolarisWC.SPopoverStory do
             id: :default,
             slots: [
               ~S"""
-              <.s_stack direction="column" gap="small-500" padding="small-200 small-300">
-                <.s_button variant="tertiary">Import</.s_button>
-                <.s_button variant="tertiary">Export</.s_button>
-              </.s_stack>
+              <.s_button variant="tertiary">Import</.s_button>
+              <.s_button variant="tertiary">Export</.s_button>
               """
             ],
             attributes: %{}

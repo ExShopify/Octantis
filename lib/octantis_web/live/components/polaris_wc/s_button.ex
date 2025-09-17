@@ -95,8 +95,9 @@ defmodule OctantisWeb.Components.PolarisWC.SButton do
     This property is ignored if the component supports href or commandFor/command and one of them is set.
     """
 
-  s_attr :variant,
+  s_attr :variant, :variant,
     doc: ~S"""
+    Changes the visual appearance of the Button.
     """
 
   ## Events
