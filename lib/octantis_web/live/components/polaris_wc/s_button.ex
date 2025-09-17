@@ -12,6 +12,8 @@ defmodule OctantisWeb.Components.PolarisWC.SButton do
 
   ## Properties
 
+  s_attr :id, :string
+
   s_attr :accessibility_label, :string,
     doc: ~S"""
     A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
