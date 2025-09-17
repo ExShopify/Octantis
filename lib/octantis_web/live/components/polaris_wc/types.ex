@@ -6,14 +6,18 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
   def put_options(type, opts)
 
   def put_options(:color, opts), do: Keyword.put(opts, :values, colours())
+  def put_options(:command, opts), do: Keyword.put(opts, :values, commands())
   def put_options(:icon, opts), do: Keyword.put(opts, :values, icons())
+  def put_options(:target, opts), do: Keyword.put(opts, :values, targets())
   def put_options(:tone, opts), do: Keyword.put(opts, :values, tones())
   def put_options(:direction, opts), do: Keyword.put(opts, :values, direction())
   def put_options({:responsive, _}, opts), do: opts
+  def put_options(:variant, opts), do: Keyword.put(opts, :values, variants())
 
   def put_options(_no_values, opts), do: opts
 
   def get_base_type({:responsive, _}), do: :any
+  def get_base_type({:event, _}), do: :any
   def get_base_type(_), do: :string
 
   @doc """
@@ -62,7 +66,8 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
   defp build_responsive_from_list([tail], []), do: tail
 
   defp build_responsive_from_list(_, _) do
-    raise ArgumentError, message: "invalid argument. ~o[]r expects the format `value < breakpoint < value`"
+    raise ArgumentError,
+      message: "invalid argument. ~o[]r expects the format `value < breakpoint < value`"
   end
 
   def accessibility_role do
@@ -90,7 +95,11 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
 
   def colours, do: ["base", "strong"]
 
+  def commands, do: ["--auto", "--show", "--hide", "--toggle"]
+
   def direction, do: ["inline", "block"]
+
+  def targets, do: ["auto", "_blank", "_self", "_parent", "_top"]
 
   def tones, do: ["info", "success", "warning", "critical", "auto", "neutral", "caution"]
 
@@ -617,4 +626,6 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
       "x"
     ]
   end
+
+  def variants, do: ["auto", "primary", "secondary", "tertiary"]
 end

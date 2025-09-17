@@ -1,7 +1,7 @@
 defmodule Storybook.PolarisWC.SBadgeStory do
   use OctantisWeb.Storybook.Story, :web_component
 
-  def function, do: &OctantisWeb.Components.PolarisWC.SBadge.s_badge/1
+  def function, do: &OctantisWeb.Components.Polaris.s_badge/1
 
   def variations do
     [
