@@ -1,9 +1,11 @@
 defmodule OctantisWeb.Components.PolarisWC.SQueryContainer do
-  use OctantisWeb.Core, :web_component
-
   @moduledoc """
   Use to define an element as a containment context, enabling child components or styles to adapt based on the container’s size.
   """
+
+  use OctantisWeb.Core, :web_component
+
+  @doc @moduledoc
 
   s_attr :container_name, :string,
     doc: ~S"""
@@ -14,13 +16,13 @@ defmodule OctantisWeb.Components.PolarisWC.SQueryContainer do
     Any value set in containerName will be set alongside alongside s-default. For example, containerName="my-container-name" will result in a value of s-default my-container-name set on the container-name CSS property of the rendered HTML.
     """
 
-  @doc @moduledoc
+  attr :rest, :global
 
   def s_query_container(assigns) do
     assigns = assigns |> assign_s_attrs()
 
     ~H"""
-    <s-query-container {@s_attrs}>{render_slot(@inner_block)}</s-query-container>
+    <s-query-container {@s_attrs} {@rest}>{render_slot(@inner_block)}</s-query-container>
     """
   end
 end

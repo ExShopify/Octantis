@@ -40,13 +40,15 @@ defmodule OctantisWeb.Components.PolarisWC.SPopover do
 
   slot :inner_block
 
+  attr :rest, :global
+
   @doc @moduledoc
 
   def s_popover(assigns) do
     assigns = assigns |> assign_s_attrs()
 
     ~H"""
-    <s-popover {@s_attrs}>{render_slot(@inner_block)}</s-popover>
+    <s-popover {@s_attrs} {@rest}>{render_slot(@inner_block)}</s-popover>
     """
   end
 end
