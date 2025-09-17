@@ -8,6 +8,8 @@ defmodule OctantisWeb.Components.PolarisWC.SBadge do
 
   use OctantisWeb.Core, :web_component
 
+  @doc @moduledoc
+
   s_attr :color, :color, doc: "Modify the color to be more or less intense."
 
   s_attr :icon, :icon, doc: "The type of icon to be displayed in the badge."
@@ -17,15 +19,15 @@ defmodule OctantisWeb.Components.PolarisWC.SBadge do
   s_attr :tone, :tone,
     doc: "Sets the tone of the Badge, based on the intention of the information being conveyed."
 
-  slot :inner_block
+  attr :rest, :global
 
-  @doc @moduledoc
+  slot :inner_block
 
   def s_badge(assigns) do
     assigns = assigns |> assign_s_attrs()
 
     ~H"""
-    <s-badge {@s_attrs}>{render_slot(@inner_block)}</s-badge>
+    <s-badge {@s_attrs} {@rest}>{render_slot(@inner_block)}</s-badge>
     """
   end
 end

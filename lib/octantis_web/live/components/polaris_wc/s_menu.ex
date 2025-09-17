@@ -8,6 +8,8 @@ defmodule OctantisWeb.Components.PolarisWC.SMenu do
 
   use OctantisWeb.Core, :web_component
 
+  @doc @moduledoc
+
   s_attr :id, :string
 
   s_attr :accessibility_label, :string,
@@ -15,13 +17,15 @@ defmodule OctantisWeb.Components.PolarisWC.SMenu do
     A label that describes the purpose or contents of the element. When set, it will be announced using assistive technologies and provide additional context.
     """
 
+  attr :rest, :global
+
   slot :inner_block
 
   def s_menu(assigns) do
     assigns = assigns |> assign_s_attrs()
 
     ~H"""
-    <s-menu {@s_attrs}>{render_slot(@inner_block)}</s-menu>
+    <s-menu {@s_attrs} {@rest}>{render_slot(@inner_block)}</s-menu>
     """
   end
 end

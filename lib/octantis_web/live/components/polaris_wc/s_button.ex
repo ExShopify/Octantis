@@ -5,7 +5,6 @@ defmodule OctantisWeb.Components.PolarisWC.SButton do
   See:
   - https://shopify.dev/docs/api/app-home/polaris-web-components/structure/divider
   """
-
   use OctantisWeb.Core, :web_component
 
   @doc @moduledoc
@@ -106,13 +105,15 @@ defmodule OctantisWeb.Components.PolarisWC.SButton do
   s_attr :click, :event
   s_attr :focus, :event
 
+  attr :rest, :global
+
   slot :inner_block
 
   def s_button(assigns) do
     assigns = assigns |> assign_s_attrs()
 
     ~H"""
-    <s-button {@s_attrs}>{render_slot(@inner_block)}</s-button>
+    <s-button {@s_attrs} {@rest}>{render_slot(@inner_block)}</s-button>
     """
   end
 end

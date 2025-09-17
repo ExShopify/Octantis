@@ -9,6 +9,8 @@ defmodule OctantisWeb.Components.PolarisWC.SIcon do
 
   alias OctantisWeb.Components.PolarisWC.Types
 
+  @doc @moduledoc
+
   s_attr :color, :color, doc: "Modify the color to be more or less intense."
 
   s_attr :interest_for, :string,
@@ -24,12 +26,13 @@ defmodule OctantisWeb.Components.PolarisWC.SIcon do
     values: Types.icons(),
     doc: "Specifies the type of icon that will be displayed."
 
-  @doc @moduledoc
+  attr :rest, :global
+
   def s_icon(assigns) do
     assigns = assigns |> assign_s_attrs()
 
     ~H"""
-    <s-icon {@s_attrs}></s-icon>
+    <s-icon {@s_attrs} {@rest}></s-icon>
     """
   end
 end

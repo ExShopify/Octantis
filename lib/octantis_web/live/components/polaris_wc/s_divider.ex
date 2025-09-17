@@ -24,11 +24,13 @@ defmodule OctantisWeb.Components.PolarisWC.SDivider do
     A 'block' divider separates items within the current line of content. In a left-to-right or right-to-left writing mode, this would typically be a vertical line.
     """
 
+  attr :rest, :global
+
   def s_divider(assigns) do
     assigns = assigns |> assign_s_attrs()
 
     ~H"""
-    <s-divider {@s_attrs}></s-divider>
+    <s-divider {@s_attrs} {@rest}></s-divider>
     """
   end
 end

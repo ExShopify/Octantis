@@ -1,12 +1,13 @@
 defmodule OctantisWeb.Components.PolarisWC.SStack do
-  use OctantisWeb.Core, :web_component
-
   @moduledoc """
   Organizes elements horizontally or vertically along the block or inline axis. Use to structure layouts, group related components, or control spacing between elements.
 
   See:
   - https://shopify.dev/docs/api/app-home/polaris-web-components/structure/stack
   """
+  use OctantisWeb.Core, :web_component
+
+  @doc @moduledoc
 
   alias OctantisWeb.Components.PolarisWC.Types
 
@@ -70,13 +71,13 @@ defmodule OctantisWeb.Components.PolarisWC.SStack do
   s_attr :padding_inline_start, :string
   s_attr :row_gap, :string
 
-  @doc @moduledoc
+  attr :rest, :global
 
   def s_stack(assigns) do
     assigns = assigns |> assign_s_attrs()
 
     ~H"""
-    <s-stack {@s_attrs}>{render_slot(@inner_block)}</s-stack>
+    <s-stack {@s_attrs} {@rest}>{render_slot(@inner_block)}</s-stack>
     """
   end
 end

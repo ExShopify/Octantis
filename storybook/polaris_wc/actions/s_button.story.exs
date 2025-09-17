@@ -1,6 +1,8 @@
 defmodule Storybook.PolarisWC.SButtonStory do
   use OctantisWeb.Storybook.Story, :web_component
 
+  alias OctantisWeb.Components.PolarisWC.Types
+
   def function, do: &OctantisWeb.Components.Polaris.s_button/1
 
   def aliases, do: [Phoenix.LiveView.JS]
@@ -190,29 +192,6 @@ defmodule Storybook.PolarisWC.SButtonStory do
         ]
       },
       %VariationGroup{
-        id: :icon,
-        variations: [
-          %Variation{
-            id: :replace,
-            slots: [
-              ~S"""
-              replace
-              """
-            ],
-            attributes: %{icon: "replace"}
-          },
-          %Variation{
-            id: :camera,
-            slots: [
-              ~S"""
-              camera
-              """
-            ],
-            attributes: %{icon: "camera"}
-          }
-        ]
-      },
-      %VariationGroup{
         id: :bindings,
         variations: [
           %Variation{
@@ -234,6 +213,21 @@ defmodule Storybook.PolarisWC.SButtonStory do
             attributes: %{click: {:eval, ~s|JS.add_class("someclass", to: "#some_id")|}}
           }
         ]
+      },
+      %VariationGroup{
+        id: :icon,
+        variations:
+          for icon <- Types.icons() do
+            %Variation{
+              id: String.to_atom(icon),
+              slots: [
+                ~s"""
+                #{icon}
+                """
+              ],
+              attributes: %{icon: icon}
+            }
+          end
       }
     ]
   end
