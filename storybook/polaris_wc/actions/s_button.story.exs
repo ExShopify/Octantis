@@ -214,18 +214,17 @@ defmodule Storybook.PolarisWC.SButtonStory do
       },
       %VariationGroup{
         id: :icon,
-        variations:
-          [
-            %Variation{
-              id: :defatult,
-              slots: [
-                ~s"""
-                search
-                """
-              ],
-              attributes: %{icon: "search"}
-            }
-          ]
+        variations: [
+          %Variation{
+            id: :defatult,
+            slots: [
+              ~s"""
+              search
+              """
+            ],
+            attributes: %{icon: "search"}
+          }
+        ]
       }
     ]
   end
