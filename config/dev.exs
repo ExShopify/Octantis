@@ -15,6 +15,8 @@ config :octantis, OctantisWeb.Endpoint,
     storybook_tailwind: {Tailwind, :install_and_run, [:storybook, ~w(--watch)]}
   ]
 
+config :octantis, binding_prefix: "phx-"
+
 # Configures Elixir's Logger
 config :logger, :console, format: "$time [$level] $message [$metadata]\n"
 

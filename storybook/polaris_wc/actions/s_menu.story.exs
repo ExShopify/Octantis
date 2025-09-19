@@ -8,7 +8,7 @@ defmodule Storybook.PolarisWC.SPopoverStory do
     <.stylesheet psb-code-hidden/>
     <.javascript psb-code-hidden/>
 
-    <.s_button command_for=":variation_id-default">Open</.s_button>
+    <.s_button id=":variation_id-default_activator" command_for=":variation_id-default">Open</.s_button>
 
     <.psb-variation-group/>
 
@@ -23,6 +23,8 @@ defmodule Storybook.PolarisWC.SPopoverStory do
       {OctantisWeb.Storybook.Sigil, sigil_o: 2}
     ]
 
+  def aliases, do: [Phoenix.LiveView.JS]
+
   def variations do
     [
       %VariationGroup{
@@ -34,6 +36,29 @@ defmodule Storybook.PolarisWC.SPopoverStory do
               ~S"""
               <.s_button variant="tertiary">Import</.s_button>
               <.s_button variant="tertiary">Export</.s_button>
+              """
+            ],
+            attributes: %{}
+          }
+        ]
+      },
+      %VariationGroup{
+        id: :complex_event,
+        variations: [
+          %Variation{
+            id: :default,
+            slots: [
+              ~S"""
+              <.s_button
+                variant="tertiary"
+                click={
+                  JS.dispatch("click", to: "#s-popover-story-complex-event-default_activator")
+                  |> JS.push("trigge_event")
+                }
+                data-phx-value-dispatch-id="my-id"
+              >
+                Trigger Event and close
+              </.s_button>
               """
             ],
             attributes: %{}

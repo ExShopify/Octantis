@@ -3,6 +3,8 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
   Enumerations of types commonly found in Polaris
   """
 
+  @binding_prefix Application.compile_env(:octantis, :binding_prefix, "data-phx-")
+
   def put_options(type, opts)
 
   def put_options(:color, opts), do: Keyword.put(opts, :values, colours())
@@ -33,9 +35,6 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
     iex> attribute_name(:accessibility_label)
     "accessibilityLabel"
 
-    iex> attribute_name(:accessibility_label)
-    "accessibilityLabel"
-
     iex> attribute_name(:click)
     "data-phx-click"
 
@@ -45,9 +44,9 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
     iex> attribute_name(:focus)
     "data-phx-focus"
   """
-  def attribute_name(:click), do: "data-phx-click"
-  def attribute_name(:blur), do: "data-phx-blur"
-  def attribute_name(:focus), do: "data-phx-focus"
+  def attribute_name(:click), do: @binding_prefix <> "click"
+  def attribute_name(:blur), do: @binding_prefix <> "blur"
+  def attribute_name(:focus), do: @binding_prefix <> "focus"
 
   def attribute_name(name) do
     [first | rest] = name |> Atom.to_string() |> Macro.camelize() |> String.graphemes()
