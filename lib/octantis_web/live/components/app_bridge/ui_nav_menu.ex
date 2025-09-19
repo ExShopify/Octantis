@@ -22,14 +22,13 @@ defmodule OctantisWeb.Components.AppBridge.UiNavMenu do
 
       <script defer data-phx-track-static type="text/javascript" src={~p"/assets/shop_admin.js"}>
       </script>
-
+    </head>
+    <body style="background-color: var(--p-color-bg-app); color: var(--p-color-text);">
       <.ui_nav_menu>
         <:link name="Home" url="/shop_admin/" />
         <:link name="Settings" url="/shop_admin/settings" />
-        <:link name="Contact" url="/shop_admin/contact" />
+        <:link name="Contact" url="/shop_admin/contact/contactid" navigate="/shop_admin/contact" />
       </.ui_nav_menu>
-    </head>
-    <body style="background-color: var(--p-color-bg-app); color: var(--p-color-text);">
       {@inner_content}
     </body>
   </html>
@@ -50,10 +49,13 @@ defmodule OctantisWeb.Components.AppBridge.UiNavMenu do
   slot :link, validate_attrs: true do
     attr :name, :string
     attr :url, :string
+    attr :navigate, :string
   end
 
   def ui_nav_menu(assigns) do
-    assigns = assigns |> assign(:first_link, hd(assigns.link))
+    assigns =
+      assigns
+      |> assign(:first_link, hd(assigns.link))
 
     ~H"""
     <ui-nav-menu>
@@ -61,14 +63,16 @@ defmodule OctantisWeb.Components.AppBridge.UiNavMenu do
         id={@id <> "First"}
         name={@first_link[:name]}
         url={@first_link[:url]}
+        navigate={@first_link[:url]}
         hook={@hook}
         rel="home"
       />
       <.ui_nav_menu_link
-        :for={{%{name: name, url: url}, index} <- Enum.with_index(@link)}
+        :for={{link, index} <- Enum.with_index(@link)}
         id={@id <> to_string(index)}
-        name={name}
-        url={url}
+        name={link[:name]}
+        url={link[:url]}
+        navigate={link[:navigate] || link[:url]}
         hook={@hook}
       />
     </ui-nav-menu>
@@ -79,11 +83,12 @@ defmodule OctantisWeb.Components.AppBridge.UiNavMenu do
   attr :url, :string, required: true
   attr :hook, :string, required: true
   attr :id, :string, required: true
+  attr :navigate, :string, required: true
   attr :rest, :global
 
   def ui_nav_menu_link(assigns) do
     ~H"""
-    <a id={@id} data-phx-hook={@hook} data-nav-event={JS.navigate(@url)} href={@url} {@rest}>
+    <a id={@id} data-phx-hook={@hook} data-nav-event={JS.navigate(@navigate)} href={@url} {@rest}>
       {@name}
     </a>
     """
