@@ -59,6 +59,7 @@ defmodule OctantisWeb.Components.Polaris do
   # WebComponents
 
   defdelegate s_badge(assigns), to: OctantisWeb.Components.PolarisWC.SBadge
+  defdelegate s_box(assigns), to: OctantisWeb.Components.PolarisWC.SBox
   defdelegate s_button(assigns), to: OctantisWeb.Components.PolarisWC.SButton
   defdelegate s_divider(assigns), to: OctantisWeb.Components.PolarisWC.SDivider
   defdelegate s_icon(assigns), to: OctantisWeb.Components.PolarisWC.SIcon
