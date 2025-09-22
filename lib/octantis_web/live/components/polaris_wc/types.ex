@@ -1,12 +1,28 @@
 defmodule OctantisWeb.Components.PolarisWC.Types do
   @moduledoc """
   Enumerations of types commonly found in Polaris
+
+
+  TODOs:
+    * BorderShorthand
+    * MaybeAllValuesShorthandProperty\<BoxBorderRadii
+    * MaybeResponsive\<MaybeAllValuesShorthandProperty\<PaddingKeyword>>
+    * MaybeResponsive<"" | MaybeTwoValuesShorthandProperty\<PaddingKeyword>>
+    * MaybeResponsive<"" | PaddingKeyword>
+    * MaybeResponsive<"" | MaybeTwoValuesShorthandProperty\<PaddingKeyword>>
   """
 
   @binding_prefix Application.compile_env(:octantis, :binding_prefix, "data-phx-")
 
   def put_options(type, opts)
 
+  def put_options(:accessibility_role, opts),
+    do: Keyword.put(opts, :accessibility_role, colours())
+
+  def put_options(:accessibility_visibility, opts),
+    do: Keyword.put(opts, :accessibility_visibility, colours())
+
+  def put_options(:background_color, opts), do: Keyword.put(opts, :background_color, colours())
   def put_options(:color, opts), do: Keyword.put(opts, :values, colours())
   def put_options(:command, opts), do: Keyword.put(opts, :values, commands())
   def put_options(:icon, opts), do: Keyword.put(opts, :values, icons())
@@ -14,10 +30,14 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
   def put_options(:tone, opts), do: Keyword.put(opts, :values, tones())
   def put_options(:direction, opts), do: Keyword.put(opts, :values, direction())
   def put_options({:responsive, _}, opts), do: opts
+  def put_options(:overflow, opts), do: Keyword.put(opts, :values, overflow())
   def put_options(:variant, opts), do: Keyword.put(opts, :values, variants())
 
   def put_options(_no_values, opts), do: opts
 
+  def get_base_type(:size_units), do: :any
+  def get_base_type(:size_units_or_auto), do: :any
+  def get_base_type(:size_units_or_none), do: :any
   def get_base_type({:responsive, _}), do: :any
   def get_base_type({:event, _}), do: :any
   def get_base_type(_), do: :string
@@ -126,7 +146,9 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
 
   def accessibility_visibility, do: ["visible", "hidden", "exclusive"]
 
-  def colours, do: ["base", "strong"]
+  def background_color, do: ["transparent", "subdued", "base", "strong"]
+
+  def colours, do: ["subdued", "base", "strong"]
 
   def commands, do: ["--auto", "--show", "--hide", "--toggle"]
 
@@ -659,6 +681,8 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
       "x"
     ]
   end
+
+  def overflow, do: ["visible", "hidden"]
 
   def variants, do: ["auto", "primary", "secondary", "tertiary"]
 end
