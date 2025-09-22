@@ -105,7 +105,7 @@ defmodule OctantisWeb.Components.PolarisWC.SButton do
   s_attr :click, :event
   s_attr :focus, :event
 
-  attr :rest, :global
+  attr :rest, :global, include: ~w(slot)
 
   slot :inner_block
 
