@@ -65,6 +65,7 @@ defmodule OctantisWeb.Components.Polaris do
   defdelegate s_grid(assigns), to: OctantisWeb.Components.PolarisWC.SGrid
   defdelegate s_icon(assigns), to: OctantisWeb.Components.PolarisWC.SIcon
   defdelegate s_menu(assigns), to: OctantisWeb.Components.PolarisWC.SMenu
+  defdelegate s_ordered_list(assigns), to: OctantisWeb.Components.PolarisWC.SOrderedList
   defdelegate s_popover(assigns), to: OctantisWeb.Components.PolarisWC.SPopover
   defdelegate s_query_container(assigns), to: OctantisWeb.Components.PolarisWC.SQueryContainer
   defdelegate s_stack(assigns), to: OctantisWeb.Components.PolarisWC.SStack
