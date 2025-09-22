@@ -1,4 +1,4 @@
-defmodule Storybook.PolarisWC.SGrid do
+defmodule Storybook.PolarisWC.SGridStory do
   use OctantisWeb.Storybook.Story, :web_component
 
   def function, do: &OctantisWeb.Components.Polaris.s_grid/1

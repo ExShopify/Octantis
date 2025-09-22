@@ -1,4 +1,4 @@
-defmodule Storybook.PolarisWC.SBox do
+defmodule Storybook.PolarisWC.SBoxStory do
   use OctantisWeb.Storybook.Story, :web_component
 
   def function, do: &OctantisWeb.Components.Polaris.s_box/1
