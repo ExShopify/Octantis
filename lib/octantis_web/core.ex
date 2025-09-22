@@ -26,7 +26,7 @@ defmodule OctantisWeb.Core do
 
       Module.register_attribute(__MODULE__, :s_attrs, accumulate: true)
 
-      defmacro assign_s_attrs(assigns, key \\ :s_attrs) do
+      defmacrop assign_s_attrs(assigns, key \\ :s_attrs) do
         quote do
           assign_attrs_from_map(unquote(assigns), unquote(key), @s_attrs |> Map.new())
         end
