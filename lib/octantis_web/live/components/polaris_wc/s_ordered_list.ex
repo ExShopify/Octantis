@@ -40,7 +40,3 @@ defmodule OctantisWeb.Components.PolarisWC.SOrderedList do
     """
   end
 end
-
-# Ordered​List
-
-## ListItem
