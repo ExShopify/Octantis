@@ -76,4 +76,5 @@ defmodule OctantisWeb.Components.Polaris do
   defdelegate s_query_container(assigns), to: OctantisWeb.Components.PolarisWC.SQueryContainer
   defdelegate s_section(assigns), to: OctantisWeb.Components.PolarisWC.SSection
   defdelegate s_stack(assigns), to: OctantisWeb.Components.PolarisWC.SStack
+  defdelegate s_tooltip(assigns), to: OctantisWeb.Components.PolarisWC.STooltip
 end
