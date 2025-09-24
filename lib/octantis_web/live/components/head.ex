@@ -46,7 +46,7 @@ defmodule OctantisWeb.Components.Head do
     <script src="https://cdn.shopify.com/shopifycloud/app-bridge.js">
     </script>
     <%!-- Polaris WebComponents --%>
-    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js">
+    <script src="https://cdn.shopify.com/shopifycloud/polaris.js">
     </script>
     """
   end
