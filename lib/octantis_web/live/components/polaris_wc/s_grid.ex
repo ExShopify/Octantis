@@ -17,9 +17,9 @@ defmodule OctantisWeb.Components.PolarisWC.SGrid do
 
   ```elixir
     <.s_grid
-      gridTemplateColumns="repeat(2, 1fr)"
+      grid_template_columns="repeat(2, 1fr)"
       gap="small"
-      justifyContent="center"
+      justify_content="center"
     >
       <:s_grid_item gridColumn="span 2" border="base" borderStyle="dashed">
         Summary of sales
