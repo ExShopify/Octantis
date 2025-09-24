@@ -8,14 +8,14 @@ defmodule OctantisWeb.Components.PolarisWC.SPopover do
 
   ### Examples
   ```
-  <s-button commandFor="product-options-popover">Product options</s-button>
+  <.s_button command_for="product-options-popover">Product options</.s_button>
 
-  <s-popover id="product-options-popover" accessibilityLabel="Product options">
-    <s-stack direction="column" gap="small-500" padding="small-200 small-300">
-      <s-button variant="tertiary">Import</s-button>
-      <s-button variant="tertiary">Export</s-button>
-    </s-stack>
-  </s-popover>
+  <.s_popover id="product-options-popover" accessibilityLabel="Product options">
+    <.s_stack direction="column" gap="small-500" padding="small-200 small-300">
+      <.s_button variant="tertiary">Import</.s_button>
+      <.s_button variant="tertiary">Export</.s_button>
+    </.s_stack>
+  </.s_popover>
   ```
 
   """
