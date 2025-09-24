@@ -16,11 +16,10 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
 
   def put_options(type, opts)
 
-  def put_options(:accessibility_role, opts),
-    do: Keyword.put(opts, :accessibility_role, colours())
+  def put_options(:accessibility_role, opts), do: Keyword.put(opts, :values, colours())
 
   def put_options(:accessibility_visibility, opts),
-    do: Keyword.put(opts, :accessibility_visibility, colours())
+    do: Keyword.put(opts, :values, accessibility_visibility())
 
   def put_options(:background_color, opts), do: Keyword.put(opts, :background_color, colours())
   def put_options(:color, opts), do: Keyword.put(opts, :values, colours())
@@ -31,8 +30,8 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
   def put_options(:direction, opts), do: Keyword.put(opts, :values, direction())
   def put_options({:responsive, _}, opts), do: opts
   def put_options(:overflow, opts), do: Keyword.put(opts, :values, overflow())
+  def put_options(:padding, opts), do: Keyword.put(opts, :values, padding())
   def put_options(:variant, opts), do: Keyword.put(opts, :values, variants())
-
   def put_options(_no_values, opts), do: opts
 
   def get_base_type(:size_units), do: :any
@@ -683,6 +682,8 @@ defmodule OctantisWeb.Components.PolarisWC.Types do
   end
 
   def overflow, do: ["visible", "hidden"]
+
+  def padding, do: ["base", "none"]
 
   def variants, do: ["auto", "primary", "secondary", "tertiary"]
 end
