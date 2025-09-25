@@ -56,7 +56,7 @@ defmodule OctantisWeb.Components.PolarisWC.SButtonGroup do
     assigns = assigns |> assign_s_attrs()
 
     ~H"""
-    <s-button_group {@s_attrs} {@rest}>
+    <s-button-group {@s_attrs} {@rest}>
       <.s_button :for={button <- @s_button_primary} {button} variant="primary" slot="primary-action">
         {render_slot(button)}
       </.s_button>
@@ -68,7 +68,7 @@ defmodule OctantisWeb.Components.PolarisWC.SButtonGroup do
       >
         {render_slot(button)}
       </.s_button>
-    </s-button_group>
+    </s-button-group>
     """
   end
 end
