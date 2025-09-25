@@ -3,8 +3,6 @@ defmodule Storybook.PolarisWC.SButtonGroupStory do
 
   def function, do: &OctantisWeb.Components.Polaris.s_button_group/1
 
-  def aliases, do: [Phoenix.LiveView.JS]
-
   def variations do
     [
       %VariationGroup{

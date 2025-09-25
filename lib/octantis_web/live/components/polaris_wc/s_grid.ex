@@ -21,15 +21,15 @@ defmodule OctantisWeb.Components.PolarisWC.SGrid do
       gap="small"
       justify_content="center"
     >
-      <:s_grid_item gridColumn="span 2" border="base" borderStyle="dashed">
+      <:s_grid_item grid_column="span 2" border="base" border_style="dashed">
         Summary of sales
       </:s_grid_item>
-      <s-grid-item gridColumn="span 1" border="base" borderStyle="dashed">
+      <:s-grid-item grid_column="span 1" border="base" border_style="dashed">
         Orders
       </:s_grid_item>
-      <s_grid_item gridColumn="auto" border="base" borderStyle="dashed">
+      <:s_grid_item grid_column="auto" border="base" border_style="dashed">
         Customers
-      </s_grid_item>
+      </:s_grid_item>
     </.s_grid>
     ```
 
