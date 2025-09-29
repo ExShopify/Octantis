@@ -96,6 +96,8 @@ defmodule OctantisWeb.Components.PolarisWC.SButton do
 
   s_attr :variant, :variant,
     doc: ~S"""
+    "auto" | "primary" | "secondary" | "tertiary"
+
     Changes the visual appearance of the Button.
     """
 

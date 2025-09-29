@@ -73,6 +73,8 @@ defmodule OctantisWeb.Components.PolarisWC.SStack do
 
   attr :rest, :global
 
+  slot :inner_block
+
   def s_stack(assigns) do
     assigns = assigns |> assign_s_attrs()
 
