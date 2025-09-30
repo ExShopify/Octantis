@@ -1,7 +1,7 @@
 defmodule OctantisWeb.Components.Polaris do
   @moduledoc """
   These components are an implementation of the Shopify Polaris design system.
-  Style attributes are taken from Polaris Tokens. 
+  Style attributes are taken from Polaris Tokens.
 
   ## See
   - https://polaris.shopify.com/tokens/color
@@ -72,6 +72,7 @@ defmodule OctantisWeb.Components.Polaris do
   defdelegate s_link(assigns), to: OctantisWeb.Components.PolarisWC.SLink
   defdelegate s_menu(assigns), to: OctantisWeb.Components.PolarisWC.SMenu
   defdelegate s_ordered_list(assigns), to: OctantisWeb.Components.PolarisWC.SOrderedList
+  defdelegate s_page(assigns), to: OctantisWeb.Components.PolarisWC.SPage
   defdelegate s_paragraph(assigns), to: OctantisWeb.Components.PolarisWC.SParagraph
   defdelegate s_popover(assigns), to: OctantisWeb.Components.PolarisWC.SPopover
   defdelegate s_query_container(assigns), to: OctantisWeb.Components.PolarisWC.SQueryContainer

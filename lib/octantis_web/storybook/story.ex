@@ -29,17 +29,24 @@ defmodule OctantisWeb.Storybook.Story do
     quote do
       use PhoenixStorybook.Story, :component
 
-      def imports,
-        do: [
+      def imports do
+        [
           {OctantisWeb.Components.Head, stylesheet: 1},
-          {OctantisWeb.Components.Head, javascript: 1}
+          {OctantisWeb.Components.Head, javascript: 1},
+          {OctantisWeb.Components.Polaris, s_page: 1},
+          {OctantisWeb.Components.Polaris, s_section: 1}
         ]
+      end
 
       def template do
         """
         <.stylesheet psb-code-hidden/>
         <.javascript psb-code-hidden/>
-        <.psb-variation-group/>
+        <.s_page psb-code-hidden>
+          <.s_section psb-code-hidden>
+            <.psb-variation-group/>
+          </.s_section>
+        </.s_page>
         """
       end
 
