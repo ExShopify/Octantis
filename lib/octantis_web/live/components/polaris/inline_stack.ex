@@ -5,13 +5,13 @@ defmodule OctantisWeb.Components.Polaris.InlineStack do
 
   ## Examples
   ```elixir
-    <.inline_stack gap={[xs: 500]}>
-      <div>Contents</div>
-      <div>Contents</div>
-    </.inline_stack>
+  <.inline_stack gap={[xs: 500]}>
+    <div>Contents</div>
+    <div>Contents</div>
+  </.inline_stack>
   ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/layout-and-structure/inline-stack
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/InlineStack/InlineStack.tsx
 

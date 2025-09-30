@@ -1,10 +1,14 @@
 defmodule OctantisWeb.Components.Polaris.Spinner do
   @moduledoc """
   Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts.
+
   ## Examples
-      <.spinner size="small" accessibility_label="loading" />
-      <.spinner size="large" accessibility_label="loading" />
-  See
+  ```elixir 
+    <.spinner size="small" accessibility_label="loading" />
+    <.spinner size="large" accessibility_label="loading" />
+  ``` 
+
+  ## See
     - https://polaris.shopify.com/components/feedback-indicators/spinner
     - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Spinner/Spinner.tsx
   """

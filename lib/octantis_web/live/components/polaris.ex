@@ -1,9 +1,11 @@
 defmodule OctantisWeb.Components.Polaris do
   @moduledoc """
-  Polaris Components
   These components are an implementation of the Shopify Polaris design system.
-  Style attributes are taken from Polaris Tokens. https://polaris.shopify.com/tokens/color
-  See https://polaris.shopify.com/components
+  Style attributes are taken from Polaris Tokens. 
+
+  ## See
+  - https://polaris.shopify.com/tokens/color
+  - https://polaris.shopify.com/components
   """
 
   use Phoenix.Component

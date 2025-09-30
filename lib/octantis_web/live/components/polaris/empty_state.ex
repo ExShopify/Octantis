@@ -3,14 +3,14 @@ defmodule OctantisWeb.Components.Polaris.EmptyState do
   Empty states are used when a list, table, or chart has no items or data to show. This is an opportunity to provide explanation or guidance to help merchants progress. The empty state component is intended for use when a full page in the admin is empty, and not for individual elements or areas in the interface.
 
   ## Examples
-    ```elixir
-    <.empty_state image="/images/relax.svg" heading="You don't have sections">
-      <:action content="Broswe library" />
-      Things will go here, eventually...
-    </.empty_state>
-    ```
+  ```elixir
+  <.empty_state image="/images/relax.svg" heading="You don't have sections">
+    <:action content="Broswe library" />
+    Things will go here, eventually...
+  </.empty_state>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/layout-and-structure/empty-state
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/EmptyState/EmptyState.tsx
   """

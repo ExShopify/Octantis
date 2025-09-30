@@ -1,10 +1,13 @@
 defmodule OctantisWeb.Components.Polaris.Page do
   @moduledoc """
   Use to build the outer wrapper of a page, including the page title and associated actions.
-  ## Examples
-    <.page></.page>
 
-  See
+  ## Examples
+  ```elixir 
+  <.page></.page>
+  ```
+
+  ## See
     - https://polaris.shopify.com/components/layout-and-structure/page
     - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Page/Page.tsx
     - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Page/tests/Page.test.tsx

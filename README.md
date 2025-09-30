@@ -1,6 +1,6 @@
 # Octantis
 
-Octantis is an implementation of [Polaris Design System](https://polaris.shopify.com/) in Elixir for Phoenix LiveView. If you are building a ShopAdmin for your Shopify App (Shopify calls this [embedded app home](https://shopify.dev/docs/apps/build/admin) at times), and want to conform to the Shopify perscribed design system, then you will want to use Octantis.
+Octantis is an implementation of [Polaris Design System](https://shopify.dev/docs/api/app-home/polaris-web-components) in Elixir for Phoenix LiveView. If you are building a ShopAdmin for your Shopify App (Shopify calls this [embedded app home](https://shopify.dev/docs/apps/build/admin) at times), and want to conform to the Shopify perscribed design system, then you will want to use Octantis.
 
 Octantis provides Polaris LiveView components that you can drop into your LiveView Shop admin.
 

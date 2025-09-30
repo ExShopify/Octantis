@@ -5,12 +5,8 @@ defmodule OctantisWeb.Components.Polaris.Modal do
   Polaris marks this component as `Deprecated` and suggests you use the AppBridge Modal instead.
   However, the AppBridge Modal is severly limited and it might be best to still use this for the time being.
 
-  See
-   - https://polaris.shopify.com/components/deprecated/modal
-   - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Modal/Modal.tsx
-
-
-  ## Open a modal from the server
+  ## Examples
+  ### Open a modal from the server
 
   ```javascript
   Hooks.ShopifyModal = {
@@ -32,6 +28,10 @@ defmodule OctantisWeb.Components.Polaris.Modal do
   ```elixir
   {:noreply, socket |> Modal.push_open("my_modal_id")}
   ```
+
+  ## See
+   - https://polaris.shopify.com/components/deprecated/modal
+   - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Modal/Modal.tsx
   """
 
   use OctantisWeb.Core

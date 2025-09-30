@@ -1,18 +1,18 @@
 defmodule OctantisWeb.Components.Polaris.RadioButton do
   @moduledoc """
-    Use radio buttons to present each item in a list of options where merchants must make a single selection.
+  Use radio buttons to present each item in a list of options where merchants must make a single selection.
 
-    Must be inside of a '.form'
+  Must be inside of a '.form'
 
   ## Examples
-    ```elixir
-    <.form>
+  ```elixir
+  <.form>
     <.radio_button label="Accounts are disabled" name="accounts" help_text="Customers will only be able to check out as guests."/>
     <.radio_button label="Accounts are optional" name="accounts" checked help_text="Customers will be able to check out with a customer account or as a guest."/>
-    </.form>
-    ```
+  </.form>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/selection-and-input/radio-button
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/RadioButton/RadioButton.tsx
   """

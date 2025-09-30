@@ -3,11 +3,11 @@ defmodule OctantisWeb.Components.Polaris.SkeletonDisplayText do
   Skeleton display text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.
 
   ## Examples
-    ```elixir
-    </.skeleton_display_text>
-    ```
+  ```elixir
+  </.skeleton_display_text>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/feedback-indicators/skeleton-display-text
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/SkeletonDisplayText/SkeletonDisplayText.tsx
   """

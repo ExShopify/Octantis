@@ -7,10 +7,9 @@ defmodule OctantisWeb.Components.Polaris.IndexTable do
   <.index_table />
   ```
 
-  See
+  ## See
   - https://polaris.shopify.com/components/tables/index-table
   - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/IndexTable/IndexTable.tsx
-
   """
 
   use OctantisWeb.Core

@@ -5,13 +5,13 @@ defmodule OctantisWeb.Components.Polaris.TextField do
   Must be wrapped in a form component.
 
   ## Examples
-    ```elixir
-    <.form ... >
-      <.text_field label="Search"/>
-    </.form>
-    ```
+  ```elixir
+  <.form ... >
+    <.text_field label="Search"/>
+  </.form>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/selection-and-input/text-field
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/TextField/TextField.tsx
   """

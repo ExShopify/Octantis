@@ -3,11 +3,11 @@ defmodule OctantisWeb.Components.Polaris.Bleed do
   Applies negative margin to allow content to bleed out into the surrounding layout.
 
   ## Examples
-    ```elixir
-    </.bleed>
-    ```
+  ```elixir
+  </.bleed>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/layout-and-structure/bleed
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Bleed/Bleed.tsx
   """

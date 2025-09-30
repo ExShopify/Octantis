@@ -1,10 +1,15 @@
 defmodule OctantisWeb.Components.Polaris.Card do
   @moduledoc """
   Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
+
   ## Examples
+
+  ```elixir
     <.card><.text as="h2">Content inside a card</.text></.card>
     <.card rounded_above="sm" background="bg-surface-secondary" padding="400"><.text as="h2">Content inside a card</.text></.card>
-  See
+  ```
+
+  ## See
    - https://polaris.shopify.com/components/layout-and-structure/card
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Card/tests/Card.test.tsx
   """

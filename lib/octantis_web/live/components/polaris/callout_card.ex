@@ -3,12 +3,12 @@ defmodule OctantisWeb.Components.Polaris.CalloutCard do
   Callout cards are used to encourage merchants to take an action related to a new feature or opportunity. They are most commonly displayed in the sales channels section of Shopify.
 
   ## Examples
-    ```elixir
-    <.callout_card title="Customize the style of your checkout" illustration="https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg">
-      <p>Upload your store’s logo, change colors and fonts, and more.</p>
-      <:primary_action content="Customize checkout" url="#" />
-    </.callout_card>
-    ```
+  ```elixir
+  <.callout_card title="Customize the style of your checkout" illustration="https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg">
+    <p>Upload your store’s logo, change colors and fonts, and more.</p>
+    <:primary_action content="Customize checkout" url="#" />
+  </.callout_card>
+  ```
 
   ## See
    - https://polaris.shopify.com/components/layout-and-structure/callout-card

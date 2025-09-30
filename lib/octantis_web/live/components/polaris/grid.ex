@@ -3,20 +3,22 @@ defmodule OctantisWeb.Components.Polaris.Grid do
   Create complex layouts based on CSS Grid.
 
   ## Examples
-    <.grid columns={[sm: 3]}>
-      <:grid_cell column_span={[xs: 6, sm: 3, md: 3, lg: 6, xl: 6]}>
-        <.card>
-          <.text as="h2" variant="bodyMd">View a summary of your online store’s sales.</.text>
-        </.card>
-      </:grid_cell>
-      <:grid_cell column_span={[xs: 6, sm: 3, md: 3, lg: 6, xl: 6]}>
-        <.card>
-          <.text as="h2" variant="bodyMd">View a summary of your online store’s orders.</.text>
-        </.card>
-      </:grid_cell>
-    </.grid>
+  ```elixir
+  <.grid columns={[sm: 3]}>
+    <:grid_cell column_span={[xs: 6, sm: 3, md: 3, lg: 6, xl: 6]}>
+      <.card>
+        <.text as="h2" variant="bodyMd">View a summary of your online store’s sales.</.text>
+      </.card>
+    </:grid_cell>
+    <:grid_cell column_span={[xs: 6, sm: 3, md: 3, lg: 6, xl: 6]}>
+      <.card>
+        <.text as="h2" variant="bodyMd">View a summary of your online store’s orders.</.text>
+      </.card>
+    </:grid_cell>
+  </.grid>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/layout-and-structure/grid
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Grid/Grid.tsx
   """

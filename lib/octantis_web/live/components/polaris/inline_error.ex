@@ -3,11 +3,11 @@ defmodule OctantisWeb.Components.Polaris.InlineError do
   Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may not be valid and how to fix it.
 
   ## Examples
-    ```elixir
-    </.inline_error message="Store name is required" field_id="myFieldID" >
-    ```
+  ```elixir
+  </.inline_error message="Store name is required" field_id="myFieldID" >
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/selection-and-input/inline-error
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/InlineError/InlineError.tsx
   """

@@ -3,13 +3,13 @@ defmodule OctantisWeb.Components.Polaris.Banner do
   Use to convey general information or actions that aren’t critical. For example, you might show a banner that asks for merchant feedback. Default banners contain lower priority information and should always be dismissible.
 
   ## Examples
-    ```elixir
-    <.banner title="Order archived" >
-          <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
-    </.banner>
-    ```
+  ```elixir
+  <.banner title="Order archived" >
+    <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+  </.banner>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/feedback-indicators/banner
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Banner/Banner.tsx
   """

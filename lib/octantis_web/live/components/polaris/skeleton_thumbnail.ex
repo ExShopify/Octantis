@@ -1,12 +1,13 @@
 defmodule OctantisWeb.Components.Polaris.SkeletonThumbnail do
   @moduledoc """
   Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Use for thumbnails in or outside of a card.
-  ## Examples
-    ```elixir
-    </.skeleton_thumbnail>
-    ```
 
-  See
+  ## Examples
+  ```elixir
+  </.skeleton_thumbnail>
+  ```
+
+  ## See
    - https://polaris.shopify.com/components/feedback-indicators/skeleton-thumbnail
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/SkeletonDisplayText/SkeletonDisplayText.tsx
   """

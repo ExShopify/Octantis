@@ -3,15 +3,14 @@ defmodule OctantisWeb.Components.Polaris.BlockStack do
   Use to display children vertically and horizontally with full width by default. Based on CSS Flexbox.
 
   ## Examples
+  ```elixir
+    <.block_stack gap={[xs: 500]}>
+      <div>Contents</div>
+      <div>Contents</div>
+    </.block_stack>
+  ```
 
-    ```elixir
-      <.block_stack gap={[xs: 500]}>
-        <div>Contents</div>
-        <div>Contents</div>
-      </.block_stack>
-    ```
-
-  See
+  ## See
    - https://polaris.shopify.com/components/layout-and-structure/block-stack
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/BlockStack/BlockStack.tsx
   """

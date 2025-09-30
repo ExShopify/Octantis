@@ -16,7 +16,7 @@ defmodule OctantisWeb.Components.Polaris.MediaCard do
   </.media_card>
   ```
 
-  See
+  ## See
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/MediaCard/MediaCard.tsx
    - https://polaris.shopify.com/components/layout-and-structure/media-card
   """

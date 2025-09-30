@@ -1,7 +1,9 @@
 defmodule OctantisWeb.Components.Polaris.Tokens.Colour do
   @moduledoc """
   Captures the Polaris Color Tokens. Allows enforcing of component attributes
-  See https://polaris.shopify.com/tokens/color
+
+  ## See 
+  - https://polaris.shopify.com/tokens/color
   """
 
   @tokens [

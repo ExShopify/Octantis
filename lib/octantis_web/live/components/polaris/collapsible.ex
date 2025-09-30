@@ -3,17 +3,17 @@ defmodule OctantisWeb.Components.Polaris.Collapsible do
   The collapsible component is used to put long sections of information under a block that merchants can expand or collapse.
 
   ## Examples
-    ```elixir
-    <.collapsible id="collapsible-default-default" open>
-      <.text as="h2" variant="bodyMd">Content inside a collapse</.text>
-    </.collapsible>
-    ```
+  ```elixir
+  <.collapsible id="collapsible-default-default" open>
+    <.text as="h2" variant="bodyMd">Content inside a collapse</.text>
+  </.collapsible>
+  ```
 
-    ```elixir
-    {:noreply, Collapsible.push_close(socket, "MyId")}
-    ```
+  ```elixir
+  {:noreply, Collapsible.push_close(socket, "MyId")}
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/utilities/collapsible
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Collapsible/Collapsible.tsx
   """

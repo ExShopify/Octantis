@@ -32,19 +32,19 @@ defmodule OctantisWeb.Components.Polaris.AppBridgeModal do
   * Shopify is munging events such as click events in an unknown way to reach the parent LiveView. This is fragile to say the least.
 
   ## Examples
-    ```elixir
-    <.app_bridge_modal title="Uninstall Section" id="my-modal">
-      <:static_iframe>
-        Are you sure you want to uninstall the section?
-      </:static_iframe>
-      <:primary_action content="Uninstall" phx_click="uninstall_section" phx_values={[id: "1234"]} />
-      <:secondary_action content="Cancel" phx_click={AppBridgeModal.hide("my-modal")} />
-    </.app_bridge_modal>
+  ```elixir
+  <.app_bridge_modal title="Uninstall Section" id="my-modal">
+    <:static_iframe>
+      Are you sure you want to uninstall the section?
+    </:static_iframe>
+    <:primary_action content="Uninstall" phx_click="uninstall_section" phx_values={[id: "1234"]} />
+    <:secondary_action content="Cancel" phx_click={AppBridgeModal.hide("my-modal")} />
+  </.app_bridge_modal>
 
-    <.button phx_click={AppBridgeModal.show("my-modal")}>Uninstall</.button>
-    ```
+  <.button phx_click={AppBridgeModal.show("my-modal")}>Uninstall</.button>
+  ```
 
-  See
+  ## See
    - https://shopify.dev/docs/api/app-bridge-library/web-components/ui-modal
   """
 
