@@ -6,3 +6,7 @@
  */
 
 /* @import "../vendor/polaris-13.9.0-styles.css"; */
+
+.psb .psb-flex .octantis-web {
+  display: unset
+}

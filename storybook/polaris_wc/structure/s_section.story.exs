@@ -7,8 +7,19 @@ defmodule Storybook.PolarisWC.SSectionStory do
     do: [
       {OctantisWeb.Components.Head, stylesheet: 1},
       {OctantisWeb.Components.Head, javascript: 1},
+      {OctantisWeb.Components.Polaris, s_page: 1},
       {OctantisWeb.Components.Polaris, s_paragraph: 1}
     ]
+
+  def template do
+    """
+    <.stylesheet psb-code-hidden/>
+    <.javascript psb-code-hidden/>
+    <.s_page psb-code-hidden>
+      <.psb-variation-group/>
+    </.s_page>
+    """
+  end
 
   def variations do
     [

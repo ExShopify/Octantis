@@ -3,12 +3,14 @@ defmodule Storybook.PolarisWC.SBannerStory do
 
   def function, do: &OctantisWeb.Components.Polaris.s_banner/1
 
-  def imports,
-    do: [
+  def imports do
+    [
       {OctantisWeb.Components.Head, stylesheet: 1},
       {OctantisWeb.Components.Head, javascript: 1},
-      {OctantisWeb.Components.PolarisWC.SSection, s_section: 1}
+      {OctantisWeb.Components.Polaris, s_page: 1},
+      {OctantisWeb.Components.Polaris, s_section: 1}
     ]
+  end
 
   def variations do
     [
@@ -22,7 +24,14 @@ defmodule Storybook.PolarisWC.SBannerStory do
             ],
             attributes: %{heading: "Order archived", tone: "info", dismissible: true}
           }
-        ]
+        ],
+        template: """
+        <.stylesheet psb-code-hidden/>
+        <.javascript psb-code-hidden/>
+        <.s_page >
+          <.psb-variation-group/>
+        </.s_page>
+        """
       },
       %VariationGroup{
         id: :secondary_action,
@@ -36,7 +45,14 @@ defmodule Storybook.PolarisWC.SBannerStory do
             ],
             attributes: %{heading: "Order archived", tone: "info", dismissible: true}
           }
-        ]
+        ],
+        template: """
+        <.stylesheet psb-code-hidden/>
+        <.javascript psb-code-hidden/>
+        <.s_page >
+          <.psb-variation-group/>
+        </.s_page>
+        """
       },
       %VariationGroup{
         id: :in_section,
@@ -50,12 +66,7 @@ defmodule Storybook.PolarisWC.SBannerStory do
             ],
             attributes: %{heading: "Order archived", tone: "info", dismissible: true}
           }
-        ],
-        template: """
-        <.s_section>
-          <.psb-variation-group/>
-        </.s_section>
-        """
+        ]
       }
     ]
   end
