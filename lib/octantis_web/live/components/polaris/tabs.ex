@@ -33,7 +33,7 @@ defmodule OctantisWeb.Components.Polaris.Tabs do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Tabs/Tabs.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   import_polaris_components([
     :badge,

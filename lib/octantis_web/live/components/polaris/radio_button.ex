@@ -17,7 +17,7 @@ defmodule OctantisWeb.Components.Polaris.RadioButton do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/RadioButton/RadioButton.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   import_polaris_components([:choice])
 

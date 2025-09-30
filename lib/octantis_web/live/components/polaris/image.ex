@@ -11,7 +11,7 @@ defmodule OctantisWeb.Components.Polaris.Image do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Image/Image.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   @doc @moduledoc
 

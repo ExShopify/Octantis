@@ -13,7 +13,7 @@ defmodule OctantisWeb.Components.Polaris.Badge do
     - https://polaris.shopify.com/components/feedback-indicators/badge
     - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Badge/Badge.tsx
   """
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   import_polaris_components([:icon, :text])
 

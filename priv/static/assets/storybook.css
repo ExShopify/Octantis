@@ -1,0 +1,12 @@
+/* The polaris style shee is included in the template of each story.
+ * See OctantisWeb.Storybook.Story
+ *
+ * Alternatively, fetch https://unpkg.com/@shopify/polaris@13.9.0/build/esm/styles.css
+ * and place it in the vendor directory.
+ */
+
+/* @import "../vendor/polaris-13.9.0-styles.css"; */
+
+.psb .psb-flex .octantis-web {
+  display: unset
+}

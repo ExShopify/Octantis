@@ -48,7 +48,7 @@ defmodule OctantisWeb.Components.Polaris.AppBridgeModal do
    - https://shopify.dev/docs/api/app-bridge-library/web-components/ui-modal
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   require OctantisWeb.Components.Polaris.ComplexAction
 

@@ -1,2 +1,4 @@
 *
 !.gitignore
+!storybook.js
+!storybook.css

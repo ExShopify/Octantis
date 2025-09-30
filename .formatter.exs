@@ -7,5 +7,6 @@
     "{config,lib,test}/**/*.{heex,ex,exs}",
     "priv/*/seeds.exs",
     "storybook/**/*.exs"
-  ]
+  ],
+  locals_without_parens: [s_attr: 2, s_attr: 3]
 ]
