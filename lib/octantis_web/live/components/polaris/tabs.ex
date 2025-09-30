@@ -3,35 +3,32 @@ defmodule OctantisWeb.Components.Polaris.Tabs do
   Use to alternate among related views within the same context.
 
   ## Examples
-    ```elixir
-    <.card padding={[xs: "0"]}>
-      <.tabs>
-        <:tab
-          content="All"
-          accessibility_label="All customers"
-        >
-          <.box padding={[md: "200"]}>All Customers</.box>
-        </:tab>
-        <:tab
-          content="Accepts marketing"
-        >
-          <.box padding={[md: "200"]}>Accepts marketing</.box>
-        </:tab>
-        <:tab
-          content="Repeat customers"
-          accessibility_label="Repeat customers"
-        >
-          <.box padding={[md: "200"]}>Repeat customers</.box>
-        </:tab>
-        <:tab
-          content="Prospects"
-        >
-          <.box padding={[md: "200"]}>Prospects</.box>
-        </:tab>
-      </.tabs>
-    </.card>
-    ```
-  See
+  ```elixir
+  <.card padding={[xs: "0"]}>
+    <.tabs>
+      <:tab
+        content="All"
+        accessibility_label="All customers"
+      >
+        <.box padding={[md: "200"]}>All Customers</.box>
+      </:tab>
+      <:tab content="Accepts marketing">
+        <.box padding={[md: "200"]}>Accepts marketing</.box>
+      </:tab>
+      <:tab
+        content="Repeat customers"
+        accessibility_label="Repeat customers"
+      >
+        <.box padding={[md: "200"]}>Repeat customers</.box>
+      </:tab>
+      <:tab content="Prospects">
+        <.box padding={[md: "200"]}>Prospects</.box>
+      </:tab>
+    </.tabs>
+  </.card>
+  ```
+
+  ## See
    - https://polaris.shopify.com/components/navigation/tabs
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Tabs/Tabs.tsx
   """

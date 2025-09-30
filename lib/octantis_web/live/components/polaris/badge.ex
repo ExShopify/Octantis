@@ -1,16 +1,17 @@
 defmodule OctantisWeb.Components.Polaris.Badge do
   @moduledoc """
-    Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
-    ## Examples
-    ```elixir
-    <.badge>
-      <:icon><Icons.plus_circle /></:icon>
-    </.badge>
-    ```
+  Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
 
-    See
-     - https://polaris.shopify.com/components/feedback-indicators/badge
-     - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Badge/Badge.tsx
+  ## Examples
+  ```elixir
+  <.badge>
+    <:icon><Icons.plus_circle /></:icon>
+  </.badge>
+  ```
+
+  ## See
+    - https://polaris.shopify.com/components/feedback-indicators/badge
+    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Badge/Badge.tsx
   """
   use OctantisWeb.Core
 

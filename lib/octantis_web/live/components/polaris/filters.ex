@@ -3,11 +3,11 @@ defmodule OctantisWeb.Components.Polaris.Filters do
   Filters is a composite component that filters the items of a list or table.
 
   ## Examples
-    ```elixir
-    </.skeleton_display_text>
-    ```
+  ```elixir
+  </.skeleton_display_text>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/selection-and-input/filters
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Filters/Filters.tsx
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Filters/components/FiltersBar/FiltersBar.tsx

@@ -1,7 +1,9 @@
 defmodule OctantisWeb.Components.Polaris.Tokens.Space do
   @moduledoc """
   Captures the Polaris Space Tokens. Allows enforcing of component attributes
-  See https://polaris.shopify.com/tokens/space
+
+  ## See 
+  - https://polaris.shopify.com/tokens/space
   """
 
   @tokens [

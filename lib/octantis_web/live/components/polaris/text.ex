@@ -1,11 +1,14 @@
 defmodule OctantisWeb.Components.Polaris.Text do
   @moduledoc """
-  Text
   Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
+
   ## Examples
+  ```elixir
     <.text variant="bodyLg" as="p" alignment="center">center alignment</.text>
     <.text as="p" tone="caution">cautious text</.text>
-  See
+  ```
+
+  ## See
     - https://polaris.shopify.com/components/typography/text
     - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Text/Text.tsx
   """

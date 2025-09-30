@@ -1,16 +1,17 @@
 defmodule OctantisWeb.Components.Polaris.Icon do
   @moduledoc """
-   Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.
+  Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.
 
-    ## Examples
-      <.icon>
-        <Icons.adjust />
-      </.icon>
-
-    See
-     - https://polaris.shopify.com/components/images-and-icons/icon?example=icon-default
-     - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Badge/Badge.tsx
-     - https://polaris.shopify.com/icons
+  ## Examples
+  ```elixir
+  <.icon>
+    <Icons.adjust />
+  </.icon>
+  ```
+  ## See
+    - https://polaris.shopify.com/components/images-and-icons/icon?example=icon-default
+    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Badge/Badge.tsx
+    - https://polaris.shopify.com/icons
   """
   use OctantisWeb.Core
 

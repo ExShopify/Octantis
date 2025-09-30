@@ -5,13 +5,13 @@ defmodule OctantisWeb.Components.Polaris.InlineGrid do
 
   ## Examples
   ```elixir
-    <.inline_grid columns={[xs: "1fr", md: "1fr 1fr"]}>
-      <div>Contents</div>
-      <div>Contents</div>
-    </.inline_grid>
+  <.inline_grid columns={[xs: "1fr", md: "1fr 1fr"]}>
+    <div>Contents</div>
+    <div>Contents</div>
+  </.inline_grid>
   ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/layout-and-structure/inline-grid
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/InlineGrid/InlineGrid.tsx
 

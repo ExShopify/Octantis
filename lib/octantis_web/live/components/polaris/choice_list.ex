@@ -3,26 +3,26 @@ defmodule OctantisWeb.Components.Polaris.ChoiceList do
   A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
 
   ## Examples
-    ```elixir
-    <.choice_list name="checkout" title="While the customer is checking out" allow_multiple>
-      <:choice label="Choice A" value="a"/>
-      <:choice label="Choice B" value="b"/>
-      <:choice label="Choice C" value="c"/>
-    </.choice_list>
-    ```
+  ```elixir
+  <.choice_list name="checkout" title="While the customer is checking out" allow_multiple>
+    <:choice label="Choice A" value="a"/>
+    <:choice label="Choice B" value="b"/>
+    <:choice label="Choice C" value="c"/>
+  </.choice_list>
+  ```
 
-    ```elixir
-    <.choice_list label="Status" name={f[:status].name} allow_multiple={false}>
-      <:choice
-        :for={choice <- Ecto.Enum.dump_values(Schema.Section, :status)}
-        label={choice |> Macro.camelize()}
-        value={choice}
-        selected={f[:status].value == String.to_atom(choice)}
-      />
-    </.choice_list>
-    ```
+  ```elixir
+  <.choice_list label="Status" name={f[:status].name} allow_multiple={false}>
+    <:choice
+      :for={choice <- Ecto.Enum.dump_values(Schema.Section, :status)}
+      label={choice |> Macro.camelize()}
+      value={choice}
+      selected={f[:status].value == String.to_atom(choice)}
+    />
+  </.choice_list>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/selection-and-input/choice-list
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/ChoiceList/ChoiceList.tsx
   """

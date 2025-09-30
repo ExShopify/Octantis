@@ -3,11 +3,11 @@ defmodule OctantisWeb.Components.Polaris.Thumbnail do
   Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context.
 
   ## Examples
-    ```elixir
-    <.thumbnail source="https://picsum.photos/250" alt="Promotional image"/>
-    ```
+  ```elixir
+  <.thumbnail source="https://picsum.photos/250" alt="Promotional image"/>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/images-and-icons/thumbnail?example=thumbnail-default
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Thumbnail/Thumbnail.tsx
   """

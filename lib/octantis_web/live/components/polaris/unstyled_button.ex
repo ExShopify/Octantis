@@ -1,14 +1,13 @@
 defmodule OctantisWeb.Components.Polaris.UnstyledButton do
   @moduledoc """
-  Underlying button. Button is implemented with this and
-    sometimes Polaris uses this directly instead of button
+  Underlying button. Button is implemented with this and sometimes Polaris uses this directly instead of button
 
   ## Examples
-    ```elixir
-    <.unstyled_button>Button</.unstyled_button>
-    ```
+  ```elixir
+  <.unstyled_button>Button</.unstyled_button>
+  ```
 
-  See
+  ## See
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/UnstyledButton/UnstyledButton.tsx
   """
 

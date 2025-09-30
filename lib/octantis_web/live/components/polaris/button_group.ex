@@ -1,22 +1,23 @@
 defmodule OctantisWeb.Components.Polaris.ButtonGroup do
   @moduledoc """
   Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
+
   ## Examples
-    ```elixir
-    <.button_group>
-      <:item><.button>Cancel</.button></:item>
-      <:item><.button variant="primary">Save</.button></:item>
-    </.button_group>
-    ```
+  ```elixir
+  <.button_group>
+    <:item><.button>Cancel</.button></:item>
+    <:item><.button variant="primary">Save</.button></:item>
+  </.button_group>
+  ```
 
-    ```elixir
-    <.button_group>
-      <:complex_action content="Cancel" />
-      <:complex_action content="Save" variant="primary" />
-    </.button_group>
-    ```
+  ```elixir
+  <.button_group>
+    <:complex_action content="Cancel" />
+    <:complex_action content="Save" variant="primary" />
+  </.button_group>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/actions/button-group
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/ButtonGroup/ButtonGroup.tsx
   """

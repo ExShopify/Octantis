@@ -8,30 +8,32 @@ defmodule OctantisWeb.Components.AppBridge.UiNavMenu do
   Requires importing the hook `AppBridgeNavManu` in your Shop Admin js file. E.g. `import {AppBridgeNavManu} from "octantis"`
 
   ## Examples
-        <!DOCTYPE html>
-        <html lang="en">
-          <head>
-            <meta charset="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <meta name="csrf-token" content={get_csrf_token()} />
-            <meta name="shopify-api-key" content={SectionsApp.Config.api_key()} />
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="csrf-token" content={get_csrf_token()} />
+      <meta name="shopify-api-key" content={SectionsApp.Config.api_key()} />
 
-            <OctantisWeb.Components.Head.stylesheet />
-            <OctantisWeb.Components.Head.javascript />
+      <OctantisWeb.Components.Head.stylesheet />
+      <OctantisWeb.Components.Head.javascript />
 
-            <script defer data-phx-track-static type="text/javascript" src={~p"/assets/shop_admin.js"}>
-            </script>
+      <script defer data-phx-track-static type="text/javascript" src={~p"/assets/shop_admin.js"}>
+      </script>
 
-            <.ui_nav_menu>
-              <:link name="Home" url="/shop_admin/" />
-              <:link name="Settings" url="/shop_admin/settings" />
-              <:link name="Contact" url="/shop_admin/contact" />
-            </.ui_nav_menu>
-          </head>
-          <body style="background-color: var(--p-color-bg-app); color: var(--p-color-text);">
-            {@inner_content}
-          </body>
-        </html>
+      <.ui_nav_menu>
+        <:link name="Home" url="/shop_admin/" />
+        <:link name="Settings" url="/shop_admin/settings" />
+        <:link name="Contact" url="/shop_admin/contact" />
+      </.ui_nav_menu>
+    </head>
+    <body style="background-color: var(--p-color-bg-app); color: var(--p-color-text);">
+      {@inner_content}
+    </body>
+  </html>
+  ```
 
   ## See
     - https://shopify.dev/docs/api/app-bridge-library/web-components/ui-nav-menu

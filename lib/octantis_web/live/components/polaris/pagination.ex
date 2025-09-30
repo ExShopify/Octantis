@@ -1,12 +1,13 @@
 defmodule OctantisWeb.Components.Polaris.Pagination do
   @moduledoc """
-    Use pagination to let merchants move through an ordered collection of items that has been split into pages. On the web, pagination uses buttons to move back and forth between pages. On iOS and Android, pagination uses infinite scrolling.
-  ## Examples
-    ```elixir
-    </.Pagination>
-    ```
+  Use pagination to let merchants move through an ordered collection of items that has been split into pages. On the web, pagination uses buttons to move back and forth between pages. On iOS and Android, pagination uses infinite scrolling.
 
-  See
+  ## Examples
+  ```elixir
+  </.Pagination>
+  ```
+
+  ## See
    - https://polaris.shopify.com/components/navigation/pagination
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Pagination/Pagination.tsx
   """

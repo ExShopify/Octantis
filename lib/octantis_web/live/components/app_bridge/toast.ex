@@ -3,14 +3,17 @@ defmodule OctantisWeb.Components.AppBridge.Toast do
   Renders Shopify toast notices.
 
   Uses ShopifyToastHook to integrate with AppBridge
-    https://shopify.dev/docs/api/app-bridge-library/reference/toast#example-toast-with-dismiss-callback
 
   Be sure to load in AppBridge js in your template (you can use `<OctantisWeb.Components.Head.javascript />` to do so).
 
   ## Examples
+  ```elixir 
+  <.toast kind={:info} flash={@flash} id="toastinfo" />
+  <.toast kind={:error} flash={@flash} id="toasterror" />
+  ```
 
-      <.toast kind={:info} flash={@flash} id="toastinfo" />
-      <.toast kind={:error} flash={@flash} id="toasterror" />
+  ## See 
+  - https://shopify.dev/docs/api/app-bridge-library/reference/toast#example-toast-with-dismiss-callback
   """
 
   use Phoenix.Component

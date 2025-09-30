@@ -3,11 +3,11 @@ defmodule OctantisWeb.Components.Polaris.Divider do
   Use to separate or group content.
 
   ## Examples
-    ```elixir
-    <.divider />
-    ```
+  ```elixir
+  <.divider />
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/layout-and-structure/divider
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Divider/Divider.tsx
   """

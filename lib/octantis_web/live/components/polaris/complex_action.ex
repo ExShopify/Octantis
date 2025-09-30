@@ -2,9 +2,7 @@ defmodule OctantisWeb.Components.Polaris.ComplexAction do
   @moduledoc """
   Complex actions are an implied component in Polaris... Usually it is a button.
 
-  ## Examples
-
-  See
+  ## See
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/types.ts#L228
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Button/utils.tsx#L28
   """

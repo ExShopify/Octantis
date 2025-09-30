@@ -3,7 +3,7 @@ defmodule OctantisWeb.Components.Polaris.Choice do
   Consumed by Checkbox and Radio button.
   Undocumented by Shopify.
 
-  See
+  ## See
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Choice/Choice.tsx
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Collapsible/Collapsible.tsx
   """

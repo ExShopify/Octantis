@@ -1,10 +1,8 @@
 defmodule OctantisWeb.Components.AppBridge do
   @moduledoc """
-  AppBridge Components
-
   These components provide an interface for Shopify AppBridge
 
-  See:
+  ## See:
     - https://shopify.dev/docs/api/app-bridge
   """
 

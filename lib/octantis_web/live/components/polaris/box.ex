@@ -1,11 +1,13 @@
 defmodule OctantisWeb.Components.Polaris.Box do
   @moduledoc """
-  Box
   Box is the most primitive layout component.
+
   ## Examples
+  ```elixir
     <.box border_color="border" border_width="4">Content</.box>
     <.box background="bg-magic-hover" border_radius="full" padding={[xs: "400"]} width="586px">Content</.box>
-  See
+  ```
+  ## See
     - https://polaris.shopify.com/components/layout-and-structure/box
     - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Box/Box.tsx
   """

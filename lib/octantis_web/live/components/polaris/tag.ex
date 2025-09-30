@@ -3,11 +3,11 @@ defmodule OctantisWeb.Components.Polaris.Tag do
   Tags represent a set of interactive, merchant-supplied keywords that help label, organize, and categorize objects. Tags can be added or removed from an object by merchants.
 
   ## Examples
-    ```elixir
-    <.tag>Wholesale</.tag>
-    ```
+  ```elixir
+  <.tag>Wholesale</.tag>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/selection-and-input/tag
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Tag/Tag.tsx
   """

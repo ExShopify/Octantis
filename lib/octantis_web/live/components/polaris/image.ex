@@ -3,9 +3,11 @@ defmodule OctantisWeb.Components.Polaris.Image do
   Just an image.
 
   ## Examples
-    <.image source="/images/relax.svg" alt="Nothing here yet"/>
+  ```elixir
+  <.image source="/images/relax.svg" alt="Nothing here yet"/>
+  ``` 
 
-  See
+  ## See
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Image/Image.tsx
   """
 

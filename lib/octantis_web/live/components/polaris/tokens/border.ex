@@ -1,7 +1,9 @@
 defmodule OctantisWeb.Components.Polaris.Tokens.Border do
   @moduledoc """
   Captures the Polaris Border Tokens. Allows enforcing of component attributes
-  See https://polaris.shopify.com/tokens/border
+
+  ## See 
+  - https://polaris.shopify.com/tokens/border
   """
 
   @width_tokens [

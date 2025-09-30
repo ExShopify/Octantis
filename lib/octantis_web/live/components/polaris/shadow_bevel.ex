@@ -1,8 +1,8 @@
 defmodule OctantisWeb.Components.Polaris.ShadowBevel do
   @moduledoc """
-  ShadowBevel
   A building block for other components such as Card
-  See
+
+  ## See
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/ShadowBevel/ShadowBevel.tsx
   """
 

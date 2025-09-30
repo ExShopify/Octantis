@@ -1,17 +1,17 @@
 defmodule OctantisWeb.Components.Polaris.Select do
   @moduledoc """
-    Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
+  Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
 
   ## Examples
-    ```elixir
-    <.select label="Date range" value="today">
-      <:option value="today" label="Today"/>
-      <:option value="yesterday" label="Yesterday"/>
-      <:option value="lastWeek" label="Last 7 days" />
-    </.select>
-    ```
+  ```elixir
+  <.select label="Date range" value="today">
+    <:option value="today" label="Today"/>
+    <:option value="yesterday" label="Yesterday"/>
+    <:option value="lastWeek" label="Last 7 days" />
+  </.select>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/selection-and-input/select
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Select/Select.tsx
   """

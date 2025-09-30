@@ -6,15 +6,15 @@ defmodule OctantisWeb.Components.Polaris.Popover do
   Often this will need a wrapper with `position:relative`. In case of cards, you will need `<.card shadow_bevel={%{position: "static"}}>` to avoid clipping.
 
   ## Examples
-    ```elixir
-    <.popover id="someid">
-      <:activator content="More Actions"/>
-      <:action content="Import"/>
-      <:action content="Export"/>
-    </.popover>
-    ```
+  ```elixir
+  <.popover id="someid">
+    <:activator content="More Actions"/>
+    <:action content="Import"/>
+    <:action content="Export"/>
+  </.popover>
+  ```
 
-  See
+  ## See
    - https://polaris.shopify.com/components/overlays/popover
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Popover/Popover.tsx
   """
