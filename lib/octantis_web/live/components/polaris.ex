@@ -76,6 +76,7 @@ defmodule OctantisWeb.Components.Polaris do
   defdelegate s_paragraph(assigns), to: OctantisWeb.Components.PolarisWC.SParagraph
   defdelegate s_popover(assigns), to: OctantisWeb.Components.PolarisWC.SPopover
   defdelegate s_query_container(assigns), to: OctantisWeb.Components.PolarisWC.SQueryContainer
+  defdelegate s_search_field(assigns), to: OctantisWeb.Components.PolarisWC.SSearchField
   defdelegate s_section(assigns), to: OctantisWeb.Components.PolarisWC.SSection
   defdelegate s_stack(assigns), to: OctantisWeb.Components.PolarisWC.SStack
   defdelegate s_table(assigns), to: OctantisWeb.Components.PolarisWC.STable
