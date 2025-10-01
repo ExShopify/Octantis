@@ -20,6 +20,7 @@ defmodule OctantisWeb.Components.Polaris do
   defdelegate button_group(assigns), to: OctantisWeb.Components.Polaris.ButtonGroup
   defdelegate callout_card(assigns), to: OctantisWeb.Components.Polaris.CalloutCard
   defdelegate card(assigns), to: OctantisWeb.Components.Polaris.Card
+  defdelegate checkbox(assigns), to: OctantisWeb.Components.Polaris.Checkbox
   defdelegate choice(assigns), to: OctantisWeb.Components.Polaris.Choice
   defdelegate choice_list(assigns), to: OctantisWeb.Components.Polaris.ChoiceList
   defdelegate collapsible(assigns), to: OctantisWeb.Components.Polaris.Collapsible
