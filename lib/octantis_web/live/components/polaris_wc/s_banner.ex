@@ -2,6 +2,10 @@ defmodule OctantisWeb.Components.PolarisWC.SBanner do
   @moduledoc """
   Highlights important information or required actions prominently within the interface. Use to communicate statuses, provide feedback, or draw attention to critical updates.
 
+  ## Requirements
+
+  Requires `OctantisEventProxy` hook. See Install Hooks README.
+
   ## Outside of a section
 
    Banners placed outside of a section will display in their own card and should be located at the top of the page. They're useful for conveying messages that apply to the entire page or areas not visible within the viewport, such as validation errors further down the page.
@@ -36,6 +40,12 @@ defmodule OctantisWeb.Components.PolarisWC.SBanner do
   @doc @moduledoc
 
   ## Properties
+
+  s_attr :id, :string,
+    required: true,
+    doc: """
+    A unique identifier for the element.
+    """
 
   s_attr :dismissible, :boolean,
     doc: """
@@ -92,10 +102,10 @@ defmodule OctantisWeb.Components.PolarisWC.SBanner do
   slot :inner_block
 
   def s_banner(assigns) do
-    assigns = assigns |> assign_s_attrs()
+    assigns = assigns |> assign_s_attrs() |> assign_s_attr_events()
 
     ~H"""
-    <s-banner {@s_attrs} {@rest}>
+    <s-banner {@s_attrs} {@s_events} {@rest}>
       {render_slot(@inner_block)}
       <.s_button
         :for={button <- @secondary_action}

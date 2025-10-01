@@ -2,6 +2,10 @@ defmodule OctantisWeb.Components.PolarisWC.SLink do
   @moduledoc """
   Makes text interactive, allowing users to navigate to other pages or perform specific actions. Supports standard URLs, custom protocols, and navigation within Shopify or app pages.
 
+  ## Requirements
+
+  Requires `OctantisEventProxy` hook. See Install Hooks README.
+
   ## Example
 
   ```elixir
@@ -18,6 +22,12 @@ defmodule OctantisWeb.Components.PolarisWC.SLink do
   @doc @moduledoc
 
   ## Properties
+
+  s_attr :id, :string,
+    required: true,
+    doc: """
+    A unique identifier for the element.
+    """
 
   s_attr :accessibility_label, :string,
     doc: """
@@ -93,10 +103,12 @@ defmodule OctantisWeb.Components.PolarisWC.SLink do
   slot :inner_block
 
   def s_link(assigns) do
-    assigns = assigns |> assign_s_attrs()
+    assigns = assigns |> assign_s_attrs() |> assign_s_attr_events()
 
     ~H"""
-    <s-link {@s_attrs} {@rest}>{render_slot(@inner_block)}</s-link>
+    <s-link {@s_attrs} {@s_events} {@rest}>
+      {render_slot(@inner_block)}
+    </s-link>
     """
   end
 end

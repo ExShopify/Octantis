@@ -2,6 +2,10 @@ defmodule OctantisWeb.Components.PolarisWC.SClickable do
   @moduledoc """
   A generic interactive container component that provides a flexible alternative for custom interactive elements not achievable with existing components like Button or Link. Use it to apply specific styling such as backgrounds, padding, or borders.
 
+  ## Requirements
+
+  Requires `OctantisEventProxy` hook. See Install Hooks README.
+
   ## Example
 
   ```elixir
@@ -25,6 +29,12 @@ defmodule OctantisWeb.Components.PolarisWC.SClickable do
   @doc @moduledoc
 
   ## Properties
+
+  s_attr :id, :string,
+    required: true,
+    doc: """
+    A unique identifier for the element.
+    """
 
   s_attr :accessibility_label, :string,
     doc: """
@@ -405,10 +415,12 @@ defmodule OctantisWeb.Components.PolarisWC.SClickable do
   slot :inner_block
 
   def s_clickable(assigns) do
-    assigns = assigns |> assign_s_attrs()
+    assigns = assigns |> assign_s_attrs() |> assign_s_attr_events()
 
     ~H"""
-    <s-clickable {@s_attrs} {@rest}>{render_slot(@inner_block)}</s-clickable>
+    <s-clickable {@s_attrs} {@s_events} {@rest}>
+      {render_slot(@inner_block)}
+    </s-clickable>
     """
   end
 end
