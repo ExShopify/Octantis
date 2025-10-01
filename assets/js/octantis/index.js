@@ -39,18 +39,15 @@ const OctantisEventProxy = {
      // Polaris WebComponents puts its input into a Shadow DOM and Phoenix no longer sees it.
      // instead we proxy events through a hidden input
      // See https://shopify.dev/docs/api/app-home/using-polaris-components?accordionItem=event-handling-technical-details
-     if (this.el.nextElementSibling && this.el.nextElementSibling.tagName == "INPUT" &&
-       this.el.nextElementSibling.id == `OctantisHiddenInput${this.el.id}`) {
-       input_proxy = this.el.nextElementSibling
-     } else {
-       input_proxy = null
-     }
-
      proxyEvents = (this.el.getAttribute("data-octantis-proxy-events") || "").split(",");
      proxyEvents.forEach((proxyEvent) => {
        this.el[`on${proxyEvent}`] = (e) => {
          jsCommand = this.el.getAttribute(`data-octantis-${proxyEvent}`)
-         console.log(jsCommand)
+         input_proxy = this.el.nextElementSibling &&
+            this.el.nextElementSibling.tagName == "INPUT" &&
+            this.el.nextElementSibling.id == `OctantisHiddenInput${this.el.id}` &&
+            this.el.nextElementSibling
+
          if (jsCommand) { this.liveSocket.execJS(this.el, jsCommand) }
          if (input_proxy) {
            input_proxy.value = e.currentTarget.value
@@ -60,7 +57,6 @@ const OctantisEventProxy = {
      })
    }
  }
-
 
 /*
 Handles the integration between flash to a Shopify AppBridge Toast
