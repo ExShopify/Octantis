@@ -22,7 +22,7 @@ The `OctantisWeb.Components.Polaris` components largely match the html produced 
 
 ### Web Components
 
-The `OctantisWeb.Components.PolarisWC` components are a light wrapper around the new [Polaris Web Components](https://shopify.dev/docs/api/app-home/using-polaris-components). Some niceties have been added around responsive attributes with the `~s` sigil and type checking.
+The `OctantisWeb.Components.PolarisWC` components are a light wrapper around the new [Polaris Web Components](https://shopify.dev/docs/api/app-home/using-polaris-components). Some niceties have been added around responsive attributes with the `~s` sigil and type checking. Events are forwared through the `OctantisEventProxy` hook.
 
 ```elixir
 <.s_card>
@@ -54,6 +54,18 @@ def deps do
     {:octantis, "~> 0.1.0"}
   ]
 end
+```
+
+### Install Hooks
+
+In `assets/js/app.js` add
+
+```javascript
+import * as octantisHooks from "octantis"
+
+let Hooks = { ...octantisHooks }
+
+let liveSocket = new LiveSocket("/live_view_path", Socket, {hooks: Hooks})
 ```
 
 ## Setup A LiveView Shop Admin

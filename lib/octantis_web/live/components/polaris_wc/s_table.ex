@@ -2,6 +2,10 @@ defmodule OctantisWeb.Components.PolarisWC.STable do
   @moduledoc """
   Display data clearly in rows and columns, helping users view, analyze, and compare information. Automatically renders as a list on small screens and a table on large ones.
 
+  ## Requirements
+
+  Requires `OctantisEventProxy` hook. See Install Hooks README.
+
   ## Example
 
   ```elixir
@@ -48,6 +52,12 @@ defmodule OctantisWeb.Components.PolarisWC.STable do
   @doc @moduledoc
 
   ## Properties
+
+  s_attr :id, :string,
+    required: true,
+    doc: """
+    A unique identifier for the element.
+    """
 
   s_attr :has_next_page, :boolean,
     doc: """
@@ -126,10 +136,10 @@ defmodule OctantisWeb.Components.PolarisWC.STable do
     """
 
   def s_table(assigns) do
-    assigns = assigns |> assign_s_attrs()
+    assigns = assigns |> assign_s_attrs() |> assign_s_attr_events()
 
     ~H"""
-    <s-table {@s_attrs} {@rest}>
+    <s-table {@s_attrs} {@s_events} {@rest}>
       <.s_table_header_row :if={@s_table_header != []}>
         <.s_table_header :for={s_table_header <- @s_table_header} {s_table_header}>
           {render_slot(s_table_header)}

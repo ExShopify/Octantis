@@ -5,7 +5,12 @@ defmodule OctantisWeb.Components.AppBridge.UiNavMenu do
   This catches the click events on the side navigation elements and turns them into calls to [`JS.navigate/1`](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.JS.html#navigate/1).
   This component allows navigation without a full page reload.
 
-  Requires importing the hook `AppBridgeNavManu` in your Shop Admin js file. E.g. `import {AppBridgeNavManu} from "octantis"`
+  Requires importing the hook `AppBridgeNavManu` modal in your Shop Admin js file. E.g.
+
+  ```javascript
+  import * as octantisHooks from "octantis";
+  Hooks = { ...octantisHooks }
+  ```
 
   ## Examples
   ```html

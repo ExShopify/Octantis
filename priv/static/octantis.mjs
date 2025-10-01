@@ -23,6 +23,16 @@ var OctantisInteractable = {
     );
   }
 };
+var ShopifyFormInputEvent = {
+  mounted() {
+    this.el.addEventListener("input", () => {
+      (e) => console.log("Real-time:", e.target.value);
+    });
+    this.el.addEventListener("change", () => {
+      (e) => console.log("Realish-time:", e.target.value);
+    });
+  }
+};
 var ShopifyToastHook = {
   mounted() {
     shopify.toast.show(this.el.dataset.message, {
@@ -53,6 +63,7 @@ export {
   AppBridgeNavManu,
   OctantisInteractable,
   ShopifyAppBridgeModal,
+  ShopifyFormInputEvent,
   ShopifyModal,
   ShopifyToastHook
 };

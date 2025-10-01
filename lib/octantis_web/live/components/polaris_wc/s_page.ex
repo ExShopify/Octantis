@@ -2,7 +2,11 @@ defmodule OctantisWeb.Components.PolarisWC.SPage do
   @moduledoc """
   Use `s-page` as the main container for placing content in your app. Page comes with preset layouts and automatically adds spacing between elements.
 
-   ## Example
+  ## Requirements
+
+  Requires `OctantisEventProxy` hook. See Install Hooks README.
+
+  ## Example
 
   ```elixir
   <.s_page heading="Products">
@@ -12,6 +16,7 @@ defmodule OctantisWeb.Components.PolarisWC.SPage do
   </.s_page>
 
   ## See
+
   - https://shopify.dev/docs/api/app-home/polaris-web-components/structure/page
   ```
 
@@ -30,9 +35,11 @@ defmodule OctantisWeb.Components.PolarisWC.SPage do
 
   ## Properties
 
-  s_attr :connected_callback, :event
-
-  s_attr :disconnected_callback, :event
+  s_attr :id, :string,
+    required: true,
+    doc: """
+    A unique identifier for the element.
+    """
 
   s_attr :heading, :string,
     doc: """
@@ -48,6 +55,12 @@ defmodule OctantisWeb.Components.PolarisWC.SPage do
       - `base` corresponds to a set default inline size
       - `large` full width with whitespace
     """
+
+  ## Events
+
+  s_attr :connected_callback, :event
+
+  s_attr :disconnected_callback, :event
 
   ## Slots
 
@@ -88,10 +101,10 @@ defmodule OctantisWeb.Components.PolarisWC.SPage do
   slot :inner_block
 
   def s_page(assigns) do
-    assigns = assigns |> assign_s_attrs()
+    assigns = assigns |> assign_s_attrs() |> assign_s_attr_events()
 
     ~H"""
-    <s-page {@s_attrs} {@rest}>
+    <s-page {@s_attrs} {@s_events} {@rest}>
       {render_slot(@inner_block)}
       <.s_link :for={link <- @breadcrumb_action} {link} slot="breadcrumb-actions">
         {render_slot(link)}

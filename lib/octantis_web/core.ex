@@ -5,8 +5,6 @@ defmodule OctantisWeb.Core do
   """
   use Phoenix.Component
 
-  alias OctantisWeb.Components.PolarisWC.Types
-
   defmacro __using__(which \\ :component) do
     apply(__MODULE__, which, [])
   end
@@ -21,14 +19,21 @@ defmodule OctantisWeb.Core do
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
 
-      require unquote(__MODULE__)
-      import unquote(__MODULE__)
+      require unquote(__MODULE__).WebComponent
+      import unquote(__MODULE__).WebComponent
 
       Module.register_attribute(__MODULE__, :s_attrs, accumulate: true)
+      Module.register_attribute(__MODULE__, :s_attr_events, accumulate: true)
 
       defmacrop assign_s_attrs(assigns, key \\ :s_attrs) do
         quote do
           assign_attrs_from_map(unquote(assigns), unquote(key), @s_attrs |> Map.new())
+        end
+      end
+
+      defmacrop assign_s_attr_events(assigns, key \\ :s_events) do
+        quote do
+          assign_events_from_map(unquote(assigns), unquote(key), @s_attrs |> Map.new())
         end
       end
     end
@@ -428,56 +433,4 @@ defmodule OctantisWeb.Core do
   end
 
   def class_for_attribute(_prefix, _attribute, nil), do: []
-
-  def assign_attrs_from_map(assigns, key, attributes) do
-    keys = Map.keys(attributes)
-
-    attrs =
-      assigns
-      |> Map.take(keys)
-      |> Map.new(fn {key, value} ->
-        {attribute_name, s_type} = attributes[key]
-        {attribute_name, format_attr(value, key, s_type)}
-      end)
-
-    assigns |> assign(key, attrs)
-  end
-
-  def format_attr(value, _key, _type) when is_binary(value), do: value
-  def format_attr(value, _key, :string), do: value
-  def format_attr(value, _key, :size_units), do: value
-  def format_attr(value, _key, :size_units_or_auto), do: value
-  def format_attr(value, _key, :size_units_or_none), do: value
-
-  def format_attr({:responsive, value}, key, {:responsive, type}),
-    do: "@container #{format_attr(value, key, type)}"
-
-  def format_attr({:responsive, value}, key, {:responsive, name, type}),
-    do: "@container #{name} #{format_attr(value, key, type)}"
-
-  def format_attr({operator, compare, expr1, expr2}, _key, _keyword),
-    do: "(inline-size #{operator} #{compare}) #{expr1}, #{expr2}"
-
-  def format_attr(value, _key, _keyword), do: value
-
-  defmacro s_attr(name, s_type, opts \\ []) do
-    s_type = Macro.expand_literals(s_type, %{__CALLER__ | function: {:attr, 3}})
-    opts = Macro.expand_literals(opts, %{__CALLER__ | function: {:attr, 3}})
-
-    type = Types.get_base_type(s_type)
-    opts = Types.put_options(type, opts)
-    attribute_name = Types.attribute_name(name)
-
-    quote bind_quoted: [
-            name: name,
-            type: type,
-            opts: opts,
-            s_type: s_type,
-            attribute_name: attribute_name
-          ] do
-      @s_attrs {name, {attribute_name, s_type}}
-
-      attr(name, type, opts)
-    end
-  end
 end

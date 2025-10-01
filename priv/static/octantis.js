@@ -23,6 +23,7 @@ var Octantis = (() => {
     AppBridgeNavManu: () => AppBridgeNavManu,
     OctantisInteractable: () => OctantisInteractable,
     ShopifyAppBridgeModal: () => ShopifyAppBridgeModal,
+    ShopifyFormInputEvent: () => ShopifyFormInputEvent,
     ShopifyModal: () => ShopifyModal,
     ShopifyToastHook: () => ShopifyToastHook
   });
@@ -48,6 +49,16 @@ var Octantis = (() => {
         `octantis:interactable_${this.el.id}`,
         (event) => this.liveSocket.execJS(this.el, this.el.getAttribute(event.key))
       );
+    }
+  };
+  var ShopifyFormInputEvent = {
+    mounted() {
+      this.el.addEventListener("input", () => {
+        (e) => console.log("Real-time:", e.target.value);
+      });
+      this.el.addEventListener("change", () => {
+        (e) => console.log("Realish-time:", e.target.value);
+      });
     }
   };
   var ShopifyToastHook = {
