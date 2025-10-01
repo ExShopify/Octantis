@@ -1,5 +1,10 @@
 ## Unreleased
 
+## 0.1.20
+
+- Add Checkbox to component list
+- Fix links in documentation
+
 ## 0.1.19
 
 - Add overlay positioning for Popover
