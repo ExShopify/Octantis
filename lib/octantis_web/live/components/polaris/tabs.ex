@@ -5,7 +5,7 @@ defmodule OctantisWeb.Components.Polaris.Tabs do
   ## Examples
   ```elixir
   <.card padding={[xs: "0"]}>
-    <.tabs>
+    <.tabs id="customers">
       <:tab
         content="All"
         accessibility_label="All customers"

@@ -36,7 +36,7 @@ defmodule OctantisWeb.Components.Polaris.Checkbox do
 
   attr :disabled, :boolean, default: false, doc: "Disable input"
 
-  attr :id, :string, doc: "ID for form input"
+  attr :id, :string, required: true, doc: "ID for form input"
 
   attr :name, :string, required: true, doc: "Name for form input"
 
