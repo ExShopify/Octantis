@@ -71,6 +71,7 @@ defmodule OctantisWeb.Components.Polaris do
   defdelegate s_image(assigns), to: OctantisWeb.Components.PolarisWC.SImage
   defdelegate s_link(assigns), to: OctantisWeb.Components.PolarisWC.SLink
   defdelegate s_menu(assigns), to: OctantisWeb.Components.PolarisWC.SMenu
+  defdelegate s_modal(assigns), to: OctantisWeb.Components.PolarisWC.SModal
   defdelegate s_ordered_list(assigns), to: OctantisWeb.Components.PolarisWC.SOrderedList
   defdelegate s_page(assigns), to: OctantisWeb.Components.PolarisWC.SPage
   defdelegate s_paragraph(assigns), to: OctantisWeb.Components.PolarisWC.SParagraph
