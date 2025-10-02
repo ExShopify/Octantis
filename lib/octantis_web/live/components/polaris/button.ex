@@ -4,8 +4,14 @@ defmodule OctantisWeb.Components.Polaris.Button do
 
   ## Examples
   ```elixir
-  <.button>
-    Add product
+  <.button content="Save" />
+
+  <.button content="Delete">
+    <:icon><Icons.delete /></:icon>
+  </.button>
+
+  <.button variant="primary">
+    <:icon><Icons.delete /></:icon>
   </.button>
   ```
 
@@ -147,10 +153,10 @@ defmodule OctantisWeb.Components.Polaris.Button do
   defp button_class({_key, _value}), do: []
 
   defp assign_icon_status(assigns = %{icon: icon, content: content})
-       when not is_nil(icon) and not is_nil(content),
+       when is_list(icon) and icon != [] and not is_nil(content),
        do: assign(assigns, :icon_status, :icon_with_text)
 
-  defp assign_icon_status(assigns = %{icon: icon}) when not is_nil(icon),
+  defp assign_icon_status(assigns = %{icon: icon}) when is_list(icon) and icon != [],
     do: assign(assigns, :icon_status, :icon_only)
 
   defp assign_icon_status(assigns), do: assign(assigns, :icon_status, :text_only)
