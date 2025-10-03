@@ -52,7 +52,6 @@ defmodule OctantisWeb.Core.WebComponent do
   def format_attr(value, _key, :event) when is_binary(value), do: JS.push(value)
   def format_attr(%JS{} = value, _key, :event), do: value
   def format_attr(value, _key, _type) when is_binary(value), do: value
-  def format_attr(value, _key, :string), do: value
   def format_attr(value, _key, :size_units), do: value
   def format_attr(value, _key, :size_units_or_auto), do: value
   def format_attr(value, _key, :size_units_or_none), do: value
@@ -66,6 +65,7 @@ defmodule OctantisWeb.Core.WebComponent do
   def format_attr({operator, compare, expr1, expr2}, _key, _keyword),
     do: "(inline-size #{operator} #{compare}) #{expr1}, #{expr2}"
 
+  def format_attr(value, _key, :string), do: value
   def format_attr(value, _key, _keyword), do: value
 
   defmacro s_attr(name, s_type, opts \\ []) do
