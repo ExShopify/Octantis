@@ -221,18 +221,21 @@ defmodule OctantisWeb.Components.PolarisWC.SGrid do
       - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
     """
 
-  s_attr :grid_template_columns, :string,
+  s_attr :grid_template_columns, {:responsive, :string},
     doc: """
-      string
+    Define columns and specify their size. gridTemplateColumns either accepts:
 
-      Define columns and specify their size.
+      track sizing values (e.g. 1fr auto)
+      OR responsive values string with the supported track sizing values as a query value.
+
     """
 
-  s_attr :grid_template_rows, :string,
+  s_attr :grid_template_rows, {:responsive, :string},
     doc: """
-      string
+      Define rows and specify their size. gridTemplateRows either accepts:
 
-      Define rows and specify their size.
+        track sizing values (e.g. 1fr auto)
+        OR responsive values string with the supported track sizing values as a query value.
     """
 
   s_attr :inline_size, :string,
