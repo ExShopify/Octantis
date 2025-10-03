@@ -34,6 +34,7 @@ defmodule OctantisWeb.Storybook.Story do
           {OctantisWeb.Components.Head, stylesheet: 1},
           {OctantisWeb.Components.Head, javascript: 1},
           {OctantisWeb.Components.Polaris, s_page: 1},
+          {OctantisWeb.Components.Polaris, s_query_container: 1},
           {OctantisWeb.Components.Polaris, s_section: 1}
         ]
       end
@@ -42,11 +43,13 @@ defmodule OctantisWeb.Storybook.Story do
         """
         <.stylesheet psb-code-hidden/>
         <.javascript psb-code-hidden/>
-        <.s_page psb-code-hidden>
-          <.s_section psb-code-hidden>
-            <.psb-variation-group/>
-          </.s_section>
-        </.s_page>
+        <.s_query_container container_name=":variation_id" psb-code-hidden>
+          <.s_page psb-code-hidden>
+            <.s_section psb-code-hidden>
+              <.psb-variation-group/>
+            </.s_section>
+          </.s_page>
+        </.s_query_container>
         """
       end
 

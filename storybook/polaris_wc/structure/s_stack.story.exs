@@ -21,6 +21,7 @@ defmodule Storybook.PolarisWC.SStackStory do
       {OctantisWeb.Components.Head, stylesheet: 1},
       {OctantisWeb.Components.Head, javascript: 1},
       {OctantisWeb.Components.PolarisWC.SIcon, s_icon: 1},
+      {OctantisWeb.Components.Polaris, s_query_container: 1},
       {OctantisWeb.Storybook.Sigil, sigil_o: 2}
     ]
 

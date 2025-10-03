@@ -8,6 +8,7 @@ defmodule Storybook.PolarisWC.SDividerStory do
       {OctantisWeb.Components.Head, stylesheet: 1},
       {OctantisWeb.Components.Head, javascript: 1},
       {OctantisWeb.Components.Polaris, s_section: 1},
+      {OctantisWeb.Components.Polaris, s_query_container: 1},
       {OctantisWeb.Components.Polaris, s_text: 1}
     ]
   end
