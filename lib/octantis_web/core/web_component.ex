@@ -62,8 +62,9 @@ defmodule OctantisWeb.Core.WebComponent do
   def format_attr({:responsive, value}, key, {:responsive, name, type}),
     do: "@container #{name} #{format_attr(value, key, type)}"
 
-  def format_attr({operator, compare, expr1, expr2}, _key, _keyword),
-    do: "(inline-size #{operator} #{compare}) #{expr1}, #{expr2}"
+  def format_attr({operator, compare, expr1, expr2}, key, type) do
+    "(inline-size #{operator} #{compare}) #{format_attr(expr1, key, type)}, #{format_attr(expr2, key, type)}"
+  end
 
   def format_attr(value, _key, :string), do: value
   def format_attr(value, _key, _keyword), do: value
