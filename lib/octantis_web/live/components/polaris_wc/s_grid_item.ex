@@ -132,7 +132,7 @@ defmodule OctantisWeb.Components.PolarisWC.SGridItem do
       If four values are specified, they apply to the block-start, block-end, inline-start, and inline-end sides respectively.
     """
 
-  s_attr :display, :string,
+  s_attr :display, {:responsive, :string},
     doc: """
       MaybeResponsive<"auto" | "none">
 
@@ -225,7 +225,7 @@ defmodule OctantisWeb.Components.PolarisWC.SGridItem do
       `padding` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
     """
 
-  s_attr :padding_block, :string,
+  s_attr :padding_block, {:responsive, :string},
     doc: """
       MaybeResponsive<"" | MaybeTwoValuesShorthandProperty\<PaddingKeyword>>
 
@@ -238,7 +238,7 @@ defmodule OctantisWeb.Components.PolarisWC.SGridItem do
       `paddingBlock` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
     """
 
-  s_attr :padding_block_end, :string,
+  s_attr :padding_block_end, {:responsive, :string},
     doc: """
       MaybeResponsive<"" | PaddingKeyword>
 
@@ -249,7 +249,7 @@ defmodule OctantisWeb.Components.PolarisWC.SGridItem do
       `paddingBlockEnd` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
     """
 
-  s_attr :padding_block_start, :string,
+  s_attr :padding_block_start, {:responsive, :string},
     doc: """
       MaybeResponsive<"" | PaddingKeyword>
 
@@ -260,7 +260,7 @@ defmodule OctantisWeb.Components.PolarisWC.SGridItem do
       `paddingBlockStart` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
     """
 
-  s_attr :padding_inline, :string,
+  s_attr :padding_inline, {:responsive, :string},
     doc: """
       MaybeResponsive<"" | MaybeTwoValuesShorthandProperty\<PaddingKeyword>>
 
@@ -273,7 +273,7 @@ defmodule OctantisWeb.Components.PolarisWC.SGridItem do
       `paddingInline` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
     """
 
-  s_attr :padding_inline_end, :string,
+  s_attr :padding_inline_end, {:responsive, :string},
     doc: """
       MaybeResponsive<"" | PaddingKeyword>
 
@@ -284,7 +284,7 @@ defmodule OctantisWeb.Components.PolarisWC.SGridItem do
       `paddingInlineEnd` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
     """
 
-  s_attr :padding_inline_start, :string,
+  s_attr :padding_inline_start, {:responsive, :string},
     doc: """
       MaybeResponsive<"" | PaddingKeyword>
 
