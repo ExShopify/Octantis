@@ -133,6 +133,7 @@ defmodule OctantisWeb.Components.PolarisWC.SSelect do
       |> assign_s_attrs()
       |> assign_s_attr_events()
       |> assign_field_values()
+      |> assign_phx_bindings()
 
     ~H"""
     <s-select {@s_attrs} {@s_events} {@field_values} {@rest}>
@@ -144,7 +145,7 @@ defmodule OctantisWeb.Components.PolarisWC.SSelect do
         {render_slot(s_option)}
       </s-option>
     </s-select>
-    <input id={"OctantisHiddenInput" <> @id} {@field_values} hidden />
+    <input id={"OctantisHiddenInput" <> @id} {@field_values} {@phx_bindings} hidden />
     """
   end
 end

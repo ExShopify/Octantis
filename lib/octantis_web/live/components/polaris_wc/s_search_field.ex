@@ -13,6 +13,7 @@ defmodule OctantisWeb.Components.PolarisWC.SSearchField do
     label="Search"
     label_accessibility_visibility="exclusive"
     placeholder="Search items"
+    data-phx-debounce="500"
   />
   ```
 
@@ -128,12 +129,13 @@ defmodule OctantisWeb.Components.PolarisWC.SSearchField do
       |> assign_s_attrs()
       |> assign_s_attr_events()
       |> assign_field_values()
+      |> assign_phx_bindings()
 
     ~H"""
     <s-search-field {@s_attrs} {@s_events} {@field_values} {@rest}>
       {render_slot(@inner_block)}
     </s-search-field>
-    <input id={"OctantisHiddenInput" <> @id} {@field_values} hidden />
+    <input id={"OctantisHiddenInput" <> @id} {@field_values} {@phx_bindings} hidden />
     """
   end
 end

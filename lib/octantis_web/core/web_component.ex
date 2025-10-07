@@ -101,6 +101,16 @@ defmodule OctantisWeb.Core.WebComponent do
     |> assign(:field_values, field_values)
   end
 
+  def assign_phx_bindings(assigns), do: assigns |> assign(:phx_bindings, phx_bindings(assigns))
+
+  def phx_bindings(assigns) do
+    assigns.rest
+    |> Enum.filter(fn {key, _value} ->
+      key |> to_string() |> String.starts_with?(@binding_prefix)
+    end)
+    |> Map.new()
+  end
+
   def translate_error({msg, _opts}), do: msg
 
   def translate_errors(field) when is_struct(field, Phoenix.HTML.FormField) do
