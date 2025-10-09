@@ -86,4 +86,5 @@ defmodule OctantisWeb.Components.Polaris do
   defdelegate s_table(assigns), to: OctantisWeb.Components.PolarisWC.STable
   defdelegate s_text(assigns), to: OctantisWeb.Components.PolarisWC.SText
   defdelegate s_tooltip(assigns), to: OctantisWeb.Components.PolarisWC.STooltip
+  defdelegate s_unordered_list(assigns), to: OctantisWeb.Components.PolarisWC.SUnorderedList
 end
