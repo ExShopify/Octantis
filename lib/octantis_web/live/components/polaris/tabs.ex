@@ -248,5 +248,6 @@ defmodule OctantisWeb.Components.Polaris.Tabs do
     |> JS.remove_class("Polaris-Tabs__Panel--hidden",
       to: "##{tab_id(id, index)} .Polaris-Tabs__Tab"
     )
+    |> JS.add_class("Polaris-Tabs__Tab--active", to: "##{tab_id(id, index)}")
   end
 end
