@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 0.2.0
+
+- Add Polaris WebComponents
+
 ## 0.1.21
 
 - Fix Button padding

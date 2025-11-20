@@ -1,7 +1,7 @@
 defmodule Octantis.MixProject do
   use Mix.Project
 
-  @version "0.1.21"
+  @version "0.2.0"
 
   def project do
     [
