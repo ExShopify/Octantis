@@ -17,7 +17,7 @@ defmodule OctantisWeb.Components.Polaris.InlineGrid do
 
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   alias OctantisWeb.Components.Polaris.Tokens.Space
 

@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 0.2.0
+
+- Add Polaris WebComponents
+
 ## 0.1.21
 
 - Fix Button padding
@@ -8,6 +12,10 @@
 
 - Add Checkbox to component list
 - Fix links in documentation
+- Add Polaris WebComponents to imported Javascript
+- Add SDivider Web Component
+- Add s_attr macro for web_components
+- Add sigil_o[]r to handle responsive values
 
 ## 0.1.19
 

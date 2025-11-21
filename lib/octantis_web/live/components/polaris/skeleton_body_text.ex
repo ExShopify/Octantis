@@ -12,7 +12,7 @@ defmodule OctantisWeb.Components.Polaris.SkeletonBodyText do
     - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/SkeletonBodyText/SkeletonBodyText.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   @doc @moduledoc
 

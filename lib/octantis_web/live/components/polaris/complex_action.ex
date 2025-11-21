@@ -6,7 +6,7 @@ defmodule OctantisWeb.Components.Polaris.ComplexAction do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/types.ts#L228
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Button/utils.tsx#L28
   """
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   import OctantisWeb.Components.Polaris.Button, only: [button: 1]
 

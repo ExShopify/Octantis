@@ -13,7 +13,7 @@ defmodule OctantisWeb.Components.Polaris.Page do
     - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Page/tests/Page.test.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   require OctantisWeb.Components.Polaris.ComplexAction
 

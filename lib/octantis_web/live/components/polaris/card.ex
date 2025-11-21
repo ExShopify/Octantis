@@ -14,7 +14,7 @@ defmodule OctantisWeb.Components.Polaris.Card do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Card/tests/Card.test.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   import OctantisWeb.Components.Polaris.Box
   import OctantisWeb.Components.Polaris.ShadowBevel

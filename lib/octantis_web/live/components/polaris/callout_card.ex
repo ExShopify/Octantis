@@ -42,7 +42,7 @@ defmodule OctantisWeb.Components.Polaris.CalloutCard do
   ```
 
   """
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   require OctantisWeb.Components.Polaris.ComplexAction
 

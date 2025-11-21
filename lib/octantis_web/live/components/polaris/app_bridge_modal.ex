@@ -8,11 +8,11 @@ defmodule OctantisWeb.Components.Polaris.AppBridgeModal do
 
   ## Prerequisite
 
-  The following is required in your .js file:
+  The `ShopifyAppBridgeModal` hook is required in your .js file:
 
   ```javascript
-  import { ShopifyAppBridgeModal } from "octantis";
-  Hooks = { ShopifyAppBridgeModal }
+  import * as octantisHooks from "octantis";
+  Hooks = { ...octantisHooks }
   ```
 
   ## Push Events
@@ -48,7 +48,7 @@ defmodule OctantisWeb.Components.Polaris.AppBridgeModal do
    - https://shopify.dev/docs/api/app-bridge-library/web-components/ui-modal
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   require OctantisWeb.Components.Polaris.ComplexAction
 

@@ -5,7 +5,42 @@ defmodule OctantisWeb.Core do
   """
   use Phoenix.Component
 
-  defmacro __using__(_opts) do
+  defmacro __using__(which \\ :component) do
+    apply(__MODULE__, which, [])
+  end
+
+  def web_component do
+    quote do
+      use Phoenix.Component
+
+      # HTML escaping functionality
+      import Phoenix.HTML
+
+      # Shortcut for generating JS commands
+      alias Phoenix.LiveView.JS
+
+      require unquote(__MODULE__).WebComponent
+      import unquote(__MODULE__).WebComponent
+
+      Module.register_attribute(__MODULE__, :s_attrs, accumulate: true)
+      Module.register_attribute(__MODULE__, :s_attr_events, accumulate: true)
+
+      defmacrop assign_s_attrs(assigns, key \\ :s_attrs) do
+        quote do
+          assign_attrs_from_map(unquote(assigns), unquote(key), @s_attrs |> Map.new())
+        end
+      end
+
+      defmacrop assign_s_attr_events(assigns, key \\ :s_events) do
+        quote do
+          assign_events_from_map(unquote(assigns), unquote(key), @s_attrs |> Map.new())
+        end
+      end
+    end
+  end
+
+  def component do
+    # credo:disable-for-this-file Credo.Check.Refactor.CyclomaticComplexity
     quote do
       use Phoenix.Component
 

@@ -12,7 +12,7 @@ defmodule OctantisWeb.Components.Polaris.Bleed do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Bleed/Bleed.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   alias OctantisWeb.Components.Polaris.Tokens.Space
 

@@ -20,6 +20,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var octantis_exports = {};
 __export(octantis_exports, {
   AppBridgeNavManu: () => AppBridgeNavManu,
+  OctantisEventProxy: () => OctantisEventProxy,
   OctantisInteractable: () => OctantisInteractable,
   ShopifyAppBridgeModal: () => ShopifyAppBridgeModal,
   ShopifyModal: () => ShopifyModal,
@@ -48,6 +49,24 @@ var OctantisInteractable = {
       `octantis:interactable_${this.el.id}`,
       (event) => this.liveSocket.execJS(this.el, this.el.getAttribute(event.key))
     );
+  }
+};
+var OctantisEventProxy = {
+  mounted() {
+    proxyEvents = (this.el.getAttribute("data-octantis-proxy-events") || "").split(",");
+    proxyEvents.forEach((proxyEvent) => {
+      this.el[`on${proxyEvent}`] = (e) => {
+        jsCommand = this.el.getAttribute(`data-octantis-${proxyEvent}`);
+        input_proxy = this.el.nextElementSibling && this.el.nextElementSibling.tagName == "INPUT" && this.el.nextElementSibling.id == `OctantisHiddenInput${this.el.id}` && this.el.nextElementSibling;
+        if (jsCommand) {
+          this.liveSocket.execJS(this.el, jsCommand);
+        }
+        if (input_proxy) {
+          input_proxy.value = e.currentTarget.value;
+          input_proxy.dispatchEvent(new Event(proxyEvent, { bubbles: true }));
+        }
+      };
+    });
   }
 };
 var ShopifyToastHook = {

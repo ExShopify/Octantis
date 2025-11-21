@@ -23,6 +23,24 @@ var OctantisInteractable = {
     );
   }
 };
+var OctantisEventProxy = {
+  mounted() {
+    proxyEvents = (this.el.getAttribute("data-octantis-proxy-events") || "").split(",");
+    proxyEvents.forEach((proxyEvent) => {
+      this.el[`on${proxyEvent}`] = (e) => {
+        jsCommand = this.el.getAttribute(`data-octantis-${proxyEvent}`);
+        input_proxy = this.el.nextElementSibling && this.el.nextElementSibling.tagName == "INPUT" && this.el.nextElementSibling.id == `OctantisHiddenInput${this.el.id}` && this.el.nextElementSibling;
+        if (jsCommand) {
+          this.liveSocket.execJS(this.el, jsCommand);
+        }
+        if (input_proxy) {
+          input_proxy.value = e.currentTarget.value;
+          input_proxy.dispatchEvent(new Event(proxyEvent, { bubbles: true }));
+        }
+      };
+    });
+  }
+};
 var ShopifyToastHook = {
   mounted() {
     shopify.toast.show(this.el.dataset.message, {
@@ -51,6 +69,7 @@ var AppBridgeNavManu = {
 };
 export {
   AppBridgeNavManu,
+  OctantisEventProxy,
   OctantisInteractable,
   ShopifyAppBridgeModal,
   ShopifyModal,

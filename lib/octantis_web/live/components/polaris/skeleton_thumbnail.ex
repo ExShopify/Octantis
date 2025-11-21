@@ -12,7 +12,7 @@ defmodule OctantisWeb.Components.Polaris.SkeletonThumbnail do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/SkeletonDisplayText/SkeletonDisplayText.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   @doc @moduledoc
 

@@ -8,7 +8,7 @@ defmodule OctantisWeb.Components.Polaris.Choice do
    - https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Collapsible/Collapsible.tsx
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   import_polaris_components([:text, :inline_error])
 

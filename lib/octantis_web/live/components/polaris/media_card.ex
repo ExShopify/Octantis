@@ -10,7 +10,7 @@ defmodule OctantisWeb.Components.Polaris.MediaCard do
       alt=""
       width="100%"
       height="100%"
-      style="object-fit:cover;object-position:center"
+      style="object-fit:contain;object-position:center"
       src="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
     />
   </.media_card>
@@ -21,7 +21,7 @@ defmodule OctantisWeb.Components.Polaris.MediaCard do
    - https://polaris.shopify.com/components/layout-and-structure/media-card
   """
 
-  use OctantisWeb.Core
+  use OctantisWeb.Core, :component
 
   require OctantisWeb.Components.Polaris.ComplexAction
 
