@@ -187,6 +187,21 @@ window.shopifyIdToken = shopify.idToken();
 </main>
 ```
 
+#### In `config/config.exs`
+
+Enable building the added `js/shop_admin.js` file above
+
+```elixir
+config :esbuild,
+  version: "0.17.11",
+  panelque: [
+    args:
+      ~w(js/app.js js/shop_admin.js --bundle --target=es2022 --outdir=../priv/static/assets/js --external:/fonts/* --external:/images/*),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+```
+
 ## Local Setup
 
 ### Run tests
