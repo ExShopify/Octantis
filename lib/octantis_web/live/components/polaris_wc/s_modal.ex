@@ -12,7 +12,7 @@ defmodule OctantisWeb.Components.PolarisWC.SModal do
     <.s_paragraph>
       Displaying more details here.
     </.s_paragraph>
-    <:secondary_action command_for="modal" command="--hide">Close</.secondary_action>
+    <:secondary_action command_for="modal" command="--hide">Close</:secondary_action>
     <:primary_action command_for="modal" command="--hide">Save</:primary_action>
   </.s_modal>
   ```
