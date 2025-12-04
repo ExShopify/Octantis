@@ -115,7 +115,7 @@ defmodule OctantisWeb.Components.PolarisWC.SPage do
       <.s_button
         :for={button <- @secondary_action}
         {button}
-        slot="secondary-action"
+        slot="secondary-actions"
         variant="secondary"
       >
         {render_slot(button)}
