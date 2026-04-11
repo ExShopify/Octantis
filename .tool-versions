@@ -1,4 +1,2 @@
-elixir 1.18.2-otp-27
-erlang 27.2.4
-direnv 2.35.0
-nodejs 22.4.0
+erlang 27.3.4.9
+elixir 1.19.5-otp-27
