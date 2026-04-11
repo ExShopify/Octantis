@@ -140,6 +140,7 @@ defmodule OctantisWeb.Components.PolarisWC.STable do
 
     ~H"""
     <s-table {@s_attrs} {@s_events} {@rest}>
+      {render_slot(@filters)}
       <.s_table_header_row :if={@s_table_header != []}>
         <.s_table_header :for={s_table_header <- @s_table_header} {s_table_header}>
           {render_slot(s_table_header)}
