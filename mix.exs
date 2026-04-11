@@ -14,11 +14,15 @@ defmodule Octantis.MixProject do
       package: package(),
       source_url: "https://github.com/ExShopify/Octantis",
       description: description(),
-      preferred_cli_env: [
-        check: :test
-      ],
+      preferred_cli_env: cli(),
       deps: deps(),
       docs: docs()
+    ]
+  end
+
+  def cli do
+    [
+      preferred_envs: [check: :test]
     ]
   end
 

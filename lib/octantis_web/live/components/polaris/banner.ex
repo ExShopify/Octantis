@@ -272,32 +272,6 @@ defmodule OctantisWeb.Components.Polaris.Banner do
   def assign_banner_type(%{title: nil} = assigns), do: assign(assigns, :banner_type, :inline_icon)
   def assign_banner_type(assigns), do: assign(assigns, :banner_type, :default)
 
-  slot :action,
-    validate_attrs: true,
-    doc: "Primary action for the banner" do
-    ComplexAction.attributes()
-  end
-
-  slot :secondary_action,
-    validate_attrs: true,
-    doc: "Action | Displays a secondary action" do
-    ComplexAction.attributes()
-  end
-
-  slot :inner_block
-
-  defp content_block(assigns) do
-    ~H"""
-    <.block_stack gap={[xs: "200"]}>
-      <div>{render_slot(@inner_block)}</div>
-      <.button_group>
-        <:complex_action :for={action <- @secondary_action} {action} />
-        <:complex_action :for={action <- @action} {action} />
-      </.button_group>
-    </.block_stack>
-    """
-  end
-
   def banner_id(id), do: "Banner" <> id
 
   def show(js \\ %JS{}, id), do: JS.show(js, to: "#" <> banner_id(id))
