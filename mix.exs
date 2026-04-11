@@ -14,11 +14,15 @@ defmodule Octantis.MixProject do
       package: package(),
       source_url: "https://github.com/ExShopify/Octantis",
       description: description(),
-      preferred_cli_env: [
-        check: :test
-      ],
+      preferred_cli_env: cli(),
       deps: deps(),
       docs: docs()
+    ]
+  end
+
+  def cli do
+    [
+      preferred_envs: [check: :test]
     ]
   end
 
@@ -54,18 +58,19 @@ defmodule Octantis.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # dev
+      # dev and test
       {:credo, "~> 1.7.0", only: [:dev, :test], runtime: false},
-      {:floki, ">= 0.30.0", only: :test},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:tailwind, "~> 0.3", runtime: Mix.env() == :dev},
-      {:req, "~> 0.5.0", only: [:dev, :test]},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:floki, ">= 0.30.0", only: :test},
+      {:lazy_html, ">= 0.1.0", only: :test},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:req, "~> 0.5.0", only: [:dev, :test]},
+      {:tailwind, "~> 0.3", runtime: Mix.env() == :dev},
       # # eveyrthing else
-      {:esbuild, "~> 0.5", runtime: Mix.env() == :dev},
-      {:phoenix, "~> 1.7.0"},
-      {:phoenix_live_view, "~> 1.0"},
-      {:phoenix_storybook, "~> 0.6"},
+      {:esbuild, "~> 0.10", runtime: Mix.env() == :dev},
+      {:phoenix, "~> 1.8.0"},
+      {:phoenix_live_view, "~> 1.1"},
+      {:phoenix_storybook, "~> 1.0"},
       {:plug_cowboy, "~> 2.5"}
     ]
   end

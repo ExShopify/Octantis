@@ -1,5 +1,7 @@
 ## Unreleased
 
+- bumped Phoenix to 1.8 and its related libraries
+
 ## 0.2.0
 
 - Add Polaris WebComponents
