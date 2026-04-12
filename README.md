@@ -51,7 +51,7 @@ by adding `octantis` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:octantis, "~> 0.2.0"}
+    {:octantis, "~> 0.3.0"}
   ]
 end
 ```
